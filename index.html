@@ -369,51 +369,6 @@
       content: '✦'; position: absolute; left: 0; color: var(--primary); font-size: 0.8rem; top: 2px;
     }
 
-    /* ── CONTACT ── */
-
-#contact {
-  background: var(--bg);
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-
-.contact-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-
-  padding: 2rem;
-
-  border: 1px solid var(--line);
-
-  text-decoration: none;
-  color: var(--text);
-
-  transition: all 0.3s ease;
-}
-
-.contact-card:hover {
-  border-color: var(--primary);
-  transform: translateY(-3px);
-}
-
-.contact-card span {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--secondary);
-}
-
-.contact-card strong {
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  font-weight: 400;
-}
-
     /* ── FOOTER ── */
     footer {
       background: var(--text);
@@ -449,6 +404,30 @@
       opacity: 1;
       transform: none;
     }
+    .footer-contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  margin-bottom: 3rem;
+}
+
+.footer-contact a {
+  color: rgba(250,248,245,0.8);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.footer-contact a:hover {
+  color: var(--primary);
+}
+
+.footer-contact span {
+  color: rgba(250,248,245,0.3);
+}
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
@@ -459,9 +438,6 @@
         grid-template-columns: 1fr; gap: 2rem;
       }
       .nav-links { display: none; }
-      .contact-grid {
-      grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
@@ -824,48 +800,40 @@
   </div>
 </section>
 
-<section id="contact" class="reveal">
-  <p class="section-label">Contact</p>
-  <h2 class="section-title">Let's Work Together</h2>
+<footer>
 
-  <p class="section-desc">
-    Open to internships, research collaborations, strategic planning projects,
-    communication roles, and opportunities related to consumer insight,
-    brand strategy, and cultural research.
+  <p class="footer-statement">
+    My work sits at the intersection of research, culture,
+    communication, and strategy. I am particularly interested in
+    understanding human behavior, cultural dynamics, and consumer
+    motivations, then translating those insights into meaningful
+    communication solutions and brand experiences.
   </p>
 
-  <div class="contact-grid">
+  <div class="footer-contact">
 
-    <a href="mailto:tnttam41004@gmail.com" class="contact-card">
-      <span>Email</span>
-      <strong>tnttam41004@gmail.com</strong>
+    <a href="mailto:tnttam41004@gmail.com">
+      tnttam41004@gmail.com
     </a>
 
-    <a href="tel:+84968043647" class="contact-card">
-      <span>Phone</span>
-      <strong>+84 968 043 647</strong>
+    <span>•</span>
+
+    <a href="tel:+84968043647">
+      +84 968 043 647
     </a>
 
-    <div class="contact-card">
-      <span>Location</span>
-      <strong>Thu Duc City, Ho Chi Minh City</strong>
-    </div>
+    <span>•</span>
 
-    <a href="https://www.linkedin.com" target="_blank" class="contact-card">
-      <span>LinkedIn</span>
-      <strong>View Profile</strong>
+    <a href="https://linkedin.com/in/your-linkedin">
+      LinkedIn
     </a>
 
   </div>
-</section>
 
-<footer>
-  <p class="footer-statement reveal">
-    My work sits at the intersection of research, culture, communication, and strategy. I am particularly interested in understanding human behavior, cultural dynamics, and consumer motivations, then translating those insights into meaningful communication solutions and brand experiences.
-  </p>
-  <p class="footer-bottom">
-    © 2026 Tran Nguyen To Tam — Strategic Planner & Researcher
-  </p>
+  <div class="footer-bottom">
+    © 2026 TRAN NGUYEN TO TAM — STRATEGIC PLANNER & RESEARCHER
+  </div>
+
 </footer>
 
 <script>
