@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tran Nguyen To Tam — PR & Communication</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>Tran Nguyen To Tam — Strategic Planner & Researcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --cream: #f5f0e8;
-      --warm-white: #faf8f4;
-      --ink: #1a1612;
-      --muted: #7a7168;
-      --accent: #b85c38;
-      --accent-light: #e8c4b4;
-      --line: rgba(26,22,18,0.12);
+      --bg: #FAF8F5; /* Warm Ivory */
+      --text: #1F1F1F; /* Charcoal */
+      --primary: #C79292; /* Dusty Rose */
+      --secondary: #7B4B4B; /* Deep Burgundy */
+      --line: rgba(31, 31, 31, 0.1);
       --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans: 'DM Sans', sans-serif;
+      --sans: 'Inter', sans-serif;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,603 +21,385 @@
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--warm-white);
-      color: var(--ink);
+      background: var(--bg);
+      color: var(--text);
       font-family: var(--sans);
       font-weight: 300;
       line-height: 1.7;
       overflow-x: hidden;
     }
 
-    /* ── NOISE OVERLAY ── */
+    /* Noise overlay for intellectual journal feel */
     body::before {
       content: '';
       position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 9999; opacity: 0.4;
+      pointer-events: none; z-index: 9999; opacity: 0.5;
     }
 
-    /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--cream); }
-    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 2px; }
 
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 1.4rem 3rem;
-      background: rgba(250,248,244,0.85);
-      backdrop-filter: blur(12px);
+      padding: 1.5rem 4rem;
+      background: rgba(250,248,245,0.9);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
     }
-
     .nav-logo {
       font-family: var(--serif);
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      color: var(--ink);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text);
       text-decoration: none;
     }
-
     .nav-links {
       display: flex; gap: 2.5rem; list-style: none;
     }
-
     .nav-links a {
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--text);
       text-decoration: none;
       transition: color 0.2s;
     }
+    .nav-links a:hover { color: var(--secondary); }
 
-    .nav-links a:hover { color: var(--accent); }
+    /* ── TYPOGRAPHY & LAYOUT ── */
+    section { padding: 8rem 5rem 4rem; }
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 4rem;
+      color: var(--text);
+    }
+    .section-desc {
+      font-size: 1.05rem;
+      max-width: 700px;
+      margin-bottom: 4rem;
+      color: rgba(31,31,31,0.8);
+      line-height: 1.8;
+    }
+    .divider {
+      width: 100%; height: 1px;
+      background: var(--line);
+      margin: 3rem 0;
+    }
 
     /* ── HERO ── */
     #hero {
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding-top: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 120px;
     }
-
-    .hero-left {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 5rem 4rem 5rem 5rem;
-    }
-
     .hero-eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.3s forwards;
-    }
-
-    .hero-name {
-      font-family: var(--serif);
-      font-size: clamp(3rem, 5vw, 5.5rem);
-      font-weight: 300;
-      line-height: 1.08;
-      letter-spacing: -0.01em;
-      margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.5s forwards;
-    }
-
-    .hero-name em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .hero-bio {
-      font-size: 0.95rem;
-      color: var(--muted);
-      max-width: 420px;
-      line-height: 1.8;
-      margin-bottom: 3rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.7s forwards;
-    }
-
-    .hero-cta {
-      display: flex; gap: 1.2rem; flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.9s forwards;
-    }
-
-    .btn {
-      padding: 0.75rem 2rem;
       font-family: var(--sans);
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      transition: all 0.25s;
-    }
-
-    .btn-primary {
-      background: var(--ink);
-      color: var(--warm-white);
-    }
-
-    .btn-primary:hover {
-      background: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--ink);
-      border: 1px solid var(--ink);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .hero-right {
-      position: relative;
-      background: var(--cream);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-    }
-
-    .hero-right::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 60% 40%, var(--accent-light) 0%, transparent 65%);
-      opacity: 0.5;
-    }
-
-    .hero-monogram {
-      font-family: var(--serif);
-      font-size: 18rem;
-      font-weight: 300;
-      color: var(--ink);
-      opacity: 0.06;
-      line-height: 1;
-      user-select: none;
-      position: absolute;
-    }
-
-    .hero-tags {
-      position: relative; z-index: 1;
-      display: flex; flex-direction: column; gap: 1rem;
-      opacity: 0;
-      animation: fadeIn 1s 1.2s forwards;
-    }
-
-    .tag-pill {
-      padding: 0.6rem 1.4rem;
-      background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.9);
       font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      color: var(--ink);
-      border-radius: 2px;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-      transition: transform 0.2s;
-    }
-
-    .tag-pill:hover { transform: translateX(6px); }
-
-    /* ── SECTIONS ── */
-    section {
-      padding: 6rem 5rem;
-    }
-
-    .section-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-
-    .section-title {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 300;
-      line-height: 1.15;
-      margin-bottom: 3.5rem;
-    }
-
-    .divider {
-      width: 3rem; height: 1px;
-      background: var(--accent);
-      margin: 1.2rem 0 3.5rem;
-    }
-
-    /* ── ABOUT ── */
-    #about {
-      background: var(--cream);
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 5rem;
-      align-items: start;
-    }
-
-    #about .about-left {}
-
-    .about-stat {
-      margin-bottom: 2.5rem;
-    }
-
-    .about-stat .number {
-      font-family: var(--serif);
-      font-size: 3.5rem;
-      font-weight: 300;
-      color: var(--accent);
-      line-height: 1;
-    }
-
-    .about-stat .label {
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 0.3rem;
-    }
-
-    .about-text p {
-      font-size: 1rem;
-      color: var(--muted);
-      margin-bottom: 1.2rem;
-      line-height: 1.85;
-    }
-
-    .about-text p strong {
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    /* ── EXPERIENCE ── */
-    #experience { background: var(--warm-white); }
-
-    .exp-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-    }
-
-    .exp-card {
-      padding: 2.5rem;
-      border: 1px solid var(--line);
-      position: relative;
-      transition: background 0.3s;
-      cursor: default;
-    }
-
-    .exp-card:hover {
-      background: var(--cream);
-    }
-
-    .exp-card::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0;
-      width: 0; height: 2px;
-      background: var(--accent);
-      transition: width 0.4s;
-    }
-
-    .exp-card:hover::after { width: 100%; }
-
-    .exp-period {
-      font-size: 0.7rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
+      color: var(--secondary);
+      margin-bottom: 2rem;
     }
-
-    .exp-title {
+    .hero-name {
       font-family: var(--serif);
-      font-size: 1.3rem;
+      font-size: clamp(4rem, 6vw, 6rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--primary);
+    }
+    .hero-bio {
+      font-size: 1.1rem;
+      color: rgba(31,31,31,0.8);
+      max-width: 600px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+    .hero-tags {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      margin-top: 2rem;
+    }
+    .tag-border {
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--primary);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--secondary);
+    }
+
+    /* ── ABOUT & PROFESSIONAL SUMMARY ── */
+    .summary-text {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      line-height: 1.6;
+      max-width: 900px;
+      margin-bottom: 4rem;
+      font-style: italic;
+      color: var(--secondary);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    .about-list h3 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
       font-weight: 400;
-      margin-bottom: 0.3rem;
-      line-height: 1.3;
     }
-
-    .exp-company {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 1.2rem;
-      font-weight: 500;
-    }
-
-    .exp-desc {
+    .about-list ul {
       list-style: none;
     }
-
-    .exp-desc li {
-      font-size: 0.88rem;
-      color: var(--muted);
-      padding: 0.3rem 0;
-      padding-left: 1rem;
+    .about-list li {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      padding-left: 1.2rem;
       position: relative;
-      line-height: 1.6;
+    }
+    .about-list li::before {
+      content: '—';
+      position: absolute; left: 0; color: var(--primary);
     }
 
-    .exp-desc li::before {
-      content: '–';
-      position: absolute; left: 0;
-      color: var(--accent);
+    /* ── RESEARCH PORTFOLIO ── */
+    .research-item {
+      margin-bottom: 3rem;
+      border-left: 1px solid var(--primary);
+      padding-left: 2rem;
+    }
+    .research-role {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+    .research-title {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    .research-meta {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      color: rgba(31,31,31,0.7);
+    }
+    .research-meta a {
+      color: var(--secondary);
+      text-decoration: none;
+      border-bottom: 1px solid var(--primary);
+      transition: all 0.3s;
+    }
+    .research-meta a:hover {
+      color: var(--primary);
+    }
+    .research-quote {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--secondary);
+      margin-top: 1rem;
+      padding-left: 1rem;
+      border-left: 2px solid var(--primary);
+    }
+
+    /* ── STRATEGIC THINKING ── */
+    .framework-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 4rem 0;
+    }
+    .framework-step {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      padding: 1rem 3rem;
+      border: 1px solid var(--text);
+      min-width: 300px;
+      text-align: center;
+      background: var(--bg);
+    }
+    .framework-arrow {
+      height: 40px;
+      width: 1px;
+      background: var(--text);
     }
 
     /* ── PROJECTS ── */
-    #projects { background: var(--ink); color: var(--cream); }
-
-    #projects .section-title { color: var(--cream); }
-    #projects .section-label { color: var(--accent-light); }
-
-    .proj-list {
-      display: flex; flex-direction: column;
-      border-top: 1px solid rgba(255,255,255,0.1);
+    .project-item {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--line);
     }
-
-    .proj-item {
+    .project-header {
       display: grid;
-      grid-template-columns: 5rem 1fr auto;
-      gap: 2.5rem;
-      padding: 2.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      align-items: center;
-      transition: padding 0.3s;
-      cursor: default;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+      align-items: baseline;
+      margin-bottom: 2rem;
     }
-
-    .proj-item:hover { padding-left: 0.5rem; }
-
-    .proj-num {
+    .project-title {
       font-family: var(--serif);
-      font-size: 2rem;
-      font-weight: 300;
-      color: var(--accent);
-      opacity: 0.7;
+      font-size: 2.2rem;
+      font-weight: 400;
+    }
+    .project-role {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--secondary);
+    }
+    .project-content {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 2rem;
+    }
+    .project-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .project-details ul {
+      list-style: none;
+      display: flex; flex-wrap: wrap; gap: 1rem;
+    }
+    .project-details li {
+      font-size: 0.9rem;
+      padding: 0.3rem 0.8rem;
+      background: rgba(31,31,31,0.05);
+      border-radius: 2px;
+    }
+    .project-flow {
+      display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+      margin-top: 1.5rem;
+    }
+    .flow-step {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--secondary);
+    }
+    .flow-arrow {
+      color: var(--primary);
     }
 
-    .proj-info h3 {
+    /* ── EXPERIENCE ── */
+    .exp-item {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px dotted var(--line);
+    }
+    .exp-title {
       font-family: var(--serif);
       font-size: 1.4rem;
-      font-weight: 400;
-      margin-bottom: 0.4rem;
+      font-weight: 500;
     }
-
-    .proj-info p {
-      font-size: 0.85rem;
-      color: rgba(245,240,232,0.55);
-      line-height: 1.6;
-    }
-
-    .proj-roles {
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
-      justify-content: flex-end;
-    }
-
-    .role-tag {
-      padding: 0.3rem 0.8rem;
-      border: 1px solid rgba(255,255,255,0.2);
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,0.6);
-      border-radius: 1px;
+    .exp-company {
+      font-size: 0.95rem;
+      color: var(--secondary);
+      margin-top: 0.2rem;
     }
 
     /* ── SKILLS ── */
-    #skills { background: var(--cream); }
-
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3rem;
     }
-
-    .skill-block {
-      padding: 2rem;
-      background: var(--warm-white);
-      border-left: 3px solid var(--accent);
-    }
-
     .skill-block h3 {
       font-family: var(--serif);
-      font-size: 1.1rem;
+      font-size: 1.4rem;
       font-weight: 400;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--primary);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .skill-block ul { list-style: none; }
+    .skill-block li {
+      font-size: 0.95rem; margin-bottom: 0.8rem; color: rgba(31,31,31,0.8);
     }
 
-    .skill-block p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* ── CERTIFICATIONS ── */
-    #certifications { background: var(--warm-white); }
-
-    .cert-grid {
+    /* ── ACHIEVEMENTS & EDUCATION ── */
+    .ach-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
     }
-
-    .cert-card {
-      padding: 1.6rem;
-      border: 1px solid var(--line);
-      transition: border-color 0.25s, transform 0.2s;
-    }
-
-    .cert-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-    }
-
-    .cert-issuer {
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .cert-name {
+    .ach-section h3 {
       font-family: var(--serif);
-      font-size: 1rem;
+      font-size: 1.8rem;
       font-weight: 400;
-      line-height: 1.4;
-      margin-bottom: 0.5rem;
+      margin-bottom: 2rem;
     }
-
-    .cert-year {
-      font-size: 0.75rem;
-      color: var(--muted);
+    .ach-section ul { list-style: none; }
+    .ach-section li {
+      font-size: 1rem; margin-bottom: 1rem;
+      padding-left: 1.5rem; position: relative;
     }
-
-    /* ── ACHIEVEMENTS ── */
-    #achievements { background: var(--cream); }
-
-    .ach-list {
-      display: flex; flex-direction: column; gap: 1rem;
-    }
-
-    .ach-item {
-      display: flex; align-items: baseline; gap: 2rem;
-      padding: 1.5rem 2rem;
-      background: var(--warm-white);
-      border-right: 3px solid transparent;
-      transition: border-color 0.25s;
-    }
-
-    .ach-item:hover { border-right-color: var(--accent); }
-
-    .ach-date {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      white-space: nowrap;
-      min-width: 5rem;
-    }
-
-    .ach-desc {
-      font-family: var(--serif);
-      font-size: 1.05rem;
-      font-weight: 400;
-      line-height: 1.4;
-    }
-
-    /* ── EDUCATION ── */
-    #education { background: var(--warm-white); }
-
-    .edu-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
-    }
-
-    .edu-card {
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-      background: var(--cream);
-    }
-
-    .edu-card::before {
-      content: attr(data-year);
-      position: absolute; right: 2rem; top: 2rem;
-      font-family: var(--serif); font-size: 4rem; font-weight: 300;
-      color: var(--accent); opacity: 0.15; line-height: 1;
-    }
-
-    .edu-card h3 {
-      font-family: var(--serif); font-size: 1.3rem; font-weight: 400;
-      margin-bottom: 0.4rem;
-    }
-
-    .edu-card .school {
-      font-size: 0.8rem; color: var(--accent);
-      text-transform: uppercase; letter-spacing: 0.1em;
-      margin-bottom: 0.8rem;
-    }
-
-    .edu-card p {
-      font-size: 0.85rem; color: var(--muted); line-height: 1.6;
-    }
-
-    /* ── CONTACT ── */
-    #contact {
-      background: var(--ink);
-      color: var(--cream);
-      text-align: center;
-      padding: 7rem 5rem;
-    }
-
-    #contact .section-label { color: var(--accent-light); }
-    #contact .section-title { color: var(--cream); margin-bottom: 1.5rem; }
-
-    #contact p {
-      font-size: 0.95rem;
-      color: rgba(245,240,232,0.6);
-      margin-bottom: 3rem;
-    }
-
-    .contact-links {
-      display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
-    }
-
-    .contact-link {
-      display: flex; align-items: center; gap: 0.6rem;
-      padding: 0.9rem 2rem;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: var(--cream);
-      text-decoration: none;
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
-      transition: all 0.25s;
-    }
-
-    .contact-link:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-      transform: translateY(-2px);
+    .ach-section li::before {
+      content: '✦'; position: absolute; left: 0; color: var(--primary); font-size: 0.8rem; top: 2px;
     }
 
     /* ── FOOTER ── */
     footer {
-      background: #120f0c;
-      color: rgba(245,240,232,0.3);
+      background: var(--text);
+      color: var(--bg);
+      padding: 6rem 5rem 3rem;
       text-align: center;
-      padding: 1.5rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
+    }
+    .footer-statement {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      line-height: 1.5;
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      font-style: italic;
+      color: rgba(250,248,245,0.9);
+    }
+    .footer-bottom {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250,248,245,0.5);
+      border-top: 1px solid rgba(250,248,245,0.1);
+      padding-top: 3rem;
     }
 
     /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
-
     .reveal.visible {
       opacity: 1;
       transform: none;
@@ -627,416 +407,397 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      nav { padding: 1.2rem 1.5rem; }
-      .nav-links { gap: 1.5rem; }
-
-      #hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left { padding: 6rem 1.5rem 3rem; }
-      .hero-right { min-height: 260px; }
-
-      section { padding: 4rem 1.5rem; }
-
-      #about { grid-template-columns: 1fr; gap: 2.5rem; }
-      .exp-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr 1fr; }
-      .cert-grid { grid-template-columns: 1fr 1fr; }
-      .edu-grid { grid-template-columns: 1fr; }
-      .proj-item { grid-template-columns: 3rem 1fr; }
-      .proj-roles { display: none; }
-    }
-
-    @media (max-width: 600px) {
-      .skills-grid, .cert-grid { grid-template-columns: 1fr; }
+      nav { padding: 1.5rem 2rem; }
+      section { padding: 6rem 2rem; }
+      .hero-name { font-size: 3rem; }
+      .about-grid, .project-header, .project-content, .exp-item, .skills-grid, .ach-grid {
+        grid-template-columns: 1fr; gap: 2rem;
+      }
       .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a class="nav-logo" href="#hero">TNT Tam</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<nav>
+  <a class="nav-logo" href="#hero">Tran Nguyen To Tam</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#strategy">Strategy</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+  </ul>
+</nav>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-left">
-      <p class="hero-eyebrow">PR Planning & Corporate Communication</p>
-      <h1 class="hero-name">
-        Tran Nguyen<br><em>To Tam</em>
-      </h1>
-      <p class="hero-bio">
-        Early-career communication professional specialising in corporate storytelling, CSR content, and brand-aligned messaging. Building toward becoming a communication strategist grounded in ethical values and social responsibility.
-      </p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+<section id="hero">
+  <p class="hero-eyebrow reveal">Strategic Planner | Consumer Insight Researcher | Brand Communication</p>
+  <h1 class="hero-name reveal">Tran Nguyen<br><em>To Tam</em></h1>
+  <p class="hero-bio reveal">
+    Research-driven communication strategist with experience in consumer insight research, communication planning, and brand campaign development. Passionate about transforming consumer behavior, cultural understanding, and market insights into effective communication strategies.
+  </p>
+  <div class="hero-tags reveal">
+    <div class="tag-border">Strategic Planning</div>
+    <div class="tag-border">Consumer Insight</div>
+    <div class="tag-border">Brand Communication</div>
+    <div class="tag-border">Communication Planning</div>
+    <div class="tag-border">Research</div>
+  </div>
+</section>
+
+<section id="about">
+  <p class="section-label reveal">Professional Summary</p>
+  <p class="summary-text reveal">
+    &ldquo;Aspiring Strategic Planner with experience in communication planning, consumer research, content strategy, and integrated campaign development. Completed Bachelor's Degree requirements in Multimedia Communication at FPT University and currently awaiting degree conferral. Experienced in conducting market and competitor analysis, developing communication strategies, and coordinating cross-functional projects across academic, agency-simulated, and professional environments. Co-author of a published research paper presented at SCBEM Research Conference 2025. Interested in transforming consumer and market insights into strategic solutions that support brand growth and drive effective communication outcomes.&rdquo;
+  </p>
+
+  <div class="divider reveal"></div>
+
+  <p class="section-label reveal">About</p>
+  <h2 class="section-title reveal">Research Before Storytelling</h2>
+  <div class="about-grid reveal">
+    <div class="about-list">
+      <h3>Current Research Interests</h3>
+      <ul>
+        <li>Consumer Behavior</li>
+        <li>Cultural Identity</li>
+        <li>Digital Communities</li>
+        <li>Strategic Communication</li>
+        <li>Brand Meaning</li>
+      </ul>
+    </div>
+    <div class="about-list">
+      <h3>Core Strengths</h3>
+      <ul>
+        <li>Strategic Thinking</li>
+        <li>Consumer Insight Research</li>
+        <li>Communication Planning</li>
+        <li>Analytical Thinking</li>
+        <li>Cultural Intelligence</li>
+      </ul>
+    </div>
+    <div class="about-list">
+      <h3>Languages</h3>
+      <ul>
+        <li>Vietnamese (Native)</li>
+        <li>English (Professional Working Proficiency)</li>
+        <li>Korean (Elementary)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <p class="section-label reveal">Research Portfolio</p>
+  <h2 class="section-title reveal">Academic Inquiries</h2>
+  
+  <div class="research-item reveal">
+    <p class="research-role">Published Research Paper in SCBEM Research Conference 2025</p>
+    <h3 class="research-title">Measuring the Perceived Social Benefits of Cultural Institutions Among University Students in Thu Duc City</h3>
+    <p class="research-meta"><b>Role:</b> Co-author</p>
+    <p class="research-meta"><b>Link view:</b> <a href="20240826112339090_FCBEM_Cultural Institutions_Full Paper.pdf" target="_blank">20240826112339090_FCBEM_Cultural Institutions_Full Paper.pdf</a></p>
+  </div>
+
+  <div class="research-item reveal">
+    <p class="research-role">Research Executive</p>
+    <h3 class="research-title">Pseudo Multitasking Behavior Among Young Adults in Ho Chi Minh City: Drivers and Perceived Productivity Outcomes</h3>
+    <p class="research-meta">Status: Conference Submission in Progress</p>
+    <p class="research-meta"><b>Responsibilities:</b> Literature Review, Research Design, Survey Development, Insight Analysis, Academic Writing</p>
+    <div class="research-quote">
+      &ldquo;I know multitasking is costing me focus. But in environments where everything moves relentlessly, staying constantly responsive makes me feel like I&rsquo;m still moving forward instead of falling behind.&rdquo;
+    </div>
+  </div>
+
+  <div class="research-item reveal">
+    <p class="research-role">Independent Academic Researcher</p>
+    <h3 class="research-title">Digital Heritage and Community Formation: Understanding Cultural Identity in Online Mother Goddess Worship Communities</h3>
+    <p class="research-meta">Status: Research Proposal Development</p>
+    <p class="research-meta"><b>Focus Areas:</b> Digital Culture, Community Formation, Cultural Identity, Online Religious Communities</p>
+  </div>
+</section>
+
+<section id="strategy">
+  <p class="section-label reveal">My Strategic Thinking</p>
+  <h2 class="section-title reveal">Framework of Approach</h2>
+  <p class="section-desc reveal">
+    My planning approach combines research, consumer understanding, cultural context, and communication strategy to develop actionable solutions for brands and communities.
+  </p>
+  <div class="framework-flow reveal">
+    <div class="framework-step">Business Problem</div>
+    <div class="framework-arrow"></div>
+    <div class="framework-step">Research</div>
+    <div class="framework-arrow"></div>
+    <div class="framework-step">Insight</div>
+    <div class="framework-arrow"></div>
+    <div class="framework-step">Strategy</div>
+    <div class="framework-arrow"></div>
+    <div class="framework-step">Execution Direction</div>
+    <div class="framework-arrow"></div>
+    <div class="framework-step">Evaluation</div>
+  </div>
+</section>
+
+<section id="projects">
+  <p class="section-label reveal">Selected Works</p>
+  <h2 class="section-title reveal">Case Studies</h2>
+
+  <div class="project-item reveal">
+    <div class="project-header">
+      <h3 class="project-title">ECOLOTUS</h3>
+      <p class="project-role">Lead Strategic Planner</p>
+    </div>
+    <div class="project-content">
+      <div>
+        <p class="project-label">Format</p>
+      </div>
+      <div class="project-flow">
+        <span class="flow-step">Business Problem</span> <span class="flow-arrow">→</span>
+        <span class="flow-step">Research</span> <span class="flow-arrow">→</span>
+        <span class="flow-step">Insight</span> <span class="flow-arrow">→</span>
+        <span class="flow-step">Strategy</span> <span class="flow-arrow">→</span>
+        <span class="flow-step">Impact</span>
       </div>
     </div>
-    <div class="hero-right">
-      <div class="hero-monogram">T</div>
-      <div class="hero-tags">
-        <div class="tag-pill">✦ PR Strategy</div>
-        <div class="tag-pill">✦ Content & Storytelling</div>
-        <div class="tag-pill">✦ Event Coordination</div>
-        <div class="tag-pill">✦ CSR Communication</div>
-        <div class="tag-pill">✦ Editorial Design</div>
+    <div class="project-content" style="margin-top: 2rem;">
+      <div>
+        <p class="project-label">Deliverables</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="about-left">
-      <p class="section-label">About</p>
-      <h2 class="section-title">Crafting stories that matter</h2>
-      <div class="divider"></div>
-      <div class="about-stat">
-        <div class="number">4+</div>
-        <div class="label">Years of experience</div>
-      </div>
-      <div class="about-stat">
-        <div class="number">10+</div>
-        <div class="label">Projects & campaigns</div>
-      </div>
-      <div class="about-stat">
-        <div class="number">6</div>
-        <div class="label">Certifications</div>
-      </div>
-    </div>
-    <div class="about-text">
-      <p>
-        I am <strong>Tran Nguyen To Tam</strong>, a final-year Multimedia Communication Management student at FPT University, Ho Chi Minh City. My work sits at the intersection of <strong>strategic communication, ethical storytelling, and community engagement</strong>.
-      </p>
-      <p>
-        From planning media strategies at VNExpress to managing crisis communication for a high-visibility university showcase, I bring both analytical thinking and creative sensibility to every project. I believe the most impactful communication is rooted in empathy — understanding the audience before crafting the message.
-      </p>
-      <p>
-        Beyond the professional sphere, I am passionate about <strong>social impact</strong>: I have led fundraising campaigns for children's charities, contributed to gender education initiatives, and advocated for reading culture across Binh Phuoc Province.
-      </p>
-      <p>
-        My long-term goal is to become a communication strategist who builds sustainable brand reputations grounded in <strong>ethical values and social responsibility</strong>.
-      </p>
-      <br/>
-      <p style="font-size:0.82rem; color:var(--muted);">
-        📍 Thu Duc City, Ho Chi Minh, Vietnam &nbsp;|&nbsp;
-        🌐 Vietnamese (Native) · English (Professional) · Korean (Basic)
-      </p>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <p class="section-label reveal">Experience</p>
-    <h2 class="section-title reveal">Where I have worked</h2>
-    <div class="exp-grid reveal">
-
-      <div class="exp-card">
-        <p class="exp-period">2024 – 2025</p>
-        <h3 class="exp-title">Planning Intern</h3>
-        <p class="exp-company">FPT Online Services (VNExpress)</p>
-        <ul class="exp-desc">
-          <li>Developed media plans for clients across diverse industries</li>
-          <li>Coordinated cross-functional teams for timely project execution</li>
-          <li>Conducted market research to refine strategic communication initiatives</li>
+      <div class="project-details">
+        <ul>
+          <li>Brand Audit</li>
+          <li>SWOT</li>
+          <li>PESTLE</li>
+          <li>Aaker Brand Equity</li>
+          <li>Kapferer Brand Identity Prism</li>
+          <li>CBBE Model</li>
+          <li>Consumer Insight</li>
+          <li>Campaign Strategy</li>
+          <li>PR Strategy</li>
+          <li>Content Pillars</li>
         </ul>
       </div>
+    </div>
+  </div>
 
-      <div class="exp-card">
-        <p class="exp-period">2024 – 2025</p>
-        <h3 class="exp-title">Creative & Media Planner</h3>
-        <p class="exp-company">FPT University — Public Relations Department</p>
-        <ul class="exp-desc">
-          <li>Event Coordinator for the "Week of Audiovisual Products Showcase"</li>
-          <li>Planned logistics, scheduling, and sponsor partnerships</li>
-          <li>Created social media content to promote events</li>
+  <div class="project-item reveal">
+    <div class="project-header">
+      <h3 class="project-title">The Golden Frame Awards Summer 2025</h3>
+      <p class="project-role">Communication Strategist & Event Coordinator</p>
+    </div>
+    <div class="project-content">
+      <div>
+        <p class="project-label">Deliverables</p>
+      </div>
+      <div class="project-details">
+        <ul>
+          <li>Communication Strategy</li>
+          <li>Stakeholder Coordination</li>
+          <li>Campaign Direction</li>
+          <li>Event Communication Planning</li>
         </ul>
       </div>
-
-      <div class="exp-card">
-        <p class="exp-period">2024 – 2025</p>
-        <h3 class="exp-title">Deputy Project Manager & Strategist</h3>
-        <p class="exp-company">Production Showcase Project</p>
-        <ul class="exp-desc">
-          <li>Contributed to strategic planning and brand positioning</li>
-          <li>Coordinated inter-departmental communication</li>
-          <li>Supported event communication monitoring and execution</li>
+    </div>
+    <div class="project-content" style="margin-top: 2rem;">
+      <div>
+        <p class="project-label">Impact</p>
+      </div>
+      <div class="project-details">
+        <ul>
+          <li>53 competing teams</li>
+          <li>3,000+ participants</li>
+          <li>20,000 impressions</li>
+          <li>2,000 interactions</li>
+          <li>6 industry KOLs</li>
+          <li>90%+ participant satisfaction</li>
         </ul>
       </div>
+    </div>
+  </div>
 
-      <div class="exp-card">
-        <p class="exp-period">2022 – 2023</p>
-        <h3 class="exp-title">Content Manager</h3>
-        <p class="exp-company">SAFE ZONE — Gender Education Project</p>
-        <ul class="exp-desc">
-          <li>Developed educational content on gender awareness</li>
-          <li>Managed social media publishing calendar</li>
-          <li>Supported talk show organisation and community engagement</li>
+  <div class="project-item reveal">
+    <div class="project-header">
+      <h3 class="project-title">Pseudo Multitasking Research</h3>
+      <p class="project-role">Research Executive</p>
+    </div>
+    <div class="project-content">
+      <div>
+        <p class="project-label">Focus Areas</p>
+      </div>
+      <div class="project-details">
+        <ul>
+          <li>Consumer Behavior</li>
+          <li>Attention Economy</li>
+          <li>Perceived Productivity</li>
+          <li>Research Methodology</li>
+          <li>Insight Development</li>
         </ul>
       </div>
-
     </div>
-  </section>
+  </div>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <p class="section-label reveal">Selected Projects</p>
-    <h2 class="section-title reveal">Work I am proud of</h2>
-    <div class="proj-list reveal">
-
-      <div class="proj-item">
-        <span class="proj-num">01</span>
-        <div class="proj-info">
-          <h3>The Golden Frame Awards — Production Showcase Series</h3>
-          <p>Led content direction and communication strategy for a university-level film showcase. Developed the brand narrative and messaging framework, managed social media rollout, and handled crisis response by monitoring public sentiment.</p>
-        </div>
-        <div class="proj-roles">
-          <span class="role-tag">Creative Planner</span>
-          <span class="role-tag">Social Media</span>
-          <span class="role-tag">Crisis Manager</span>
-        </div>
-      </div>
-
-      <div class="proj-item">
-        <span class="proj-num">02</span>
-        <div class="proj-info">
-          <h3>SAFEZONE — Gender Education Project</h3>
-          <p>Developed communication content for a student-led gender education initiative. Contributed to content ideation, message framing, and storytelling aimed at raising awareness of gender equality and respectful communication among young audiences.</p>
-        </div>
-        <div class="proj-roles">
-          <span class="role-tag">Head of Content</span>
-          <span class="role-tag">Copywriting</span>
-        </div>
-      </div>
-
-      <div class="proj-item">
-        <span class="proj-num">03</span>
-        <div class="proj-info">
-          <h3>Harper's Bazaar Vietnam — Editorial Mockup</h3>
-          <p>Independently developed an English editorial mockup inspired by Harper's Bazaar using Adobe InDesign. Designed layout structure, curated visuals, and rewrote the magazine description from a personal editorial perspective.</p>
-        </div>
-        <div class="proj-roles">
-          <span class="role-tag">Editorial Design</span>
-          <span class="role-tag">InDesign</span>
-        </div>
-      </div>
-
-      <div class="proj-item">
-        <span class="proj-num">04</span>
-        <div class="proj-info">
-          <h3>Mid-Autumn Festival for Children</h3>
-          <p>Led a joint project between student clubs organising fundraising and promotional activities for underprivileged children. Oversaw communications and volunteer coordination across multiple editions.</p>
-        </div>
-        <div class="proj-roles">
-          <span class="role-tag">Head of Comms</span>
-          <span class="role-tag">Fundraising</span>
-        </div>
-      </div>
-
+  <div class="project-item reveal">
+    <div class="project-header">
+      <h3 class="project-title">FPT Online</h3>
+      <p class="project-role">Planning Intern</p>
     </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <p class="section-label reveal">Capabilities</p>
-    <h2 class="section-title reveal">What I bring to the table</h2>
-    <div class="skills-grid reveal">
-
-      <div class="skill-block">
-        <h3>PR & Corporate Branding</h3>
-        <p>Developing and executing brand-aligned communication content. Crafting press releases, articles, and CSR materials that maintain message consistency.</p>
+    <div class="project-content">
+      <div>
+        <p class="project-label">Responsibilities</p>
       </div>
-
-      <div class="skill-block">
-        <h3>Content Strategy & Storytelling</h3>
-        <p>Planning content directions, developing creative concepts, and building narratives aligned with brand values, culture, and community impact.</p>
+      <div class="project-details">
+        <ul>
+          <li>Market Research</li>
+          <li>Competitor Analysis</li>
+          <li>Media Planning</li>
+          <li>Strategic Proposal Development</li>
+          <li>Cross-functional Collaboration</li>
+        </ul>
       </div>
-
-      <div class="skill-block">
-        <h3>Editorial & Content Writing</h3>
-        <p>Writing, editing, and refining multi-platform communication content while ensuring accuracy, tone consistency, and contextual sensitivity.</p>
-      </div>
-
-      <div class="skill-block">
-        <h3>Community & CSR Communication</h3>
-        <p>Supporting communication for CSR initiatives and community projects while engaging audiences and fostering meaningful social interaction.</p>
-      </div>
-
-      <div class="skill-block">
-        <h3>Research & Media Planning</h3>
-        <p>Conducting audience and industry research to support communication strategies, media planning, and event-based campaigns.</p>
-      </div>
-
-      <div class="skill-block">
-        <h3>Design & Creative Tools</h3>
-        <p>Adobe Illustrator, Photoshop, InDesign, XD. Basic production support using Canva and CapCut. Proficient in Google Workspace and Microsoft Office.</p>
-      </div>
-
     </div>
-  </section>
+  </div>
 
-  <!-- CERTIFICATIONS -->
-  <section id="certifications">
-    <p class="section-label reveal">Certifications</p>
-    <h2 class="section-title reveal">Continuous learning</h2>
-    <div class="cert-grid reveal">
+</section>
 
-      <div class="cert-card">
-        <p class="cert-issuer">UC Irvine</p>
-        <h3 class="cert-name">Project Management Principles and Practices</h3>
-        <p class="cert-year">2025</p>
-      </div>
-
-      <div class="cert-card">
-        <p class="cert-issuer">UC Irvine</p>
-        <h3 class="cert-name">Managing Project Risks and Changes</h3>
-        <p class="cert-year">2025</p>
-      </div>
-
-      <div class="cert-card">
-        <p class="cert-issuer">Northwestern University</p>
-        <h3 class="cert-name">Content, Advertising & Social IMC</h3>
-        <p class="cert-year">2025</p>
-      </div>
-
-      <div class="cert-card">
-        <p class="cert-issuer">Professional</p>
-        <h3 class="cert-name">Content Strategy</h3>
-        <p class="cert-year">2025</p>
-      </div>
-
-      <div class="cert-card">
-        <p class="cert-issuer">Wesleyan University</p>
-        <h3 class="cert-name">Creative Writing Specialization</h3>
-        <p class="cert-year">2024</p>
-      </div>
-
-      <div class="cert-card">
-        <p class="cert-issuer">Institute for the Future</p>
-        <h3 class="cert-name">Futures Thinking</h3>
-        <p class="cert-year">2024</p>
-      </div>
-
+<section id="experience">
+  <p class="section-label reveal">Professional Journey</p>
+  <h2 class="section-title reveal">Experience</h2>
+  
+  <div class="exp-item reveal">
+    <div>
+      <h3 class="exp-title">Planning Intern</h3>
+      <p class="exp-company">FPT Online</p>
     </div>
-  </section>
-
-  <!-- ACHIEVEMENTS -->
-  <section id="achievements">
-    <p class="section-label reveal">Achievements</p>
-    <h2 class="section-title reveal">Recognition & highlights</h2>
-    <div class="ach-list reveal">
-
-      <div class="ach-item">
-        <span class="ach-date">Nov 2025</span>
-        <p class="ach-desc">SCBEM Research Conference, Hanoi — Research on social benefits of cultural institutions</p>
-      </div>
-
-      <div class="ach-item">
-        <span class="ach-date">Jan 2021</span>
-        <p class="ach-desc">Second Prize — Reading Culture Ambassador, Binh Phuoc Department of Culture</p>
-      </div>
-
-      <div class="ach-item">
-        <span class="ach-date">Jan 2020</span>
-        <p class="ach-desc">Finalist — High School Science Research Competition</p>
-      </div>
-
+  </div>
+  <div class="exp-item reveal">
+    <div>
+      <h3 class="exp-title">Communication Strategist & Event Coordinator</h3>
+      <p class="exp-company">The Golden Frame Awards Summer 2025</p>
     </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education">
-    <p class="section-label reveal">Education</p>
-    <h2 class="section-title reveal">Academic background</h2>
-    <div class="edu-grid reveal">
-
-      <div class="edu-card" data-year="2026">
-        <h3>Multimedia Communication Management</h3>
-        <p class="school">FPT University, Ho Chi Minh City</p>
-        <p>2022 – 2026 (Expected Graduation 2026)<br>
-        Relevant coursework: Content Creation, Media Planning, Event Coordination</p>
-      </div>
-
-      <div class="edu-card" data-year="2022">
-        <h3>Diploma — Specialised in Literature</h3>
-        <p class="school">Quang Trung High School for the Gifted, Binh Phuoc</p>
-        <p>2019 – 2022<br>
-        Active in research activities, social projects, and student club leadership. Vice President of Science Research Club, Swimming Club, Book Club & Musical Theater Club.</p>
-      </div>
-
+  </div>
+  <div class="exp-item reveal">
+    <div>
+      <h3 class="exp-title">Founder & Community Development Lead</h3>
+      <p class="exp-company">GÕ Trẻ – Yêu Văn Hóa Việt</p>
     </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <p class="section-label">Contact</p>
-    <h2 class="section-title">Let's work together</h2>
-    <p>Open to internships, collaborations, and full-time opportunities in PR, corporate communication, and content strategy.</p>
-    <div class="contact-links">
-      <a href="tel:+84968043647" class="contact-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 012 2.18 2 2 0 013.98 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
-        +84 968 043 647
-      </a>
-      <a href="mailto:tnttam41004@gmail.com" class="contact-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        tnttam41004@gmail.com
-      </a>
-      <a href="#" class="contact-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Thu Duc City, HCMC
-      </a>
+  </div>
+  <div class="exp-item reveal">
+    <div>
+      <h3 class="exp-title">Deputy Project Manager & Content Strategist</h3>
+      <p class="exp-company">FPT Short Film Festival</p>
     </div>
-  </section>
+  </div>
+  <div class="exp-item reveal">
+    <div>
+      <h3 class="exp-title">Communications Team Member</h3>
+      <p class="exp-company">SAFE ZONE</p>
+    </div>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 Tran Nguyen To Tam — Designed with intention</p>
-  </footer>
+<section id="skills">
+  <p class="section-label reveal">Capabilities</p>
+  <h2 class="section-title reveal">Skills</h2>
+  <div class="skills-grid reveal">
+    <div class="skill-block">
+      <h3>Strategic Planning</h3>
+      <ul>
+        <li>Communication Planning</li>
+        <li>Consumer Insight Development</li>
+        <li>Brand Strategy</li>
+        <li>IMC Planning</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <h3>Research</h3>
+      <ul>
+        <li>Quantitative Research</li>
+        <li>Qualitative Research</li>
+        <li>Literature Review</li>
+        <li>Survey Design</li>
+        <li>Data Analysis</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <h3>Communication</h3>
+      <ul>
+        <li>Campaign Development</li>
+        <li>Stakeholder Communication</li>
+        <li>Content Strategy</li>
+        <li>Project Coordination</li>
+        <li>Community Engagement</li>
+      </ul>
+    </div>
+    <div class="skill-block">
+      <h3>Tools</h3>
+      <ul>
+        <li>Adobe Illustrator</li>
+        <li>Adobe Photoshop</li>
+        <li>Adobe InDesign</li>
+        <li>Notion</li>
+        <li>Microsoft Office</li>
+        <li>Google Workspace</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <script>
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+<section id="achievements">
+  <div class="ach-grid">
+    <div class="ach-section reveal">
+        <p class="section-label">Validation</p>
+        <h3>Achievements</h3>
+        <ul>
+          <li>Published Research Paper</li>
+          <li>SCBEM Research Conference 2025</li>
+          <li>Conference Submission in Progress</li>
+          <li>2 Independent Research Projects</li>
+          <li>Outstanding Scientific Research Award</li>
+        </ul>
+        <h3 style="margin-top:2rem;">Leadership & Competitions</h3>
+        <ul>
+          <li>Reading Culture Ambassador Competition</li>
+          <li>Science Research Competition</li>
+        </ul>
+    </div>
+    <div class="ach-section reveal">
+        <p class="section-label">Foundation</p>
+        <h3>Education</h3>
+        <p><b>FPT University</b><br>Multimedia Communication (2022 – 2026)</p>
+        <ul>
+          <li>Completed degree requirements</li>
+          <li>Awaiting degree conferral</li>
+        </ul>
+        <p style="margin-top: 2rem;"><b>Quang Trung High School for the Gifted</b><br>Literature Specialized Program (2019 – 2022)</p>
+        <ul>
+          <li>Vice President, Science Research Club</li>
+          <li>GPA: 8.9/10</li>
+        </ul>
+    </div>
+  </div>
+</section>
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+<footer>
+  <p class="footer-statement reveal">
+    My work sits at the intersection of research, culture, communication, and strategy. I am particularly interested in understanding human behavior, cultural dynamics, and consumer motivations, then translating those insights into meaningful communication solutions and brand experiences.
+  </p>
+  <p class="footer-bottom">
+    © 2026 Tran Nguyen To Tam — Strategic Planner & Researcher
+  </p>
+</footer>
 
-    // Stagger children of grids
-    document.querySelectorAll('.exp-grid, .skills-grid, .cert-grid, .proj-list, .ach-list').forEach(grid => {
-      const children = grid.children;
-      Array.from(children).forEach((child, i) => {
-        child.style.transitionDelay = `${i * 0.08}s`;
-        child.classList.add('reveal');
-        observer.observe(child);
-      });
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 50);
+        observer.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
-    // Active nav link highlight on scroll
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 120) current = s.id;
-      });
-      navLinks.forEach(a => {
-        a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
-      });
-    });
-  </script>
 </body>
 </html>
