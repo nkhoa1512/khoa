@@ -702,7 +702,7 @@
 </nav>
 
 <main class="page-stage">
-  <div class="page-view" data-view="hero">
+  <div class="page-view is-active" data-view="hero">
     <!-- HERO -->
     <section id="hero">
       <div class="container">
@@ -1137,7 +1137,7 @@
       'about.summaryLabel': 'T\u00f3m t\u1eaft chuy\u00ean m\u00f4n',
       'about.summary': '\u201cNh\u00e0 ho\u1ea1ch \u0111\u1ecbnh chi\u1ebfn l\u01b0\u1ee3c tr\u1ebb v\u1edbi kinh nghi\u1ec7m trong ho\u1ea1ch \u0111\u1ecbnh truy\u1ec1n th\u00f4ng, nghi\u00ean c\u1ee9u ng\u01b0\u1eddi ti\u00eau d\u00f9ng, chi\u1ebfn l\u01b0\u1ee3c n\u1ed9i dung v\u00e0 ph\u00e1t tri\u1ec3n chi\u1ebfn d\u1ecbch t\u00edch h\u1ee3p. \u0110\u00e3 ho\u00e0n th\u00e0nh ch\u01b0\u01a1ng tr\u00ecnh C\u1eed nh\u00e2n Truy\u1ec1n th\u00f4ng \u0110a ph\u01b0\u01a1ng ti\u1ec7n t\u1ea1i \u0110\u1ea1i h\u1ecdc FPT v\u00e0 \u0111ang ch\u1edd nh\u1eadn b\u1eb1ng. \u0110\u1ed3ng t\u00e1c gi\u1ea3 b\u00e0i nghi\u00ean c\u1ee9u \u0111\u00e3 c\u00f4ng b\u1ed1 t\u1ea1i H\u1ed9i th\u1ea3o Nghi\u00ean c\u1ee9u SCBEM 2025. Quan t\u00e2m bi\u1ebfn insight ng\u01b0\u1eddi ti\u00eau d\u00f9ng v\u00e0 th\u1ecb tr\u01b0\u1eddng th\u00e0nh gi\u1ea3i ph\u00e1p chi\u1ebfn l\u01b0\u1ee3c h\u1ed7 tr\u1ee3 t\u0103ng tr\u01b0\u1edfng th\u01b0\u01a1ng hi\u1ec7u v\u00e0 k\u1ebft qu\u1ea3 truy\u1ec1n th\u00f4ng hi\u1ec7u qu\u1ea3.\u201d',
       'about.label': 'V\u1ec1 t\u00f4i', 'about.title': 'Nghi\u00ean c\u1ee9u tr\u01b0\u1edbc khi k\u1ec3 chuy\u1ec7n',
-      'about.ri.title': 'H\u01b0\u1edbng nghi\u00ean c\u1ee9u', 'about.ri.1': 'H\u00e0nh vi ti\u00eau d\u00f9ng', 'about.ri.2': 'B\u1ea3n s\u1ec v\u0103n h\u00f3a',
+      'about.ri.title': 'H\u01b0\u1edbng nghi\u00ean c\u1ee9u', 'about.ri.1': 'H\u00e0nh vi ti\u00eau d\u00f9ng', 'about.ri.2': 'B\u1ea3n s\u1eafc v\u0103n h\u00f3a',
       'about.ri.3': 'C\u1ed9ng \u0111\u1ed3ng s\u1ed1', 'about.ri.4': 'Truy\u1ec1n th\u00f4ng chi\u1ebfn l\u01b0\u1ee3c', 'about.ri.5': '\u00dd ngh\u0129a th\u01b0\u01a1ng hi\u1ec7u',
       'about.cs.title': 'Th\u1ebf m\u1ea1nh', 'about.cs.1': 'T\u01b0 duy chi\u1ebfn l\u01b0\u1ee3c', 'about.cs.2': 'Nghi\u00ean c\u1ee9u Insight',
       'about.cs.3': 'Ho\u1ea1ch \u0111\u1ecbnh truy\u1ec1n th\u00f4ng', 'about.cs.4': 'T\u01b0 duy ph\u00e2n t\u00edch', 'about.cs.5': 'Tr\u00ed tu\u1ec7 v\u0103n h\u00f3a',
@@ -1228,6 +1228,11 @@
   const hasPage = pageViews.some((view) => view.dataset.view === initialPage);
   showPage(hasPage ? initialPage : 'hero', false);
   applyLang(currentLang);
+
+  window.addEventListener('hashchange', () => {
+    const pageId = window.location.hash.slice(1);
+    if (pageViews.some((view) => view.dataset.view === pageId)) showPage(pageId, false);
+  });
 
   const paperLink = document.getElementById('paper-link');
   const paperButton = document.getElementById('paper-open-button');
