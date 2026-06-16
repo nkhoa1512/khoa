@@ -550,6 +550,71 @@
       border-top: 1px solid rgba(250,248,245,0.1);
       padding-top: var(--space-md);
     }
+    .page-view[data-view="contact"] footer {
+      background: transparent;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      padding: 2.5rem 0;
+    }
+    .page-view[data-view="contact"] .footer-inner {
+      border: 1px solid rgba(31,31,31,0.08);
+      background:
+        linear-gradient(150deg, rgba(199,146,146,0.1), rgba(255,255,255,0.75) 42%),
+        rgba(255,255,255,0.78);
+      box-shadow: 0 25px 65px rgba(31,31,31,0.08);
+      backdrop-filter: blur(2px);
+      padding-top: 2.8rem;
+      padding-bottom: 2rem;
+      border-radius: 10px;
+    }
+    .contact-label {
+      display: inline-block;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+    .page-view[data-view="contact"] .footer-statement {
+      color: var(--secondary);
+      font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+      max-width: 760px;
+      margin-bottom: 2.1rem;
+    }
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.4rem;
+    }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1px solid rgba(31,31,31,0.14);
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      padding: 0.6rem 0.95rem;
+      transition: all 0.25s ease;
+      background: rgba(255,255,255,0.7);
+    }
+    .contact-btn:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+      transform: translateY(-1px);
+    }
+    .page-view[data-view="contact"] .footer-contact a { color: rgba(31,31,31,0.8); }
+    .page-view[data-view="contact"] .footer-contact span { color: rgba(31,31,31,0.35); }
+    .page-view[data-view="contact"] .footer-bottom {
+      color: rgba(31,31,31,0.5);
+      border-top-color: rgba(31,31,31,0.12);
+      margin-top: 0.2rem;
+    }
 
     /* ── REVEAL ANIMATION ── */
     .reveal {
@@ -572,6 +637,7 @@
       .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
       .ach-grid { grid-template-columns: 1fr; gap: var(--space-md); }
+      .contact-actions { justify-content: flex-start; }
     }
     @media (max-width: 600px) {
       .hero-name { font-size: 3rem; }
@@ -675,16 +741,16 @@
             <p class="research-role">Published Research Paper — SCBEM Research Conference 2025</p>
             <h3 class="research-title">Measuring the Perceived Social Benefits of Cultural Institutions Among University Students in Thu Duc City</h3>
             <p class="research-meta"><b>Role:</b> Co-author</p>
-            <p class="research-meta"><b>Link:</b> <a id="paper-link" href="20240826112339090_FCBEM_Cultural Institutions_Full Paper.pdf" target="_blank">Full Paper PDF</a></p>
+            <p class="research-meta"><b>Link:</b> <a id="paper-link" href="assets/scbem-full-paper.pdf" target="_blank">Full Paper PDF</a></p>
             <div class="pdf-viewer-card">
               <div class="pdf-actions">
                 <p class="research-meta"><b>Quick View:</b> Xem trực tiếp bài nghiên cứu ngay tại trang.</p>
-                <a id="paper-open-button" class="pdf-link-button" href="20240826112339090_FCBEM_Cultural Institutions_Full Paper.pdf" target="_blank">Open in new tab</a>
+                <a id="paper-open-button" class="pdf-link-button" href="assets/scbem-full-paper.pdf" target="_blank">Open in new tab</a>
               </div>
               <iframe
                 id="paper-preview"
                 class="pdf-inline"
-                src="20240826112339090_FCBEM_Cultural Institutions_Full Paper.pdf#view=FitH"
+                src="assets/scbem-full-paper.pdf#view=FitH"
                 title="SCBEM Full Paper Preview"
                 loading="lazy">
               </iframe>
@@ -950,9 +1016,15 @@
     <!-- FOOTER -->
     <footer>
       <div class="footer-inner">
+        <p class="contact-label">Contact</p>
         <p class="footer-statement">
-          My work sits at the intersection of research, culture, communication, and strategy. I am particularly interested in understanding human behavior, cultural dynamics, and consumer motivations, then translating those insights into meaningful communication solutions and brand experiences.
+          Interested in collaborating on strategy, research, or communication projects? I am always open to meaningful conversations and new opportunities.
         </p>
+        <div class="contact-actions">
+          <a class="contact-btn" href="mailto:tnttam41004@gmail.com">Email Me</a>
+          <a class="contact-btn" href="tel:+84968043647">Call Me</a>
+          <a class="contact-btn" href="https://linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a>
+        </div>
         <div class="footer-contact">
           <a href="mailto:tnttam41004@gmail.com">tnttam41004@gmail.com</a>
           <span>•</span>
