@@ -31,7 +31,7 @@
       font-family: var(--sans);
       font-weight: 300;
       line-height: 1.7;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     body::before {
@@ -83,13 +83,58 @@
       text-transform: uppercase;
       color: var(--text);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 0.2s, opacity 0.2s;
+      opacity: 0.72;
     }
     .nav-links a:hover { color: var(--secondary); }
+    .nav-links a.active {
+      color: var(--secondary);
+      opacity: 1;
+      border-bottom: 1px solid var(--primary);
+      padding-bottom: 0.2rem;
+    }
+
+    .page-stage {
+      position: relative;
+      height: 100vh;
+      padding-top: 86px;
+    }
 
     /* ── SECTION BASE ── */
     section {
       padding: var(--space-xl) 0 var(--space-lg);
+      scroll-margin-top: 110px;
+    }
+    .page-view {
+      position: absolute;
+      inset: 86px 0 0;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: opacity 0.45s ease, transform 0.45s ease, visibility 0.45s ease;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) transparent;
+    }
+    .page-view.is-active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+      z-index: 2;
+    }
+    .page-view section,
+    .page-view footer {
+      min-height: calc(100vh - 86px);
+    }
+    .page-view section {
+      padding-top: 3.5rem;
+    }
+    .page-view .reveal,
+    .page-view .reveal.visible {
+      opacity: 1;
+      transform: none;
     }
 
     .section-label {
@@ -243,6 +288,41 @@
       margin-top: 1rem;
       padding-left: 1rem;
       border-left: 2px solid var(--primary);
+    }
+    .pdf-viewer-card {
+      margin-top: 1.25rem;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.58);
+      padding: 1rem;
+    }
+    .pdf-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+      flex-wrap: wrap;
+    }
+    .pdf-link-button {
+      text-decoration: none;
+      color: var(--bg);
+      background: var(--secondary);
+      border: 1px solid var(--secondary);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.55rem 0.9rem;
+      transition: all 0.25s ease;
+    }
+    .pdf-link-button:hover {
+      background: var(--text);
+      border-color: var(--text);
+    }
+    .pdf-inline {
+      width: 100%;
+      min-height: 540px;
+      border: 1px solid var(--line);
+      background: #fff;
     }
 
     /* ── STRATEGY ── */
@@ -504,365 +584,413 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="container">
-    <p class="hero-eyebrow reveal">Strategic Planner | Consumer Insight Researcher | Brand Communication</p>
-    <h1 class="hero-name reveal">Tran Nguyen<br><em>To Tam</em></h1>
-    <p class="hero-bio reveal">
-      Research-driven communication strategist with experience in consumer insight research, communication planning, and brand campaign development. Passionate about transforming consumer behavior, cultural understanding, and market insights into effective communication strategies.
-    </p>
-    <div class="hero-tags reveal">
-      <div class="tag-border">Strategic Planning</div>
-      <div class="tag-border">Consumer Insight</div>
-      <div class="tag-border">Brand Communication</div>
-      <div class="tag-border">Communication Planning</div>
-      <div class="tag-border">Research</div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <p class="section-label reveal">Professional Summary</p>
-    <p class="summary-text reveal">
-      &ldquo;Aspiring Strategic Planner with experience in communication planning, consumer research, content strategy, and integrated campaign development. Completed Bachelor&rsquo;s Degree requirements in Multimedia Communication at FPT University and currently awaiting degree conferral. Co-author of a published research paper presented at SCBEM Research Conference 2025. Interested in transforming consumer and market insights into strategic solutions that support brand growth and drive effective communication outcomes.&rdquo;
-    </p>
-
-    <div class="divider reveal"></div>
-
-    <p class="section-label reveal">About</p>
-    <h2 class="section-title reveal">Research Before Storytelling</h2>
-    <div class="about-grid reveal">
-      <div class="about-list">
-        <h3>Research Interests</h3>
-        <ul>
-          <li>Consumer Behavior</li>
-          <li>Cultural Identity</li>
-          <li>Digital Communities</li>
-          <li>Strategic Communication</li>
-          <li>Brand Meaning</li>
-        </ul>
-      </div>
-      <div class="about-list">
-        <h3>Core Strengths</h3>
-        <ul>
-          <li>Strategic Thinking</li>
-          <li>Consumer Insight Research</li>
-          <li>Communication Planning</li>
-          <li>Analytical Thinking</li>
-          <li>Cultural Intelligence</li>
-        </ul>
-      </div>
-      <div class="about-list">
-        <h3>Languages</h3>
-        <ul>
-          <li>Vietnamese (Native)</li>
-          <li>English (Professional Working)</li>
-          <li>Korean (Elementary)</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- RESEARCH -->
-<section id="research">
-  <div class="container">
-    <p class="section-label reveal">Research Portfolio</p>
-    <h2 class="section-title reveal">Academic Inquiries</h2>
-    <div class="research-stack">
-      <div class="research-item reveal">
-        <p class="research-role">Published Research Paper — SCBEM Research Conference 2025</p>
-        <h3 class="research-title">Measuring the Perceived Social Benefits of Cultural Institutions Among University Students in Thu Duc City</h3>
-        <p class="research-meta"><b>Role:</b> Co-author</p>
-        <p class="research-meta"><b>Link:</b> <a href="20240826112339090_FCBEM_Cultural Institutions_Full Paper.pdf" target="_blank">Full Paper PDF</a></p>
-      </div>
-      <div class="research-item reveal">
-        <p class="research-role">Research Executive</p>
-        <h3 class="research-title">Pseudo Multitasking Behavior Among Young Adults in Ho Chi Minh City: Drivers and Perceived Productivity Outcomes</h3>
-        <p class="research-meta">Status: Conference Submission in Progress</p>
-        <p class="research-meta"><b>Responsibilities:</b> Literature Review, Research Design, Survey Development, Insight Analysis, Academic Writing</p>
-        <div class="research-quote">
-          &ldquo;I know multitasking is costing me focus. But in environments where everything moves relentlessly, staying constantly responsive makes me feel like I&rsquo;m still moving forward instead of falling behind.&rdquo;
+<main class="page-stage">
+  <div class="page-view" data-view="hero">
+    <!-- HERO -->
+    <section id="hero">
+      <div class="container">
+        <p class="hero-eyebrow reveal">Strategic Planner | Consumer Insight Researcher | Brand Communication</p>
+        <h1 class="hero-name reveal">Tran Nguyen<br><em>To Tam</em></h1>
+        <p class="hero-bio reveal">
+          Research-driven communication strategist with experience in consumer insight research, communication planning, and brand campaign development. Passionate about transforming consumer behavior, cultural understanding, and market insights into effective communication strategies.
+        </p>
+        <div class="hero-tags reveal">
+          <div class="tag-border">Strategic Planning</div>
+          <div class="tag-border">Consumer Insight</div>
+          <div class="tag-border">Brand Communication</div>
+          <div class="tag-border">Communication Planning</div>
+          <div class="tag-border">Research</div>
         </div>
       </div>
-      <div class="research-item reveal">
-        <p class="research-role">Independent Academic Researcher</p>
-        <h3 class="research-title">Digital Heritage and Community Formation: Understanding Cultural Identity in Online Mother Goddess Worship Communities</h3>
-        <p class="research-meta">Status: Research Proposal Development</p>
-        <p class="research-meta"><b>Focus Areas:</b> Digital Culture, Community Formation, Cultural Identity, Online Religious Communities</p>
-      </div>
-    </div>
+    </section>
   </div>
-</section>
 
-<!-- STRATEGY -->
-<section id="strategy">
-  <div class="container">
-    <p class="section-label reveal">My Strategic Thinking</p>
-    <h2 class="section-title reveal">Framework of Approach</h2>
-    <p class="section-desc reveal">
-      My planning approach combines research, consumer understanding, cultural context, and communication strategy to develop actionable solutions for brands and communities.
-    </p>
-    <div class="framework-flow reveal">
-      <div class="framework-step">Business Problem</div>
-      <div class="framework-arrow"></div>
-      <div class="framework-step">Research</div>
-      <div class="framework-arrow"></div>
-      <div class="framework-step">Insight</div>
-      <div class="framework-arrow"></div>
-      <div class="framework-step">Strategy</div>
-      <div class="framework-arrow"></div>
-      <div class="framework-step">Execution Direction</div>
-      <div class="framework-arrow"></div>
-      <div class="framework-step">Evaluation</div>
-    </div>
-  </div>
-</section>
+  <div class="page-view" data-view="about">
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <p class="section-label reveal">Professional Summary</p>
+        <p class="summary-text reveal">
+          &ldquo;Aspiring Strategic Planner with experience in communication planning, consumer research, content strategy, and integrated campaign development. Completed Bachelor&rsquo;s Degree requirements in Multimedia Communication at FPT University and currently awaiting degree conferral. Co-author of a published research paper presented at SCBEM Research Conference 2025. Interested in transforming consumer and market insights into strategic solutions that support brand growth and drive effective communication outcomes.&rdquo;
+        </p>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="container">
-    <p class="section-label reveal">Selected Works</p>
-    <h2 class="section-title reveal">Case Studies</h2>
-    <div class="projects-stack">
+        <div class="divider reveal"></div>
 
-      <div class="project-item reveal">
-        <div class="project-header">
-          <h3 class="project-title">ECOLOTUS</h3>
-          <p class="project-role">Lead Strategic Planner</p>
-        </div>
-        <div class="project-row">
-          <p class="project-label">Process</p>
-          <div class="project-flow">
-            <span class="flow-step">Business Problem</span><span class="flow-arrow">→</span>
-            <span class="flow-step">Research</span><span class="flow-arrow">→</span>
-            <span class="flow-step">Insight</span><span class="flow-arrow">→</span>
-            <span class="flow-step">Strategy</span><span class="flow-arrow">→</span>
-            <span class="flow-step">Impact</span>
+        <p class="section-label reveal">About</p>
+        <h2 class="section-title reveal">Research Before Storytelling</h2>
+        <div class="about-grid reveal">
+          <div class="about-list">
+            <h3>Research Interests</h3>
+            <ul>
+              <li>Consumer Behavior</li>
+              <li>Cultural Identity</li>
+              <li>Digital Communities</li>
+              <li>Strategic Communication</li>
+              <li>Brand Meaning</li>
+            </ul>
+          </div>
+          <div class="about-list">
+            <h3>Core Strengths</h3>
+            <ul>
+              <li>Strategic Thinking</li>
+              <li>Consumer Insight Research</li>
+              <li>Communication Planning</li>
+              <li>Analytical Thinking</li>
+              <li>Cultural Intelligence</li>
+            </ul>
+          </div>
+          <div class="about-list">
+            <h3>Languages</h3>
+            <ul>
+              <li>Vietnamese (Native)</li>
+              <li>English (Professional Working)</li>
+              <li>Korean (Elementary)</li>
+            </ul>
           </div>
         </div>
-        <div class="project-row">
-          <p class="project-label">Deliverables</p>
-          <ul class="tag-list">
-            <li>Brand Audit</li><li>SWOT</li><li>PESTLE</li>
-            <li>Aaker Brand Equity</li><li>Kapferer Brand Identity Prism</li>
-            <li>CBBE Model</li><li>Consumer Insight</li>
-            <li>Campaign Strategy</li><li>PR Strategy</li><li>Content Pillars</li>
-          </ul>
-        </div>
       </div>
-
-      <div class="project-item reveal">
-        <div class="project-header">
-          <h3 class="project-title">The Golden Frame Awards Summer 2025</h3>
-          <p class="project-role">Communication Strategist & Event Coordinator</p>
-        </div>
-        <div class="project-row">
-          <p class="project-label">Deliverables</p>
-          <ul class="tag-list">
-            <li>Communication Strategy</li><li>Stakeholder Coordination</li>
-            <li>Campaign Direction</li><li>Event Communication Planning</li>
-          </ul>
-        </div>
-        <div class="project-row">
-          <p class="project-label">Impact</p>
-          <ul class="tag-list">
-            <li>53 competing teams</li><li>3,000+ participants</li>
-            <li>20,000 impressions</li><li>2,000 interactions</li>
-            <li>6 industry KOLs</li><li>90%+ satisfaction</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="project-item reveal">
-        <div class="project-header">
-          <h3 class="project-title">Pseudo Multitasking Research</h3>
-          <p class="project-role">Research Executive</p>
-        </div>
-        <div class="project-row">
-          <p class="project-label">Focus Areas</p>
-          <ul class="tag-list">
-            <li>Consumer Behavior</li><li>Attention Economy</li>
-            <li>Perceived Productivity</li><li>Research Methodology</li>
-            <li>Insight Development</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="project-item reveal">
-        <div class="project-header">
-          <h3 class="project-title">FPT Online</h3>
-          <p class="project-role">Planning Intern</p>
-        </div>
-        <div class="project-row">
-          <p class="project-label">Responsibilities</p>
-          <ul class="tag-list">
-            <li>Market Research</li><li>Competitor Analysis</li>
-            <li>Media Planning</li><li>Strategic Proposal Development</li>
-            <li>Cross-functional Collaboration</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
+    </section>
   </div>
-</section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="container">
-    <p class="section-label reveal">Professional Journey</p>
-    <h2 class="section-title reveal">Experience</h2>
-    <div class="exp-stack">
-      <div class="exp-item reveal">
-        <div>
-          <h3 class="exp-title">Planning Intern</h3>
-          <p class="exp-company">FPT Online</p>
+  <div class="page-view" data-view="research">
+    <!-- RESEARCH -->
+    <section id="research">
+      <div class="container">
+        <p class="section-label reveal">Research Portfolio</p>
+        <h2 class="section-title reveal">Academic Inquiries</h2>
+        <div class="research-stack">
+          <div class="research-item reveal">
+            <p class="research-role">Published Research Paper — SCBEM Research Conference 2025</p>
+            <h3 class="research-title">Measuring the Perceived Social Benefits of Cultural Institutions Among University Students in Thu Duc City</h3>
+            <p class="research-meta"><b>Role:</b> Co-author</p>
+            <p class="research-meta"><b>Link:</b> <a href="20240826112339090_FCBEM_Cultural Institutions_Full Paper.pdf" target="_blank">Full Paper PDF</a></p>
+            <div class="pdf-viewer-card">
+              <div class="pdf-actions">
+                <p class="research-meta"><b>Quick View:</b> Xem trực tiếp bài nghiên cứu ngay tại trang.</p>
+                <a class="pdf-link-button" href="20240826112339090_FCBEM_Cultural Institutions_Full Paper.pdf" target="_blank">Open in new tab</a>
+              </div>
+              <iframe
+                class="pdf-inline"
+                src="20240826112339090_FCBEM_Cultural Institutions_Full Paper.pdf#view=FitH"
+                title="SCBEM Full Paper Preview"
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+          <div class="research-item reveal">
+            <p class="research-role">Research Executive</p>
+            <h3 class="research-title">Pseudo Multitasking Behavior Among Young Adults in Ho Chi Minh City: Drivers and Perceived Productivity Outcomes</h3>
+            <p class="research-meta">Status: Conference Submission in Progress</p>
+            <p class="research-meta"><b>Responsibilities:</b> Literature Review, Research Design, Survey Development, Insight Analysis, Academic Writing</p>
+            <div class="research-quote">
+              &ldquo;I know multitasking is costing me focus. But in environments where everything moves relentlessly, staying constantly responsive makes me feel like I&rsquo;m still moving forward instead of falling behind.&rdquo;
+            </div>
+          </div>
+          <div class="research-item reveal">
+            <p class="research-role">Independent Academic Researcher</p>
+            <h3 class="research-title">Digital Heritage and Community Formation: Understanding Cultural Identity in Online Mother Goddess Worship Communities</h3>
+            <p class="research-meta">Status: Research Proposal Development</p>
+            <p class="research-meta"><b>Focus Areas:</b> Digital Culture, Community Formation, Cultural Identity, Online Religious Communities</p>
+          </div>
         </div>
       </div>
-      <div class="exp-item reveal">
-        <div>
-          <h3 class="exp-title">Communication Strategist & Event Coordinator</h3>
-          <p class="exp-company">The Golden Frame Awards Summer 2025</p>
-        </div>
-      </div>
-      <div class="exp-item reveal">
-        <div>
-          <h3 class="exp-title">Founder & Community Development Lead</h3>
-          <p class="exp-company">GÕ Trẻ – Yêu Văn Hóa Việt</p>
-        </div>
-      </div>
-      <div class="exp-item reveal">
-        <div>
-          <h3 class="exp-title">Deputy Project Manager & Content Strategist</h3>
-          <p class="exp-company">FPT Short Film Festival</p>
-        </div>
-      </div>
-      <div class="exp-item reveal">
-        <div>
-          <h3 class="exp-title">Communications Team Member</h3>
-          <p class="exp-company">SAFE ZONE</p>
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
-</section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="container">
-    <p class="section-label reveal">Capabilities</p>
-    <h2 class="section-title reveal">Skills</h2>
-    <div class="skills-grid reveal">
-      <div class="skill-block">
-        <h3>Strategic Planning</h3>
-        <ul>
-          <li>Communication Planning</li>
-          <li>Consumer Insight Development</li>
-          <li>Brand Strategy</li>
-          <li>IMC Planning</li>
-        </ul>
+  <div class="page-view" data-view="strategy">
+    <!-- STRATEGY -->
+    <section id="strategy">
+      <div class="container">
+        <p class="section-label reveal">My Strategic Thinking</p>
+        <h2 class="section-title reveal">Framework of Approach</h2>
+        <p class="section-desc reveal">
+          My planning approach combines research, consumer understanding, cultural context, and communication strategy to develop actionable solutions for brands and communities.
+        </p>
+        <div class="framework-flow reveal">
+          <div class="framework-step">Business Problem</div>
+          <div class="framework-arrow"></div>
+          <div class="framework-step">Research</div>
+          <div class="framework-arrow"></div>
+          <div class="framework-step">Insight</div>
+          <div class="framework-arrow"></div>
+          <div class="framework-step">Strategy</div>
+          <div class="framework-arrow"></div>
+          <div class="framework-step">Execution Direction</div>
+          <div class="framework-arrow"></div>
+          <div class="framework-step">Evaluation</div>
+        </div>
       </div>
-      <div class="skill-block">
-        <h3>Research</h3>
-        <ul>
-          <li>Quantitative Research</li>
-          <li>Qualitative Research</li>
-          <li>Literature Review</li>
-          <li>Survey Design</li>
-          <li>Data Analysis</li>
-        </ul>
-      </div>
-      <div class="skill-block">
-        <h3>Communication</h3>
-        <ul>
-          <li>Campaign Development</li>
-          <li>Stakeholder Communication</li>
-          <li>Content Strategy</li>
-          <li>Project Coordination</li>
-          <li>Community Engagement</li>
-        </ul>
-      </div>
-      <div class="skill-block">
-        <h3>Tools</h3>
-        <ul>
-          <li>Adobe Illustrator</li>
-          <li>Adobe Photoshop</li>
-          <li>Adobe InDesign</li>
-          <li>Notion</li>
-          <li>Microsoft Office</li>
-          <li>Google Workspace</li>
-        </ul>
-      </div>
-    </div>
+    </section>
   </div>
-</section>
 
-<!-- ACHIEVEMENTS & EDUCATION -->
-<section id="achievements">
-  <div class="container">
-    <div class="ach-grid">
-      <div class="ach-section reveal">
-        <p class="section-label">Validation</p>
-        <h3>Achievements</h3>
-        <ul>
-          <li>Published Research Paper</li>
-          <li>SCBEM Research Conference 2025</li>
-          <li>Conference Submission in Progress</li>
-          <li>2 Independent Research Projects</li>
-          <li>Outstanding Scientific Research Award</li>
-        </ul>
+  <div class="page-view" data-view="projects">
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <p class="section-label reveal">Selected Works</p>
+        <h2 class="section-title reveal">Case Studies</h2>
+        <div class="projects-stack">
+          <div class="project-item reveal">
+            <div class="project-header">
+              <h3 class="project-title">ECOLOTUS</h3>
+              <p class="project-role">Lead Strategic Planner</p>
+            </div>
+            <div class="project-row">
+              <p class="project-label">Process</p>
+              <div class="project-flow">
+                <span class="flow-step">Business Problem</span><span class="flow-arrow">→</span>
+                <span class="flow-step">Research</span><span class="flow-arrow">→</span>
+                <span class="flow-step">Insight</span><span class="flow-arrow">→</span>
+                <span class="flow-step">Strategy</span><span class="flow-arrow">→</span>
+                <span class="flow-step">Impact</span>
+              </div>
+            </div>
+            <div class="project-row">
+              <p class="project-label">Deliverables</p>
+              <ul class="tag-list">
+                <li>Brand Audit</li><li>SWOT</li><li>PESTLE</li>
+                <li>Aaker Brand Equity</li><li>Kapferer Brand Identity Prism</li>
+                <li>CBBE Model</li><li>Consumer Insight</li><li>Campaign Strategy</li><li>PR Strategy</li><li>Content Pillars</li>
+              </ul>
+            </div>
+          </div>
+          <div class="project-item reveal">
+            <div class="project-header">
+              <h3 class="project-title">The Golden Frame Awards Summer 2025</h3>
+              <p class="project-role">Communication Strategist & Event Coordinator</p>
+            </div>
+            <div class="project-row">
+              <p class="project-label">Deliverables</p>
+              <ul class="tag-list">
+                <li>Communication Strategy</li><li>Stakeholder Coordination</li><li>Campaign Direction</li><li>Event Communication Planning</li>
+              </ul>
+            </div>
+            <div class="project-row">
+              <p class="project-label">Impact</p>
+              <ul class="tag-list">
+                <li>53 competing teams</li><li>3,000+ participants</li><li>20,000 impressions</li><li>2,000 interactions</li><li>6 industry KOLs</li><li>90%+ satisfaction</li>
+              </ul>
+            </div>
+          </div>
+          <div class="project-item reveal">
+            <div class="project-header">
+              <h3 class="project-title">Pseudo Multitasking Research</h3>
+              <p class="project-role">Research Executive</p>
+            </div>
+            <div class="project-row">
+              <p class="project-label">Focus Areas</p>
+              <ul class="tag-list">
+                <li>Consumer Behavior</li><li>Attention Economy</li><li>Perceived Productivity</li><li>Research Methodology</li><li>Insight Development</li>
+              </ul>
+            </div>
+          </div>
+          <div class="project-item reveal">
+            <div class="project-header">
+              <h3 class="project-title">FPT Online</h3>
+              <p class="project-role">Planning Intern</p>
+            </div>
+            <div class="project-row">
+              <p class="project-label">Responsibilities</p>
+              <ul class="tag-list">
+                <li>Market Research</li><li>Competitor Analysis</li><li>Media Planning</li><li>Strategic Proposal Development</li><li>Cross-functional Collaboration</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="ach-section reveal">
-        <p class="section-label">Foundation</p>
-        <h3>Education</h3>
-        <p><b>FPT University</b><br>Multimedia Communication (2022 – 2026)</p>
-        <ul>
-          <li>Completed degree requirements</li>
-          <li>Awaiting degree conferral</li>
-        </ul>
-        <p><b>Quang Trung High School for the Gifted</b><br>Literature Specialized Program (2019 – 2022)</p>
-        <ul>
-          <li>Vice President, Science Research Club</li>
-          <li>GPA: 8.9/10</li>
-        </ul>
-      </div>
-    </div>
+    </section>
   </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <p class="footer-statement">
-      My work sits at the intersection of research, culture, communication, and strategy. I am particularly interested in understanding human behavior, cultural dynamics, and consumer motivations, then translating those insights into meaningful communication solutions and brand experiences.
-    </p>
-    <div class="footer-contact">
-      <a href="mailto:tnttam41004@gmail.com">tnttam41004@gmail.com</a>
-      <span>•</span>
-      <a href="tel:+84968043647">+84 968 043 647</a>
-      <span>•</span>
-      <a href="https://linkedin.com/in/your-linkedin">LinkedIn</a>
-    </div>
-    <div class="footer-bottom">
-      © 2026 TRAN NGUYEN TO TAM — STRATEGIC PLANNER & RESEARCHER
-    </div>
+  <div class="page-view" data-view="experience">
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="container">
+        <p class="section-label reveal">Professional Journey</p>
+        <h2 class="section-title reveal">Experience</h2>
+        <div class="exp-stack">
+          <div class="exp-item reveal">
+            <div>
+              <h3 class="exp-title">Planning Intern</h3>
+              <p class="exp-company">FPT Online</p>
+            </div>
+          </div>
+          <div class="exp-item reveal">
+            <div>
+              <h3 class="exp-title">Communication Strategist & Event Coordinator</h3>
+              <p class="exp-company">The Golden Frame Awards Summer 2025</p>
+            </div>
+          </div>
+          <div class="exp-item reveal">
+            <div>
+              <h3 class="exp-title">Founder & Community Development Lead</h3>
+              <p class="exp-company">GÕ Trẻ – Yêu Văn Hóa Việt</p>
+            </div>
+          </div>
+          <div class="exp-item reveal">
+            <div>
+              <h3 class="exp-title">Deputy Project Manager & Content Strategist</h3>
+              <p class="exp-company">FPT Short Film Festival</p>
+            </div>
+          </div>
+          <div class="exp-item reveal">
+            <div>
+              <h3 class="exp-title">Communications Team Member</h3>
+              <p class="exp-company">SAFE ZONE</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
-</footer>
+
+  <div class="page-view" data-view="skills">
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <p class="section-label reveal">Capabilities</p>
+        <h2 class="section-title reveal">Skills</h2>
+        <div class="skills-grid reveal">
+          <div class="skill-block">
+            <h3>Strategic Planning</h3>
+            <ul>
+              <li>Communication Planning</li>
+              <li>Consumer Insight Development</li>
+              <li>Brand Strategy</li>
+              <li>IMC Planning</li>
+            </ul>
+          </div>
+          <div class="skill-block">
+            <h3>Research</h3>
+            <ul>
+              <li>Quantitative Research</li>
+              <li>Qualitative Research</li>
+              <li>Literature Review</li>
+              <li>Survey Design</li>
+              <li>Data Analysis</li>
+            </ul>
+          </div>
+          <div class="skill-block">
+            <h3>Communication</h3>
+            <ul>
+              <li>Campaign Development</li>
+              <li>Stakeholder Communication</li>
+              <li>Content Strategy</li>
+              <li>Project Coordination</li>
+              <li>Community Engagement</li>
+            </ul>
+          </div>
+          <div class="skill-block">
+            <h3>Tools</h3>
+            <ul>
+              <li>Adobe Illustrator</li>
+              <li>Adobe Photoshop</li>
+              <li>Adobe InDesign</li>
+              <li>Notion</li>
+              <li>Microsoft Office</li>
+              <li>Google Workspace</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="page-view" data-view="achievements">
+    <!-- ACHIEVEMENTS & EDUCATION -->
+    <section id="achievements">
+      <div class="container">
+        <div class="ach-grid">
+          <div class="ach-section reveal">
+            <p class="section-label">Validation</p>
+            <h3>Achievements</h3>
+            <ul>
+              <li>Published Research Paper</li>
+              <li>SCBEM Research Conference 2025</li>
+              <li>Conference Submission in Progress</li>
+              <li>2 Independent Research Projects</li>
+              <li>Outstanding Scientific Research Award</li>
+            </ul>
+          </div>
+          <div class="ach-section reveal">
+            <p class="section-label">Foundation</p>
+            <h3>Education</h3>
+            <p><b>FPT University</b><br>Multimedia Communication (2022 – 2026)</p>
+            <ul>
+              <li>Completed degree requirements</li>
+              <li>Awaiting degree conferral</li>
+            </ul>
+            <p><b>Quang Trung High School for the Gifted</b><br>Literature Specialized Program (2019 – 2022)</p>
+            <ul>
+              <li>Vice President, Science Research Club</li>
+              <li>GPA: 8.9/10</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="page-view" data-view="contact">
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <p class="footer-statement">
+          My work sits at the intersection of research, culture, communication, and strategy. I am particularly interested in understanding human behavior, cultural dynamics, and consumer motivations, then translating those insights into meaningful communication solutions and brand experiences.
+        </p>
+        <div class="footer-contact">
+          <a href="mailto:tnttam41004@gmail.com">tnttam41004@gmail.com</a>
+          <span>•</span>
+          <a href="tel:+84968043647">+84 968 043 647</a>
+          <span>•</span>
+          <a href="https://linkedin.com/in/your-linkedin">LinkedIn</a>
+        </div>
+        <div class="footer-bottom">
+          © 2026 TRAN NGUYEN TO TAM — STRATEGIC PLANNER & RESEARCHER
+        </div>
+      </div>
+    </footer>
+  </div>
+</main>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), 50);
-        observer.unobserve(entry.target);
-      }
+  const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+  const navLogo = document.querySelector('.nav-logo');
+  const pageViews = Array.from(document.querySelectorAll('.page-view'));
+
+  const showPage = (pageId, updateHash = true) => {
+    const target = pageViews.find((view) => view.dataset.view === pageId);
+    if (!target) return;
+
+    pageViews.forEach((view) => {
+      const isActive = view === target;
+      view.classList.toggle('is-active', isActive);
+      if (isActive) view.scrollTop = 0;
     });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    navLinks.forEach((link) => {
+      const isActive = link.getAttribute('href') === `#${pageId}`;
+      link.classList.toggle('active', isActive);
+      link.setAttribute('aria-current', isActive ? 'page' : 'false');
+    });
+
+    if (updateHash) history.replaceState(null, '', `#${pageId}`);
+  };
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const pageId = link.getAttribute('href').slice(1);
+      showPage(pageId);
+    });
+  });
+
+  navLogo?.addEventListener('click', (event) => {
+    event.preventDefault();
+    showPage('hero');
+  });
+
+  const initialPage = window.location.hash ? window.location.hash.slice(1) : 'hero';
+  showPage(initialPage, false);
 </script>
 
 </body>
