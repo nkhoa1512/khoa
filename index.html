@@ -83,28 +83,54 @@
       display: flex; gap: 2.5rem; list-style: none;
     }
     .lang-toggle {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      border: 1px solid var(--line);
-      padding: 0.3rem 0.55rem;
-      background: rgba(255,255,255,0.5);
+      position: relative;
+      display: inline-flex;
+      align-items: stretch;
+      padding: 3px;
+      border-radius: 999px;
+      border: 1px solid rgba(123, 75, 75, 0.14);
+      background: rgba(123, 75, 75, 0.06);
+      isolation: isolate;
+    }
+    .lang-toggle::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      bottom: 3px;
+      left: 3px;
+      width: calc(50% - 3px);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 1px 4px rgba(123, 75, 75, 0.12), 0 0 0 1px rgba(123, 75, 75, 0.06);
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 0;
+    }
+    .lang-toggle:has([data-lang="vi"].active)::before {
+      transform: translateX(100%);
     }
     .lang-btn {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      min-width: 2.35rem;
       border: none;
       background: none;
       font-family: var(--sans);
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(31,31,31,0.45);
+      color: rgba(31, 31, 31, 0.42);
       cursor: pointer;
-      padding: 0.15rem 0.35rem;
-      transition: color 0.2s;
+      padding: 0.38rem 0.55rem;
+      transition: color 0.25s ease;
     }
     .lang-btn.active { color: var(--secondary); font-weight: 500; }
-    .lang-btn:hover { color: var(--secondary); }
-    .lang-sep { color: rgba(31,31,31,0.25); font-size: 0.65rem; }
+    .lang-btn:not(.active):hover { color: rgba(123, 75, 75, 0.72); }
+    .lang-btn:focus-visible {
+      outline: 2px solid rgba(199, 146, 146, 0.55);
+      outline-offset: 2px;
+      border-radius: 999px;
+    }
     .nav-links a {
       font-size: 0.75rem;
       letter-spacing: 0.1em;
@@ -717,9 +743,8 @@
         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
       <div class="lang-toggle" role="group" aria-label="Language">
-        <button type="button" class="lang-btn active" data-lang="en">EN</button>
-        <span class="lang-sep">|</span>
-        <button type="button" class="lang-btn" data-lang="vi">VI</button>
+        <button type="button" class="lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" class="lang-btn" data-lang="vi" aria-pressed="false">VI</button>
       </div>
     </div>
   </div>
@@ -1262,7 +1287,9 @@
     });
 
     document.querySelectorAll('.lang-btn').forEach((btn) => {
-      btn.classList.toggle('active', btn.dataset.lang === lang);
+      const isActive = btn.dataset.lang === lang;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive);
     });
   };
 
