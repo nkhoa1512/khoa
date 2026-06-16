@@ -74,9 +74,37 @@
       color: var(--text);
       text-decoration: none;
     }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
     .nav-links {
       display: flex; gap: 2.5rem; list-style: none;
     }
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      border: 1px solid var(--line);
+      padding: 0.3rem 0.55rem;
+      background: rgba(255,255,255,0.5);
+    }
+    .lang-btn {
+      border: none;
+      background: none;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(31,31,31,0.45);
+      cursor: pointer;
+      padding: 0.15rem 0.35rem;
+      transition: color 0.2s;
+    }
+    .lang-btn.active { color: var(--secondary); font-weight: 500; }
+    .lang-btn:hover { color: var(--secondary); }
+    .lang-sep { color: rgba(31,31,31,0.25); font-size: 0.65rem; }
     .nav-links a {
       font-size: 0.75rem;
       letter-spacing: 0.1em;
@@ -505,116 +533,117 @@
       line-height: 1.5;
     }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--text);
-      color: var(--bg);
-      padding: 6rem 0 3rem;
-    }
-    .footer-inner {
-      max-width: var(--content-width);
-      margin: 0 auto;
-      padding: 0 5rem;
-      text-align: center;
-    }
-    .footer-statement {
-      font-family: var(--serif);
-      font-size: 1.55rem;
-      line-height: 1.55;
-      max-width: 860px;
-      margin: 0 auto var(--space-lg);
-      font-style: italic;
-      color: rgba(250,248,245,0.9);
-    }
-    .footer-contact {
+    /* ── CONTACT ── */
+    .contact-page {
       display: flex;
-      justify-content: center;
       align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: var(--space-md);
+      padding-top: 2rem !important;
+      padding-bottom: 2rem !important;
     }
-    .footer-contact a {
-      color: rgba(250,248,245,0.8);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.3s;
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 3.5rem;
+      align-items: center;
+      width: 100%;
     }
-    .footer-contact a:hover { color: var(--primary); }
-    .footer-contact span { color: rgba(250,248,245,0.3); }
-    .footer-bottom {
-      font-size: 0.78rem;
+    .contact-headline {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 4.5vw, 4rem);
+      font-weight: 400;
+      line-height: 1.12;
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+    .contact-headline em {
+      font-style: italic;
+      color: var(--primary);
+    }
+    .contact-lead {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: rgba(31,31,31,0.72);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+    }
+    .contact-copy {
+      font-size: 0.72rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(250,248,245,0.4);
-      border-top: 1px solid rgba(250,248,245,0.1);
-      padding-top: var(--space-md);
+      color: rgba(31,31,31,0.4);
     }
-    .page-view[data-view="contact"] footer {
-      background: transparent;
-      color: var(--text);
+    .contact-cards {
       display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .contact-card {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      padding: 2.5rem 0;
-    }
-    .page-view[data-view="contact"] .footer-inner {
-      border: 1px solid rgba(31,31,31,0.08);
-      background:
-        linear-gradient(150deg, rgba(199,146,146,0.1), rgba(255,255,255,0.75) 42%),
-        rgba(255,255,255,0.78);
-      box-shadow: 0 25px 65px rgba(31,31,31,0.08);
-      backdrop-filter: blur(2px);
-      padding-top: 2.8rem;
-      padding-bottom: 2rem;
-      border-radius: 10px;
-    }
-    .contact-label {
-      display: inline-block;
-      font-size: 0.74rem;
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-      color: var(--secondary);
-      margin-bottom: 1rem;
-    }
-    .page-view[data-view="contact"] .footer-statement {
-      color: var(--secondary);
-      font-size: clamp(1.35rem, 2.6vw, 1.8rem);
-      max-width: 760px;
-      margin-bottom: 2.1rem;
-    }
-    .contact-actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 1.4rem;
-    }
-    .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      border: 1px solid rgba(31,31,31,0.14);
+      gap: 1.1rem;
+      padding: 1.35rem 1.5rem;
       text-decoration: none;
       color: var(--text);
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      padding: 0.6rem 0.95rem;
-      transition: all 0.25s ease;
-      background: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(31,31,31,0.08);
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
-    .contact-btn:hover {
+    .contact-card:hover {
+      border-color: var(--primary);
+      transform: translateX(4px);
+      box-shadow: 0 12px 40px rgba(31,31,31,0.07);
+    }
+    .contact-card--featured {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+    .contact-card--featured:hover {
       border-color: var(--secondary);
+      background: var(--secondary);
+    }
+    .contact-card--featured .contact-card-type { color: rgba(250,248,245,0.55); }
+    .contact-card--featured .contact-card-val { color: var(--bg); }
+    .contact-card--featured .contact-card-arrow { color: var(--primary); }
+    .contact-card-icon {
+      width: 2.4rem;
+      height: 2.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-card--featured .contact-card-icon {
+      border-color: rgba(250,248,245,0.2);
+      color: var(--primary);
+    }
+    .contact-card-body { min-width: 0; }
+    .contact-card-type {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--secondary);
-      transform: translateY(-1px);
+      margin-bottom: 0.2rem;
     }
-    .page-view[data-view="contact"] .footer-contact a { color: rgba(31,31,31,0.8); }
-    .page-view[data-view="contact"] .footer-contact span { color: rgba(31,31,31,0.35); }
-    .page-view[data-view="contact"] .footer-bottom {
-      color: rgba(31,31,31,0.5);
-      border-top-color: rgba(31,31,31,0.12);
-      margin-top: 0.2rem;
+    .contact-card-val {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+    .contact-card-arrow {
+      font-size: 1.1rem;
+      color: var(--secondary);
+      transition: transform 0.25s;
+    }
+    .contact-card:hover .contact-card-arrow { transform: translateX(3px); }
 
     /* ── REVEAL ANIMATION ── */
     .reveal {
@@ -629,7 +658,7 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .container, .nav-inner, .footer-inner { padding-left: 2rem; padding-right: 2rem; }
+      .container, .nav-inner { padding-left: 2rem; padding-right: 2rem; }
       .nav-links { display: none; }
       section { padding: 6rem 0 3rem; }
       .about-grid { grid-template-columns: 1fr; }
@@ -637,11 +666,14 @@
       .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
       .ach-grid { grid-template-columns: 1fr; gap: var(--space-md); }
-      .contact-actions { justify-content: flex-start; }
+      .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-right { gap: 1rem; }
+      .nav-links { gap: 1.2rem; }
     }
     @media (max-width: 600px) {
       .hero-name { font-size: 3rem; }
       .skills-grid { grid-template-columns: 1fr; }
+      .contact-card-val { white-space: normal; font-size: 1rem; }
     }
   </style>
 </head>
@@ -651,14 +683,21 @@
 <nav>
   <div class="nav-inner">
     <a class="nav-logo" href="#hero">Tran Nguyen To Tam</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#strategy">Strategy</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#research" data-i18n="nav.research">Research</a></li>
+        <li><a href="#strategy" data-i18n="nav.strategy">Strategy</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
+        <span class="lang-sep">|</span>
+        <button type="button" class="lang-btn" data-lang="vi">VI</button>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -667,17 +706,17 @@
     <!-- HERO -->
     <section id="hero">
       <div class="container">
-        <p class="hero-eyebrow reveal">Strategic Planner | Consumer Insight Researcher | Brand Communication</p>
+        <p class="hero-eyebrow reveal" data-i18n="hero.eyebrow">Strategic Planner | Consumer Insight Researcher | Brand Communication</p>
         <h1 class="hero-name reveal">Tran Nguyen<br><em>To Tam</em></h1>
-        <p class="hero-bio reveal">
+        <p class="hero-bio reveal" data-i18n="hero.bio">
           Research-driven communication strategist with experience in consumer insight research, communication planning, and brand campaign development. Passionate about transforming consumer behavior, cultural understanding, and market insights into effective communication strategies.
         </p>
         <div class="hero-tags reveal">
-          <div class="tag-border">Strategic Planning</div>
-          <div class="tag-border">Consumer Insight</div>
-          <div class="tag-border">Brand Communication</div>
-          <div class="tag-border">Communication Planning</div>
-          <div class="tag-border">Research</div>
+          <div class="tag-border" data-i18n="hero.tag1">Strategic Planning</div>
+          <div class="tag-border" data-i18n="hero.tag2">Consumer Insight</div>
+          <div class="tag-border" data-i18n="hero.tag3">Brand Communication</div>
+          <div class="tag-border" data-i18n="hero.tag4">Communication Planning</div>
+          <div class="tag-border" data-i18n="hero.tag5">Research</div>
         </div>
       </div>
     </section>
@@ -687,42 +726,42 @@
     <!-- ABOUT -->
     <section id="about">
       <div class="container">
-        <p class="section-label reveal">Professional Summary</p>
-        <p class="summary-text reveal">
+        <p class="section-label reveal" data-i18n="about.summaryLabel">Professional Summary</p>
+        <p class="summary-text reveal" data-i18n="about.summary">
           &ldquo;Aspiring Strategic Planner with experience in communication planning, consumer research, content strategy, and integrated campaign development. Completed Bachelor&rsquo;s Degree requirements in Multimedia Communication at FPT University and currently awaiting degree conferral. Co-author of a published research paper presented at SCBEM Research Conference 2025. Interested in transforming consumer and market insights into strategic solutions that support brand growth and drive effective communication outcomes.&rdquo;
         </p>
 
         <div class="divider reveal"></div>
 
-        <p class="section-label reveal">About</p>
-        <h2 class="section-title reveal">Research Before Storytelling</h2>
+        <p class="section-label reveal" data-i18n="about.label">About</p>
+        <h2 class="section-title reveal" data-i18n="about.title">Research Before Storytelling</h2>
         <div class="about-grid reveal">
           <div class="about-list">
-            <h3>Research Interests</h3>
+            <h3 data-i18n="about.ri.title">Research Interests</h3>
             <ul>
-              <li>Consumer Behavior</li>
-              <li>Cultural Identity</li>
-              <li>Digital Communities</li>
-              <li>Strategic Communication</li>
-              <li>Brand Meaning</li>
+              <li data-i18n="about.ri.1">Consumer Behavior</li>
+              <li data-i18n="about.ri.2">Cultural Identity</li>
+              <li data-i18n="about.ri.3">Digital Communities</li>
+              <li data-i18n="about.ri.4">Strategic Communication</li>
+              <li data-i18n="about.ri.5">Brand Meaning</li>
             </ul>
           </div>
           <div class="about-list">
-            <h3>Core Strengths</h3>
+            <h3 data-i18n="about.cs.title">Core Strengths</h3>
             <ul>
-              <li>Strategic Thinking</li>
-              <li>Consumer Insight Research</li>
-              <li>Communication Planning</li>
-              <li>Analytical Thinking</li>
-              <li>Cultural Intelligence</li>
+              <li data-i18n="about.cs.1">Strategic Thinking</li>
+              <li data-i18n="about.cs.2">Consumer Insight Research</li>
+              <li data-i18n="about.cs.3">Communication Planning</li>
+              <li data-i18n="about.cs.4">Analytical Thinking</li>
+              <li data-i18n="about.cs.5">Cultural Intelligence</li>
             </ul>
           </div>
           <div class="about-list">
-            <h3>Languages</h3>
+            <h3 data-i18n="about.lang.title">Languages</h3>
             <ul>
-              <li>Vietnamese (Native)</li>
-              <li>English (Professional Working)</li>
-              <li>Korean (Elementary)</li>
+              <li data-i18n="about.lang.1">Vietnamese (Native)</li>
+              <li data-i18n="about.lang.2">English (Professional Working)</li>
+              <li data-i18n="about.lang.3">Korean (Elementary)</li>
             </ul>
           </div>
         </div>
@@ -734,8 +773,8 @@
     <!-- RESEARCH -->
     <section id="research">
       <div class="container">
-        <p class="section-label reveal">Research Portfolio</p>
-        <h2 class="section-title reveal">Academic Inquiries</h2>
+        <p class="section-label reveal" data-i18n="research.label">Research Portfolio</p>
+        <h2 class="section-title reveal" data-i18n="research.title">Academic Inquiries</h2>
         <div class="research-stack">
           <div class="research-item reveal">
             <p class="research-role">Published Research Paper — SCBEM Research Conference 2025</p>
@@ -744,7 +783,7 @@
             <p class="research-meta"><b>Link:</b> <a id="paper-link" href="assets/scbem-full-paper.pdf" target="_blank">Full Paper PDF</a></p>
             <div class="pdf-viewer-card">
               <div class="pdf-actions">
-                <p class="research-meta"><b>Quick View:</b> Xem trực tiếp bài nghiên cứu ngay tại trang.</p>
+                <p class="research-meta"><b>Quick View:</b> View the research paper directly on the website.</p>
                 <a id="paper-open-button" class="pdf-link-button" href="assets/scbem-full-paper.pdf" target="_blank">Open in new tab</a>
               </div>
               <iframe
@@ -783,23 +822,23 @@
     <!-- STRATEGY -->
     <section id="strategy">
       <div class="container">
-        <p class="section-label reveal">My Strategic Thinking</p>
-        <h2 class="section-title reveal">Framework of Approach</h2>
-        <p class="section-desc reveal">
+        <p class="section-label reveal" data-i18n="strategy.label">My Strategic Thinking</p>
+        <h2 class="section-title reveal" data-i18n="strategy.title">Framework of Approach</h2>
+        <p class="section-desc reveal" data-i18n="strategy.desc">
           My planning approach combines research, consumer understanding, cultural context, and communication strategy to develop actionable solutions for brands and communities.
         </p>
         <div class="framework-flow reveal">
-          <div class="framework-step">Business Problem</div>
+          <div class="framework-step" data-i18n="strategy.s1">Business Problem</div>
           <div class="framework-arrow"></div>
-          <div class="framework-step">Research</div>
+          <div class="framework-step" data-i18n="strategy.s2">Research</div>
           <div class="framework-arrow"></div>
-          <div class="framework-step">Insight</div>
+          <div class="framework-step" data-i18n="strategy.s3">Insight</div>
           <div class="framework-arrow"></div>
-          <div class="framework-step">Strategy</div>
+          <div class="framework-step" data-i18n="strategy.s4">Strategy</div>
           <div class="framework-arrow"></div>
-          <div class="framework-step">Execution Direction</div>
+          <div class="framework-step" data-i18n="strategy.s5">Execution Direction</div>
           <div class="framework-arrow"></div>
-          <div class="framework-step">Evaluation</div>
+          <div class="framework-step" data-i18n="strategy.s6">Evaluation</div>
         </div>
       </div>
     </section>
@@ -809,8 +848,8 @@
     <!-- PROJECTS -->
     <section id="projects">
       <div class="container">
-        <p class="section-label reveal">Selected Works</p>
-        <h2 class="section-title reveal">Case Studies</h2>
+        <p class="section-label reveal" data-i18n="projects.label">Selected Works</p>
+        <h2 class="section-title reveal" data-i18n="projects.title">Case Studies</h2>
         <div class="projects-stack">
           <div class="project-item reveal">
             <div class="project-header">
@@ -887,8 +926,8 @@
     <!-- EXPERIENCE -->
     <section id="experience">
       <div class="container">
-        <p class="section-label reveal">Professional Journey</p>
-        <h2 class="section-title reveal">Experience</h2>
+        <p class="section-label reveal" data-i18n="exp.label">Professional Journey</p>
+        <h2 class="section-title reveal" data-i18n="exp.title">Experience</h2>
         <div class="exp-stack">
           <div class="exp-item reveal">
             <div>
@@ -929,8 +968,8 @@
     <!-- SKILLS -->
     <section id="skills">
       <div class="container">
-        <p class="section-label reveal">Capabilities</p>
-        <h2 class="section-title reveal">Skills</h2>
+        <p class="section-label reveal" data-i18n="skills.label">Capabilities</p>
+        <h2 class="section-title reveal" data-i18n="skills.title">Skills</h2>
         <div class="skills-grid reveal">
           <div class="skill-block">
             <h3>Strategic Planning</h3>
@@ -983,8 +1022,8 @@
       <div class="container">
         <div class="ach-grid">
           <div class="ach-section reveal">
-            <p class="section-label">Validation</p>
-            <h3>Achievements</h3>
+            <p class="section-label" data-i18n="ach.val.label">Validation</p>
+            <h3 data-i18n="ach.val.title">Achievements</h3>
             <ul>
               <li>Published Research Paper</li>
               <li>SCBEM Research Conference 2025</li>
@@ -994,8 +1033,8 @@
             </ul>
           </div>
           <div class="ach-section reveal">
-            <p class="section-label">Foundation</p>
-            <h3>Education</h3>
+            <p class="section-label" data-i18n="ach.edu.label">Foundation</p>
+            <h3 data-i18n="ach.edu.title">Education</h3>
             <p><b>FPT University</b><br>Multimedia Communication (2022 – 2026)</p>
             <ul>
               <li>Completed degree requirements</li>
@@ -1013,34 +1052,142 @@
   </div>
 
   <div class="page-view" data-view="contact">
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-inner">
-        <p class="contact-label">Contact</p>
-        <p class="footer-statement">
-          Interested in collaborating on strategy, research, or communication projects? I am always open to meaningful conversations and new opportunities.
-        </p>
-        <div class="contact-actions">
-          <a class="contact-btn" href="mailto:tnttam41004@gmail.com">Email Me</a>
-          <a class="contact-btn" href="tel:+84968043647">Call Me</a>
-          <a class="contact-btn" href="https://linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a>
+    <section id="contact" class="contact-page">
+      <div class="container contact-wrap">
+        <div class="contact-intro">
+          <p class="section-label" data-i18n="contact.label">Get in Touch</p>
+          <h2 class="contact-headline" data-i18n-html="contact.headline">Let&rsquo;s create<br><em>something meaningful.</em></h2>
+          <p class="contact-lead" data-i18n="contact.lead">
+            Open to collaborations in strategy, research, and brand communication. Whether it&rsquo;s a project, internship, or a thoughtful conversation — I&rsquo;d love to hear from you.
+          </p>
+          <p class="contact-copy" data-i18n="contact.copy">&copy; 2026 Tran Nguyen To Tam</p>
         </div>
-        <div class="footer-contact">
-          <a href="mailto:tnttam41004@gmail.com">tnttam41004@gmail.com</a>
-          <span>•</span>
-          <a href="tel:+84968043647">+84 968 043 647</a>
-          <span>•</span>
-          <a href="https://linkedin.com/in/your-linkedin">LinkedIn</a>
-        </div>
-        <div class="footer-bottom">
-          © 2026 TRAN NGUYEN TO TAM — STRATEGIC PLANNER & RESEARCHER
+        <div class="contact-cards">
+          <a class="contact-card contact-card--featured" href="mailto:tnttam41004@gmail.com">
+            <span class="contact-card-icon">&#9993;</span>
+            <span class="contact-card-body">
+              <span class="contact-card-type" data-i18n="contact.email">Email</span>
+              <span class="contact-card-val">tnttam41004@gmail.com</span>
+            </span>
+            <span class="contact-card-arrow">&rarr;</span>
+          </a>
+          <a class="contact-card" href="tel:+84968043647">
+            <span class="contact-card-icon">&#9742;</span>
+            <span class="contact-card-body">
+              <span class="contact-card-type" data-i18n="contact.phone">Phone</span>
+              <span class="contact-card-val">+84 968 043 647</span>
+            </span>
+            <span class="contact-card-arrow">&rarr;</span>
+          </a>
+          <a class="contact-card" href="https://linkedin.com/in/your-linkedin" target="_blank" rel="noopener">
+            <span class="contact-card-icon">in</span>
+            <span class="contact-card-body">
+              <span class="contact-card-type" data-i18n="contact.linkedin">LinkedIn</span>
+              <span class="contact-card-val" data-i18n="contact.linkedin.val">Connect with me</span>
+            </span>
+            <span class="contact-card-arrow">&rarr;</span>
+          </a>
         </div>
       </div>
-    </footer>
+    </section>
   </div>
 </main>
 
 <script>
+  const i18n = {
+    en: {
+      'nav.about': 'About', 'nav.research': 'Research', 'nav.strategy': 'Strategy',
+      'nav.projects': 'Projects', 'nav.experience': 'Experience', 'nav.contact': 'Contact',
+      'hero.eyebrow': 'Strategic Planner | Consumer Insight Researcher | Brand Communication',
+      'hero.bio': 'Research-driven communication strategist with experience in consumer insight research, communication planning, and brand campaign development. Passionate about transforming consumer behavior, cultural understanding, and market insights into effective communication strategies.',
+      'hero.tag1': 'Strategic Planning', 'hero.tag2': 'Consumer Insight', 'hero.tag3': 'Brand Communication',
+      'hero.tag4': 'Communication Planning', 'hero.tag5': 'Research',
+      'about.summaryLabel': 'Professional Summary',
+      'about.summary': '\u201cAspiring Strategic Planner with experience in communication planning, consumer research, content strategy, and integrated campaign development. Completed Bachelor\u2019s Degree requirements in Multimedia Communication at FPT University and currently awaiting degree conferral. Co-author of a published research paper presented at SCBEM Research Conference 2025. Interested in transforming consumer and market insights into strategic solutions that support brand growth and drive effective communication outcomes.\u201d',
+      'about.label': 'About', 'about.title': 'Research Before Storytelling',
+      'about.ri.title': 'Research Interests', 'about.ri.1': 'Consumer Behavior', 'about.ri.2': 'Cultural Identity',
+      'about.ri.3': 'Digital Communities', 'about.ri.4': 'Strategic Communication', 'about.ri.5': 'Brand Meaning',
+      'about.cs.title': 'Core Strengths', 'about.cs.1': 'Strategic Thinking', 'about.cs.2': 'Consumer Insight Research',
+      'about.cs.3': 'Communication Planning', 'about.cs.4': 'Analytical Thinking', 'about.cs.5': 'Cultural Intelligence',
+      'about.lang.title': 'Languages', 'about.lang.1': 'Vietnamese (Native)', 'about.lang.2': 'English (Professional Working)', 'about.lang.3': 'Korean (Elementary)',
+      'research.label': 'Research Portfolio', 'research.title': 'Academic Inquiries',
+      'strategy.label': 'My Strategic Thinking', 'strategy.title': 'Framework of Approach',
+      'strategy.desc': 'My planning approach combines research, consumer understanding, cultural context, and communication strategy to develop actionable solutions for brands and communities.',
+      'strategy.s1': 'Business Problem', 'strategy.s2': 'Research', 'strategy.s3': 'Insight',
+      'strategy.s4': 'Strategy', 'strategy.s5': 'Execution Direction', 'strategy.s6': 'Evaluation',
+      'projects.label': 'Selected Works', 'projects.title': 'Case Studies',
+      'exp.label': 'Professional Journey', 'exp.title': 'Experience',
+      'skills.label': 'Capabilities', 'skills.title': 'Skills',
+      'ach.val.label': 'Validation', 'ach.val.title': 'Achievements',
+      'ach.edu.label': 'Foundation', 'ach.edu.title': 'Education',
+      'contact.label': 'Get in Touch',
+      'contact.headline': 'Let\u2019s create<br><em>something meaningful.</em>',
+      'contact.lead': 'Open to collaborations in strategy, research, and brand communication. Whether it\u2019s a project, internship, or a thoughtful conversation \u2014 I\u2019d love to hear from you.',
+      'contact.copy': '\u00a9 2026 Tran Nguyen To Tam',
+      'contact.email': 'Email', 'contact.phone': 'Phone', 'contact.linkedin': 'LinkedIn',
+      'contact.linkedin.val': 'Connect with me'
+    },
+    vi: {
+      'nav.about': 'Gi\u1edbi thi\u1ec7u', 'nav.research': 'Nghi\u00ean c\u1ee9u', 'nav.strategy': 'Chi\u1ebfn l\u01b0\u1ee3c',
+      'nav.projects': 'D\u1ef1 \u00e1n', 'nav.experience': 'Kinh nghi\u1ec7m', 'nav.contact': 'Li\u00ean h\u1ec7',
+      'hero.eyebrow': 'Nh\u00e0 ho\u1ea1ch \u0111\u1ecbnh chi\u1ebfn l\u01b0\u1ee3c | Nghi\u00ean c\u1ee9u Insight ng\u01b0\u1eddi ti\u00eau d\u00f9ng | Truy\u1ec1n th\u00f4ng th\u01b0\u01a1ng hi\u1ec7u',
+      'hero.bio': 'Chuy\u00ean gia truy\u1ec1n th\u00f4ng l\u1ea5y nghi\u00ean c\u1ee9u l\u00e0m n\u1ec1n t\u1ea3ng, c\u00f3 kinh nghi\u1ec7m trong nghi\u00ean c\u1ee9u insight ng\u01b0\u1eddi ti\u00eau d\u00f9ng, ho\u1ea1ch \u0111\u1ecbnh truy\u1ec1n th\u00f4ng v\u00e0 ph\u00e1t tri\u1ec3n chi\u1ebfn d\u1ecbch th\u01b0\u01a1ng hi\u1ec7u. \u0110am m\u00ea bi\u1ebfn h\u00e0nh vi ti\u00eau d\u00f9ng, hi\u1ec3u bi\u1ebft v\u0103n h\u00f3a v\u00e0 insight th\u1ecb tr\u01b0\u1eddng th\u00e0nh chi\u1ebfn l\u01b0\u1ee3c truy\u1ec1n th\u00f4ng hi\u1ec7u qu\u1ea3.',
+      'hero.tag1': 'Ho\u1ea1ch \u0111\u1ecbnh chi\u1ebfn l\u01b0\u1ee3c', 'hero.tag2': 'Consumer Insight', 'hero.tag3': 'Truy\u1ec1n th\u00f4ng th\u01b0\u01a1ng hi\u1ec7u',
+      'hero.tag4': 'Ho\u1ea1ch \u0111\u1ecbnh truy\u1ec1n th\u00f4ng', 'hero.tag5': 'Nghi\u00ean c\u1ee9u',
+      'about.summaryLabel': 'T\u00f3m t\u1eaft chuy\u00ean m\u00f4n',
+      'about.summary': '\u201cNh\u00e0 ho\u1ea1ch \u0111\u1ecbnh chi\u1ebfn l\u01b0\u1ee3c tr\u1ebb v\u1edbi kinh nghi\u1ec7m trong ho\u1ea1ch \u0111\u1ecbnh truy\u1ec1n th\u00f4ng, nghi\u00ean c\u1ee9u ng\u01b0\u1eddi ti\u00eau d\u00f9ng, chi\u1ebfn l\u01b0\u1ee3c n\u1ed9i dung v\u00e0 ph\u00e1t tri\u1ec3n chi\u1ebfn d\u1ecbch t\u00edch h\u1ee3p. \u0110\u00e3 ho\u00e0n th\u00e0nh ch\u01b0\u01a1ng tr\u00ecnh C\u1eed nh\u00e2n Truy\u1ec1n th\u00f4ng \u0110a ph\u01b0\u01a1ng ti\u1ec7n t\u1ea1i \u0110\u1ea1i h\u1ecdc FPT v\u00e0 \u0111ang ch\u1edd nh\u1eadn b\u1eb1ng. \u0110\u1ed3ng t\u00e1c gi\u1ea3 b\u00e0i nghi\u00ean c\u1ee9u \u0111\u00e3 c\u00f4ng b\u1ed1 t\u1ea1i H\u1ed9i th\u1ea3o Nghi\u00ean c\u1ee9u SCBEM 2025. Quan t\u00e2m bi\u1ebfn insight ng\u01b0\u1eddi ti\u00eau d\u00f9ng v\u00e0 th\u1ecb tr\u01b0\u1eddng th\u00e0nh gi\u1ea3i ph\u00e1p chi\u1ebfn l\u01b0\u1ee3c h\u1ed7 tr\u1ee3 t\u0103ng tr\u01b0\u1edfng th\u01b0\u01a1ng hi\u1ec7u v\u00e0 k\u1ebft qu\u1ea3 truy\u1ec1n th\u00f4ng hi\u1ec7u qu\u1ea3.\u201d',
+      'about.label': 'V\u1ec1 t\u00f4i', 'about.title': 'Nghi\u00ean c\u1ee9u tr\u01b0\u1edbc khi k\u1ec3 chuy\u1ec7n',
+      'about.ri.title': 'H\u01b0\u1edbng nghi\u00ean c\u1ee9u', 'about.ri.1': 'H\u00e0nh vi ti\u00eau d\u00f9ng', 'about.ri.2': 'B\u1ea3n s\u1ec v\u0103n h\u00f3a',
+      'about.ri.3': 'C\u1ed9ng \u0111\u1ed3ng s\u1ed1', 'about.ri.4': 'Truy\u1ec1n th\u00f4ng chi\u1ebfn l\u01b0\u1ee3c', 'about.ri.5': '\u00dd ngh\u0129a th\u01b0\u01a1ng hi\u1ec7u',
+      'about.cs.title': 'Th\u1ebf m\u1ea1nh', 'about.cs.1': 'T\u01b0 duy chi\u1ebfn l\u01b0\u1ee3c', 'about.cs.2': 'Nghi\u00ean c\u1ee9u Insight',
+      'about.cs.3': 'Ho\u1ea1ch \u0111\u1ecbnh truy\u1ec1n th\u00f4ng', 'about.cs.4': 'T\u01b0 duy ph\u00e2n t\u00edch', 'about.cs.5': 'Tr\u00ed tu\u1ec7 v\u0103n h\u00f3a',
+      'about.lang.title': 'Ng\u00f4n ng\u1eef', 'about.lang.1': 'Ti\u1ebfng Vi\u1ec7t (B\u1ea3n ng\u1eef)', 'about.lang.2': 'Ti\u1ebfng Anh (L\u00e0m vi\u1ec7c chuy\u00ean nghi\u1ec7p)', 'about.lang.3': 'Ti\u1ebfng H\u00e0n (S\u01a1 c\u1ea5p)',
+      'research.label': 'Danh m\u1ee5c nghi\u00ean c\u1ee9u', 'research.title': 'C\u00e1c \u0111\u1ec1 t\u00e0i h\u1ecdc thu\u1eadt',
+      'strategy.label': 'T\u01b0 duy chi\u1ebfn l\u01b0\u1ee3c', 'strategy.title': 'Khung ti\u1ebfn c\u1eadn',
+      'strategy.desc': 'Ph\u01b0\u01a1ng ph\u00e1p ho\u1ea1ch \u0111\u1ecbnh c\u1ee7a t\u00f4i k\u1ebft h\u1ee3p nghi\u00ean c\u1ee9u, hi\u1ec3u bi\u1ebft ng\u01b0\u1eddi ti\u00eau d\u00f9ng, b\u1ed1i c\u1ea3nh v\u0103n h\u00f3a v\u00e0 chi\u1ebfn l\u01b0\u1ee3c truy\u1ec1n th\u00f4ng \u0111\u1ec3 t\u1ea1o ra gi\u1ea3i ph\u00e1p kh\u1ea3 thi cho th\u01b0\u01a1ng hi\u1ec7u v\u00e0 c\u1ed9ng \u0111\u1ed3ng.',
+      'strategy.s1': 'V\u1ea5n \u0111\u1ec1 kinh doanh', 'strategy.s2': 'Nghi\u00ean c\u1ee9u', 'strategy.s3': 'Insight',
+      'strategy.s4': 'Chi\u1ebfn l\u01b0\u1ee3c', 'strategy.s5': 'H\u01b0\u1edbng tri\u1ec3n khai', 'strategy.s6': '\u0110\u00e1nh gi\u00e1',
+      'projects.label': 'T\u00e1c ph\u1ea9m ti\u00eau bi\u1ec3u', 'projects.title': 'Case Study',
+      'exp.label': 'H\u00e0nh tr\u00ecnh ngh\u1ec1 nghi\u1ec7p', 'exp.title': 'Kinh nghi\u1ec7m',
+      'skills.label': 'N\u0103ng l\u1ef1c', 'skills.title': 'K\u1ef9 n\u0103ng',
+      'ach.val.label': 'Th\u00e0nh t\u1ef1u', 'ach.val.title': 'Gi\u1ea3i th\u01b0\u1edfng & C\u00f4ng nh\u1eadn',
+      'ach.edu.label': 'N\u1ec1n t\u1ea3ng', 'ach.edu.title': 'H\u1ecdc v\u1ea5n',
+      'contact.label': 'Li\u00ean h\u1ec7',
+      'contact.headline': 'C\u00f9ng t\u1ea1o n\u00ean<br><em>\u0111i\u1ec1u c\u00f3 \u00fd ngh\u0129a.</em>',
+      'contact.lead': 'S\u1eb5n s\u00e0ng h\u1ee3p t\u00e1c v\u1ec1 chi\u1ebfn l\u01b0\u1ee3c, nghi\u00ean c\u1ee9u v\u00e0 truy\u1ec1n th\u00f4ng th\u01b0\u01a1ng hi\u1ec7u. D\u00f9 l\u00e0 d\u1ef1 \u00e1n, th\u1ef1c t\u1eadp hay m\u1ed9t cu\u1ed9c tr\u00f2 chuy\u1ec7n \u2014 t\u00f4i r\u1ea5t mong \u0111\u01b0\u1ee3c l\u1eafng nghe b\u1ea1n.',
+      'contact.copy': '\u00a9 2026 Tran Nguyen To Tam',
+      'contact.email': 'Email', 'contact.phone': 'S\u0111T', 'contact.linkedin': 'LinkedIn',
+      'contact.linkedin.val': 'K\u1ebft n\u1ed1i v\u1edbi t\u00f4i'
+    }
+  };
+
+  let currentLang = localStorage.getItem('lang') || 'en';
+
+  const applyLang = (lang) => {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.dataset.i18n;
+      const text = i18n[lang]?.[key];
+      if (text !== undefined) el.textContent = text;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+      const key = el.dataset.i18nHtml;
+      const html = i18n[lang]?.[key];
+      if (html !== undefined) el.innerHTML = html;
+    });
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+  };
+
+  document.querySelectorAll('.lang-btn').forEach((btn) => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
   const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
   const navLogo = document.querySelector('.nav-logo');
   const pageViews = Array.from(document.querySelectorAll('.page-view'));
@@ -1080,6 +1227,7 @@
   const initialPage = window.location.hash ? window.location.hash.slice(1) : 'hero';
   const hasPage = pageViews.some((view) => view.dataset.view === initialPage);
   showPage(hasPage ? initialPage : 'hero', false);
+  applyLang(currentLang);
 
   const paperLink = document.getElementById('paper-link');
   const paperButton = document.getElementById('paper-open-button');
