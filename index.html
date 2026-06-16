@@ -459,26 +459,50 @@
     .exp-stack {
       display: flex;
       flex-direction: column;
+      gap: 0.25rem;
     }
     .exp-item {
       display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: var(--space-md);
+      grid-template-columns: 130px 1fr;
+      gap: 2rem;
       padding: 1.75rem 0;
-      border-bottom: 1px dotted var(--line);
+      border-bottom: 1px solid var(--line);
       align-items: start;
     }
     .exp-item:first-child { padding-top: 0; }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-period {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      padding-top: 0.35rem;
+      line-height: 1.5;
+    }
     .exp-title {
       font-family: var(--serif);
-      font-size: 1.3rem;
+      font-size: 1.45rem;
       font-weight: 500;
       line-height: 1.3;
+      margin-bottom: 0.35rem;
     }
     .exp-company {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--secondary);
-      margin-top: 0.25rem;
+      margin-bottom: 0.85rem;
+    }
+    .exp-highlights {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    .exp-highlights li {
+      font-size: 0.82rem;
+      padding: 0.3rem 0.7rem;
+      background: rgba(31,31,31,0.05);
+      border-radius: 2px;
+      color: rgba(31,31,31,0.78);
     }
 
     /* ── SKILLS ── */
@@ -663,7 +687,7 @@
       section { padding: 6rem 0 3rem; }
       .about-grid { grid-template-columns: 1fr; }
       .project-header, .project-row { grid-template-columns: 1fr; gap: 0.5rem; }
-      .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
       .ach-grid { grid-template-columns: 1fr; gap: var(--space-md); }
       .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
@@ -928,35 +952,71 @@
       <div class="container">
         <p class="section-label reveal" data-i18n="exp.label">Professional Journey</p>
         <h2 class="section-title reveal" data-i18n="exp.title">Experience</h2>
+        <p class="section-desc reveal" data-i18n="exp.desc">A timeline of roles across planning, communication strategy, community building, and project leadership.</p>
         <div class="exp-stack">
           <div class="exp-item reveal">
+            <p class="exp-period" data-i18n="exp.e1.period">2025</p>
             <div>
-              <h3 class="exp-title">Planning Intern</h3>
+              <h3 class="exp-title" data-i18n="exp.e1.title">Planning Intern</h3>
               <p class="exp-company">FPT Online</p>
+              <ul class="exp-highlights">
+                <li data-i18n="exp.e1.h1">Market Research</li>
+                <li data-i18n="exp.e1.h2">Competitor Analysis</li>
+                <li data-i18n="exp.e1.h3">Media Planning</li>
+                <li data-i18n="exp.e1.h4">Strategic Proposals</li>
+              </ul>
             </div>
           </div>
           <div class="exp-item reveal">
+            <p class="exp-period" data-i18n="exp.e2.period">Summer 2025</p>
             <div>
-              <h3 class="exp-title">Communication Strategist & Event Coordinator</h3>
+              <h3 class="exp-title" data-i18n="exp.e2.title">Communication Strategist & Event Coordinator</h3>
               <p class="exp-company">The Golden Frame Awards Summer 2025</p>
+              <ul class="exp-highlights">
+                <li data-i18n="exp.e2.h1">Communication Strategy</li>
+                <li data-i18n="exp.e2.h2">Stakeholder Coordination</li>
+                <li data-i18n="exp.e2.h3">3,000+ Participants</li>
+                <li data-i18n="exp.e2.h4">Event Communication</li>
+              </ul>
             </div>
           </div>
           <div class="exp-item reveal">
+            <p class="exp-period" data-i18n="exp.e3.period">2024 – Present</p>
             <div>
-              <h3 class="exp-title">Founder & Community Development Lead</h3>
+              <h3 class="exp-title" data-i18n="exp.e3.title">Founder & Community Development Lead</h3>
               <p class="exp-company">GÕ Trẻ – Yêu Văn Hóa Việt</p>
+              <ul class="exp-highlights">
+                <li data-i18n="exp.e3.h1">Community Building</li>
+                <li data-i18n="exp.e3.h2">Cultural Engagement</li>
+                <li data-i18n="exp.e3.h3">Content Strategy</li>
+                <li data-i18n="exp.e3.h4">Youth Culture Programs</li>
+              </ul>
             </div>
           </div>
           <div class="exp-item reveal">
+            <p class="exp-period" data-i18n="exp.e4.period">2024</p>
             <div>
-              <h3 class="exp-title">Deputy Project Manager & Content Strategist</h3>
+              <h3 class="exp-title" data-i18n="exp.e4.title">Deputy Project Manager & Content Strategist</h3>
               <p class="exp-company">FPT Short Film Festival</p>
+              <ul class="exp-highlights">
+                <li data-i18n="exp.e4.h1">Project Management</li>
+                <li data-i18n="exp.e4.h2">Content Strategy</li>
+                <li data-i18n="exp.e4.h3">Cross-team Coordination</li>
+                <li data-i18n="exp.e4.h4">Festival Communication</li>
+              </ul>
             </div>
           </div>
           <div class="exp-item reveal">
+            <p class="exp-period" data-i18n="exp.e5.period">2023 – 2024</p>
             <div>
-              <h3 class="exp-title">Communications Team Member</h3>
+              <h3 class="exp-title" data-i18n="exp.e5.title">Communications Team Member</h3>
               <p class="exp-company">SAFE ZONE</p>
+              <ul class="exp-highlights">
+                <li data-i18n="exp.e5.h1">Campaign Support</li>
+                <li data-i18n="exp.e5.h2">Internal Communication</li>
+                <li data-i18n="exp.e5.h3">Content Production</li>
+                <li data-i18n="exp.e5.h4">Team Collaboration</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -1117,6 +1177,17 @@
       'strategy.s4': 'Strategy', 'strategy.s5': 'Execution Direction', 'strategy.s6': 'Evaluation',
       'projects.label': 'Selected Works', 'projects.title': 'Case Studies',
       'exp.label': 'Professional Journey', 'exp.title': 'Experience',
+      'exp.desc': 'A timeline of roles across planning, communication strategy, community building, and project leadership.',
+      'exp.e1.period': '2025', 'exp.e1.title': 'Planning Intern',
+      'exp.e1.h1': 'Market Research', 'exp.e1.h2': 'Competitor Analysis', 'exp.e1.h3': 'Media Planning', 'exp.e1.h4': 'Strategic Proposals',
+      'exp.e2.period': 'Summer 2025', 'exp.e2.title': 'Communication Strategist & Event Coordinator',
+      'exp.e2.h1': 'Communication Strategy', 'exp.e2.h2': 'Stakeholder Coordination', 'exp.e2.h3': '3,000+ Participants', 'exp.e2.h4': 'Event Communication',
+      'exp.e3.period': '2024 – Present', 'exp.e3.title': 'Founder & Community Development Lead',
+      'exp.e3.h1': 'Community Building', 'exp.e3.h2': 'Cultural Engagement', 'exp.e3.h3': 'Content Strategy', 'exp.e3.h4': 'Youth Culture Programs',
+      'exp.e4.period': '2024', 'exp.e4.title': 'Deputy Project Manager & Content Strategist',
+      'exp.e4.h1': 'Project Management', 'exp.e4.h2': 'Content Strategy', 'exp.e4.h3': 'Cross-team Coordination', 'exp.e4.h4': 'Festival Communication',
+      'exp.e5.period': '2023 – 2024', 'exp.e5.title': 'Communications Team Member',
+      'exp.e5.h1': 'Campaign Support', 'exp.e5.h2': 'Internal Communication', 'exp.e5.h3': 'Content Production', 'exp.e5.h4': 'Team Collaboration',
       'skills.label': 'Capabilities', 'skills.title': 'Skills',
       'ach.val.label': 'Validation', 'ach.val.title': 'Achievements',
       'ach.edu.label': 'Foundation', 'ach.edu.title': 'Education',
@@ -1149,6 +1220,17 @@
       'strategy.s4': 'Chi\u1ebfn l\u01b0\u1ee3c', 'strategy.s5': 'H\u01b0\u1edbng tri\u1ec3n khai', 'strategy.s6': '\u0110\u00e1nh gi\u00e1',
       'projects.label': 'T\u00e1c ph\u1ea9m ti\u00eau bi\u1ec3u', 'projects.title': 'Case Study',
       'exp.label': 'H\u00e0nh tr\u00ecnh ngh\u1ec1 nghi\u1ec7p', 'exp.title': 'Kinh nghi\u1ec7m',
+      'exp.desc': 'D\u00f2ng th\u1eddi gian c\u00e1c vai tr\u00f2 trong ho\u1ea1ch \u0111\u1ecbnh, chi\u1ebfn l\u01b0\u1ee3c truy\u1ec1n th\u00f4ng, ph\u00e1t tri\u1ec3n c\u1ed9ng \u0111\u1ed3ng v\u00e0 qu\u1ea3n l\u00fd d\u1ef1 \u00e1n.',
+      'exp.e1.period': '2025', 'exp.e1.title': 'Th\u1ef1c t\u1eadp Planning',
+      'exp.e1.h1': 'Nghi\u00ean c\u1ee9u th\u1ecb tr\u01b0\u1eddng', 'exp.e1.h2': 'Ph\u00e2n t\u00edch \u0111\u1ed1i th\u1ee7', 'exp.e1.h3': 'Ho\u1ea1ch \u0111\u1ecbnh media', 'exp.e1.h4': 'Proposal chi\u1ebfn l\u01b0\u1ee3c',
+      'exp.e2.period': 'H\u00e8 2025', 'exp.e2.title': 'Communication Strategist & Event Coordinator',
+      'exp.e2.h1': 'Chi\u1ebfn l\u01b0\u1ee3c truy\u1ec1n th\u00f4ng', 'exp.e2.h2': 'Ph\u1ed1i h\u1ee3p stakeholders', 'exp.e2.h3': '3.000+ ng\u01b0\u1eddi tham gia', 'exp.e2.h4': 'Truy\u1ec1n th\u00f4ng s\u1ef1 ki\u1ec7n',
+      'exp.e3.period': '2024 – Nay', 'exp.e3.title': 'Founder & Community Development Lead',
+      'exp.e3.h1': 'X\u00e2y d\u1ef1ng c\u1ed9ng \u0111\u1ed3ng', 'exp.e3.h2': 'K\u1ebft n\u1ed1i v\u0103n h\u00f3a', 'exp.e3.h3': 'Chi\u1ebfn l\u01b0\u1ee3c n\u1ed9i dung', 'exp.e3.h4': 'Ch\u01b0\u01a1ng tr\u00ecnh v\u0103n h\u00f3a tr\u1ebb',
+      'exp.e4.period': '2024', 'exp.e4.title': 'Ph\u00f3 qu\u1ea3n l\u00fd d\u1ef1 \u00e1n & Content Strategist',
+      'exp.e4.h1': 'Qu\u1ea3n l\u00fd d\u1ef1 \u00e1n', 'exp.e4.h2': 'Chi\u1ebfn l\u01b0\u1ee3c n\u1ed9i dung', 'exp.e4.h3': 'Ph\u1ed1i h\u1ee3p li\u00ean team', 'exp.e4.h4': 'Truy\u1ec1n th\u00f4ng l\u1ec5 h\u1ed9i',
+      'exp.e5.period': '2023 – 2024', 'exp.e5.title': 'Th\u00e0nh vi\u00ean team Truy\u1ec1n th\u00f4ng',
+      'exp.e5.h1': 'H\u1ed7 tr\u1ee3 chi\u1ebfn d\u1ecbch', 'exp.e5.h2': 'Truy\u1ec1n th\u00f4ng n\u1ed9i b\u1ed9', 'exp.e5.h3': 'S\u1ea3n xu\u1ea5t n\u1ed9i dung', 'exp.e5.h4': 'L\u00e0m vi\u1ec7c nh\u00f3m',
       'skills.label': 'N\u0103ng l\u1ef1c', 'skills.title': 'K\u1ef9 n\u0103ng',
       'ach.val.label': 'Th\u00e0nh t\u1ef1u', 'ach.val.title': 'Gi\u1ea3i th\u01b0\u1edfng & C\u00f4ng nh\u1eadn',
       'ach.edu.label': 'N\u1ec1n t\u1ea3ng', 'ach.edu.title': 'H\u1ecdc v\u1ea5n',
