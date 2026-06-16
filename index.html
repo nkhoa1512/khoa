@@ -7,17 +7,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #FAF8F5; /* Warm Ivory */
-      --text: #1F1F1F; /* Charcoal */
-      --primary: #C79292; /* Dusty Rose */
-      --secondary: #7B4B4B; /* Deep Burgundy */
-      --line: rgba(31, 31, 31, 0.1);
+      --bg: #FAF8F5;
+      --text: #1F1F1F;
+      --primary: #C79292;
+      --secondary: #7B4B4B;
+      --line: rgba(31,31,31,0.1);
       --serif: 'Cormorant Garamond', Georgia, serif;
       --sans: 'Inter', sans-serif;
+      --content-width: 1100px;
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 4rem;
+      --space-xl: 8rem;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -29,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* Noise overlay for intellectual journal feel */
     body::before {
       content: '';
       position: fixed; inset: 0;
@@ -41,14 +45,27 @@
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 2px; }
 
+    /* ── LAYOUT WRAPPER ── */
+    .container {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 5rem;
+    }
+
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.5rem 4rem;
-      background: rgba(250,248,245,0.9);
+      background: rgba(250,248,245,0.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 1.5rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     .nav-logo {
       font-family: var(--serif);
@@ -70,35 +87,37 @@
     }
     .nav-links a:hover { color: var(--secondary); }
 
-    /* ── TYPOGRAPHY & LAYOUT ── */
-    section { padding: 8rem 5rem 4rem; }
+    /* ── SECTION BASE ── */
+    section {
+      padding: var(--space-xl) 0 var(--space-lg);
+    }
+
     .section-label {
       font-family: var(--sans);
       font-size: 0.75rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--secondary);
-      margin-bottom: 1rem;
+      margin-bottom: var(--space-sm);
     }
     .section-title {
       font-family: var(--serif);
       font-size: clamp(2.5rem, 4vw, 3.5rem);
       font-weight: 400;
       line-height: 1.1;
-      margin-bottom: 4rem;
-      color: var(--text);
+      margin-bottom: var(--space-lg);
     }
     .section-desc {
       font-size: 1.05rem;
       max-width: 700px;
-      margin-bottom: 4rem;
+      margin-bottom: var(--space-lg);
       color: rgba(31,31,31,0.8);
       line-height: 1.8;
     }
     .divider {
       width: 100%; height: 1px;
       background: var(--line);
-      margin: 3rem 0;
+      margin: var(--space-md) 0;
     }
 
     /* ── HERO ── */
@@ -108,73 +127,68 @@
       flex-direction: column;
       justify-content: center;
       padding-top: 120px;
+      padding-bottom: var(--space-lg);
     }
     .hero-eyebrow {
-      font-family: var(--sans);
       font-size: 0.8rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--secondary);
-      margin-bottom: 2rem;
+      margin-bottom: var(--space-md);
     }
     .hero-name {
       font-family: var(--serif);
       font-size: clamp(4rem, 6vw, 6rem);
       font-weight: 300;
       line-height: 1.1;
-      margin-bottom: 2rem;
+      margin-bottom: var(--space-md);
     }
-    .hero-name em {
-      font-style: italic;
-      color: var(--primary);
-    }
+    .hero-name em { font-style: italic; color: var(--primary); }
     .hero-bio {
       font-size: 1.1rem;
       color: rgba(31,31,31,0.8);
       max-width: 600px;
       line-height: 1.8;
-      margin-bottom: 3rem;
+      margin-bottom: var(--space-md);
     }
     .hero-tags {
-      display: flex; flex-wrap: wrap; gap: 1rem;
-      margin-top: 2rem;
+      display: flex; flex-wrap: wrap; gap: 0.75rem;
+      margin-top: var(--space-sm);
     }
     .tag-border {
-      padding: 0.5rem 1.2rem;
+      padding: 0.45rem 1.1rem;
       border: 1px solid var(--primary);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       color: var(--secondary);
     }
 
-    /* ── ABOUT & PROFESSIONAL SUMMARY ── */
+    /* ── ABOUT ── */
     .summary-text {
       font-family: var(--serif);
-      font-size: 1.5rem;
-      line-height: 1.6;
+      font-size: 1.45rem;
+      line-height: 1.65;
       max-width: 900px;
-      margin-bottom: 4rem;
+      margin-bottom: var(--space-lg);
       font-style: italic;
       color: var(--secondary);
     }
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
     }
     .about-list h3 {
       font-family: var(--serif);
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
       font-weight: 400;
     }
-    .about-list ul {
-      list-style: none;
-    }
+    .about-list ul { list-style: none; }
     .about-list li {
-      font-size: 0.95rem;
-      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
       padding-left: 1.2rem;
       position: relative;
     }
@@ -183,12 +197,18 @@
       position: absolute; left: 0; color: var(--primary);
     }
 
-    /* ── RESEARCH PORTFOLIO ── */
+    /* ── RESEARCH ── */
+    .research-stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
     .research-item {
-      margin-bottom: 3rem;
       border-left: 1px solid var(--primary);
       padding-left: 2rem;
+      padding-bottom: var(--space-md);
     }
+    .research-item:last-child { padding-bottom: 0; }
     .research-role {
       font-size: 0.75rem;
       letter-spacing: 0.1em;
@@ -198,28 +218,26 @@
     }
     .research-title {
       font-family: var(--serif);
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       font-weight: 500;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       line-height: 1.3;
     }
     .research-meta {
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
+      font-size: 0.88rem;
+      margin-bottom: 0.4rem;
       color: rgba(31,31,31,0.7);
     }
     .research-meta a {
       color: var(--secondary);
       text-decoration: none;
       border-bottom: 1px solid var(--primary);
-      transition: all 0.3s;
+      transition: color 0.3s;
     }
-    .research-meta a:hover {
-      color: var(--primary);
-    }
+    .research-meta a:hover { color: var(--primary); }
     .research-quote {
       font-family: var(--serif);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-style: italic;
       color: var(--secondary);
       margin-top: 1rem;
@@ -227,174 +245,222 @@
       border-left: 2px solid var(--primary);
     }
 
-    /* ── STRATEGIC THINKING ── */
+    /* ── STRATEGY ── */
     .framework-flow {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 4rem 0;
+      gap: 0;
+      margin: var(--space-lg) auto;
+      max-width: 360px;
     }
     .framework-step {
       font-family: var(--serif);
-      font-size: 1.5rem;
-      padding: 1rem 3rem;
+      font-size: 1.35rem;
+      padding: 0.9rem 2.5rem;
       border: 1px solid var(--text);
-      min-width: 300px;
+      width: 100%;
       text-align: center;
       background: var(--bg);
     }
     .framework-arrow {
-      height: 40px;
+      height: 36px;
       width: 1px;
       background: var(--text);
+      flex-shrink: 0;
     }
 
     /* ── PROJECTS ── */
+    .projects-stack {
+      display: flex;
+      flex-direction: column;
+    }
     .project-item {
-      padding: 3rem 0;
+      padding: var(--space-md) 0;
       border-bottom: 1px solid var(--line);
     }
+    .project-item:first-child { padding-top: 0; }
     .project-header {
       display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 2rem;
+      grid-template-columns: 220px 1fr;
+      gap: var(--space-md);
       align-items: baseline;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
     .project-title {
       font-family: var(--serif);
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 400;
+      line-height: 1.2;
     }
     .project-role {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--secondary);
     }
-    .project-content {
+    .project-row {
       display: grid;
-      grid-template-columns: 1fr 3fr;
-      gap: 2rem;
+      grid-template-columns: 220px 1fr;
+      gap: var(--space-md);
+      margin-bottom: 1rem;
+      align-items: start;
     }
+    .project-row:last-child { margin-bottom: 0; }
     .project-label {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
       color: var(--text);
+      padding-top: 0.3rem;
     }
-    .project-details ul {
+    .tag-list {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .tag-list li {
       list-style: none;
-      display: flex; flex-wrap: wrap; gap: 1rem;
-    }
-    .project-details li {
-      font-size: 0.9rem;
-      padding: 0.3rem 0.8rem;
+      font-size: 0.85rem;
+      padding: 0.25rem 0.7rem;
       background: rgba(31,31,31,0.05);
       border-radius: 2px;
     }
     .project-flow {
-      display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
-      margin-top: 1.5rem;
+      display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;
     }
     .flow-step {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       color: var(--secondary);
     }
-    .flow-arrow {
-      color: var(--primary);
-    }
+    .flow-arrow { color: var(--primary); }
 
     /* ── EXPERIENCE ── */
+    .exp-stack {
+      display: flex;
+      flex-direction: column;
+    }
     .exp-item {
       display: grid;
-      grid-template-columns: 2fr 3fr;
-      gap: 2rem;
-      padding: 2rem 0;
+      grid-template-columns: 260px 1fr;
+      gap: var(--space-md);
+      padding: 1.75rem 0;
       border-bottom: 1px dotted var(--line);
+      align-items: start;
     }
+    .exp-item:first-child { padding-top: 0; }
     .exp-title {
       font-family: var(--serif);
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 500;
+      line-height: 1.3;
     }
     .exp-company {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--secondary);
-      margin-top: 0.2rem;
+      margin-top: 0.25rem;
     }
 
     /* ── SKILLS ── */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 3rem;
+      gap: var(--space-md);
     }
     .skill-block h3 {
       font-family: var(--serif);
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 400;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       border-bottom: 1px solid var(--primary);
       padding-bottom: 0.5rem;
-      display: inline-block;
     }
     .skill-block ul { list-style: none; }
     .skill-block li {
-      font-size: 0.95rem; margin-bottom: 0.8rem; color: rgba(31,31,31,0.8);
+      font-size: 0.9rem;
+      margin-bottom: 0.65rem;
+      color: rgba(31,31,31,0.8);
     }
 
     /* ── ACHIEVEMENTS & EDUCATION ── */
     .ach-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      gap: var(--space-lg);
     }
     .ach-section h3 {
       font-family: var(--serif);
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       font-weight: 400;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
-    .ach-section ul { list-style: none; }
+    .ach-section h3 + h3 { margin-top: var(--space-md); }
+    .ach-section ul { list-style: none; margin-bottom: 1rem; }
     .ach-section li {
-      font-size: 1rem; margin-bottom: 1rem;
-      padding-left: 1.5rem; position: relative;
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+      padding-left: 1.5rem;
+      position: relative;
     }
     .ach-section li::before {
-      content: '✦'; position: absolute; left: 0; color: var(--primary); font-size: 0.8rem; top: 2px;
+      content: '✦';
+      position: absolute; left: 0;
+      color: var(--primary); font-size: 0.75rem; top: 3px;
+    }
+    .ach-section p {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
     }
 
     /* ── FOOTER ── */
     footer {
       background: var(--text);
       color: var(--bg);
-      padding: 6rem 5rem 3rem;
+      padding: 6rem 0 3rem;
+    }
+    .footer-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 5rem;
       text-align: center;
     }
     .footer-statement {
       font-family: var(--serif);
-      font-size: 1.6rem;
-      line-height: 1.5;
-      max-width: 900px;
-      margin: 0 auto 4rem;
+      font-size: 1.55rem;
+      line-height: 1.55;
+      max-width: 860px;
+      margin: 0 auto var(--space-lg);
       font-style: italic;
       color: rgba(250,248,245,0.9);
     }
+    .footer-contact {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: var(--space-md);
+    }
+    .footer-contact a {
+      color: rgba(250,248,245,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    .footer-contact a:hover { color: var(--primary); }
+    .footer-contact span { color: rgba(250,248,245,0.3); }
     .footer-bottom {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(250,248,245,0.5);
+      color: rgba(250,248,245,0.4);
       border-top: 1px solid rgba(250,248,245,0.1);
-      padding-top: 3rem;
+      padding-top: var(--space-md);
     }
 
-    /* ── ANIMATIONS ── */
+    /* ── REVEAL ANIMATION ── */
     .reveal {
       opacity: 0;
       transform: translateY(20px);
@@ -404,370 +470,342 @@
       opacity: 1;
       transform: none;
     }
-    .footer-contact {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-
-  margin-bottom: 3rem;
-}
-
-.footer-contact a {
-  color: rgba(250,248,245,0.8);
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: 0.3s;
-}
-
-.footer-contact a:hover {
-  color: var(--primary);
-}
-
-.footer-contact span {
-  color: rgba(250,248,245,0.3);
-}
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      nav { padding: 1.5rem 2rem; }
-      section { padding: 6rem 2rem; }
-      .hero-name { font-size: 3rem; }
-      .about-grid, .project-header, .project-content, .exp-item, .skills-grid, .ach-grid {
-        grid-template-columns: 1fr; gap: 2rem;
-      }
+      .container, .nav-inner, .footer-inner { padding-left: 2rem; padding-right: 2rem; }
       .nav-links { display: none; }
+      section { padding: 6rem 0 3rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .project-header, .project-row { grid-template-columns: 1fr; gap: 0.5rem; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .ach-grid { grid-template-columns: 1fr; gap: var(--space-md); }
+    }
+    @media (max-width: 600px) {
+      .hero-name { font-size: 3rem; }
+      .skills-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#hero">Tran Nguyen To Tam</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#research">Research</a></li>
-    <li><a href="#strategy">Strategy</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
-  </ul>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">Tran Nguyen To Tam</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#strategy">Strategy</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+    </ul>
+  </div>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
-  <p class="hero-eyebrow reveal">Strategic Planner | Consumer Insight Researcher | Brand Communication</p>
-  <h1 class="hero-name reveal">Tran Nguyen<br><em>To Tam</em></h1>
-  <p class="hero-bio reveal">
-    Research-driven communication strategist with experience in consumer insight research, communication planning, and brand campaign development. Passionate about transforming consumer behavior, cultural understanding, and market insights into effective communication strategies.
-  </p>
-  <div class="hero-tags reveal">
-    <div class="tag-border">Strategic Planning</div>
-    <div class="tag-border">Consumer Insight</div>
-    <div class="tag-border">Brand Communication</div>
-    <div class="tag-border">Communication Planning</div>
-    <div class="tag-border">Research</div>
+  <div class="container">
+    <p class="hero-eyebrow reveal">Strategic Planner | Consumer Insight Researcher | Brand Communication</p>
+    <h1 class="hero-name reveal">Tran Nguyen<br><em>To Tam</em></h1>
+    <p class="hero-bio reveal">
+      Research-driven communication strategist with experience in consumer insight research, communication planning, and brand campaign development. Passionate about transforming consumer behavior, cultural understanding, and market insights into effective communication strategies.
+    </p>
+    <div class="hero-tags reveal">
+      <div class="tag-border">Strategic Planning</div>
+      <div class="tag-border">Consumer Insight</div>
+      <div class="tag-border">Brand Communication</div>
+      <div class="tag-border">Communication Planning</div>
+      <div class="tag-border">Research</div>
+    </div>
   </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
-  <p class="section-label reveal">Professional Summary</p>
-  <p class="summary-text reveal">
-    &ldquo;Aspiring Strategic Planner with experience in communication planning, consumer research, content strategy, and integrated campaign development. Completed Bachelor's Degree requirements in Multimedia Communication at FPT University and currently awaiting degree conferral. Experienced in conducting market and competitor analysis, developing communication strategies, and coordinating cross-functional projects across academic, agency-simulated, and professional environments. Co-author of a published research paper presented at SCBEM Research Conference 2025. Interested in transforming consumer and market insights into strategic solutions that support brand growth and drive effective communication outcomes.&rdquo;
-  </p>
+  <div class="container">
+    <p class="section-label reveal">Professional Summary</p>
+    <p class="summary-text reveal">
+      &ldquo;Aspiring Strategic Planner with experience in communication planning, consumer research, content strategy, and integrated campaign development. Completed Bachelor&rsquo;s Degree requirements in Multimedia Communication at FPT University and currently awaiting degree conferral. Co-author of a published research paper presented at SCBEM Research Conference 2025. Interested in transforming consumer and market insights into strategic solutions that support brand growth and drive effective communication outcomes.&rdquo;
+    </p>
 
-  <div class="divider reveal"></div>
+    <div class="divider reveal"></div>
 
-  <p class="section-label reveal">About</p>
-  <h2 class="section-title reveal">Research Before Storytelling</h2>
-  <div class="about-grid reveal">
-    <div class="about-list">
-      <h3>Current Research Interests</h3>
-      <ul>
-        <li>Consumer Behavior</li>
-        <li>Cultural Identity</li>
-        <li>Digital Communities</li>
-        <li>Strategic Communication</li>
-        <li>Brand Meaning</li>
-      </ul>
-    </div>
-    <div class="about-list">
-      <h3>Core Strengths</h3>
-      <ul>
-        <li>Strategic Thinking</li>
-        <li>Consumer Insight Research</li>
-        <li>Communication Planning</li>
-        <li>Analytical Thinking</li>
-        <li>Cultural Intelligence</li>
-      </ul>
-    </div>
-    <div class="about-list">
-      <h3>Languages</h3>
-      <ul>
-        <li>Vietnamese (Native)</li>
-        <li>English (Professional Working Proficiency)</li>
-        <li>Korean (Elementary)</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="research">
-  <p class="section-label reveal">Research Portfolio</p>
-  <h2 class="section-title reveal">Academic Inquiries</h2>
-  
-  <div class="research-item reveal">
-    <p class="research-role">Published Research Paper in SCBEM Research Conference 2025</p>
-    <h3 class="research-title">Measuring the Perceived Social Benefits of Cultural Institutions Among University Students in Thu Duc City</h3>
-    <p class="research-meta"><b>Role:</b> Co-author</p>
-    <p class="research-meta"><b>Link view:</b> <a href="20240826112339090_FCBEM_Cultural Institutions_Full Paper.pdf" target="_blank">20240826112339090_FCBEM_Cultural Institutions_Full Paper.pdf</a></p>
-  </div>
-
-  <div class="research-item reveal">
-    <p class="research-role">Research Executive</p>
-    <h3 class="research-title">Pseudo Multitasking Behavior Among Young Adults in Ho Chi Minh City: Drivers and Perceived Productivity Outcomes</h3>
-    <p class="research-meta">Status: Conference Submission in Progress</p>
-    <p class="research-meta"><b>Responsibilities:</b> Literature Review, Research Design, Survey Development, Insight Analysis, Academic Writing</p>
-    <div class="research-quote">
-      &ldquo;I know multitasking is costing me focus. But in environments where everything moves relentlessly, staying constantly responsive makes me feel like I&rsquo;m still moving forward instead of falling behind.&rdquo;
-    </div>
-  </div>
-
-  <div class="research-item reveal">
-    <p class="research-role">Independent Academic Researcher</p>
-    <h3 class="research-title">Digital Heritage and Community Formation: Understanding Cultural Identity in Online Mother Goddess Worship Communities</h3>
-    <p class="research-meta">Status: Research Proposal Development</p>
-    <p class="research-meta"><b>Focus Areas:</b> Digital Culture, Community Formation, Cultural Identity, Online Religious Communities</p>
-  </div>
-</section>
-
-<section id="strategy">
-  <p class="section-label reveal">My Strategic Thinking</p>
-  <h2 class="section-title reveal">Framework of Approach</h2>
-  <p class="section-desc reveal">
-    My planning approach combines research, consumer understanding, cultural context, and communication strategy to develop actionable solutions for brands and communities.
-  </p>
-  <div class="framework-flow reveal">
-    <div class="framework-step">Business Problem</div>
-    <div class="framework-arrow"></div>
-    <div class="framework-step">Research</div>
-    <div class="framework-arrow"></div>
-    <div class="framework-step">Insight</div>
-    <div class="framework-arrow"></div>
-    <div class="framework-step">Strategy</div>
-    <div class="framework-arrow"></div>
-    <div class="framework-step">Execution Direction</div>
-    <div class="framework-arrow"></div>
-    <div class="framework-step">Evaluation</div>
-  </div>
-</section>
-
-<section id="projects">
-  <p class="section-label reveal">Selected Works</p>
-  <h2 class="section-title reveal">Case Studies</h2>
-
-  <div class="project-item reveal">
-    <div class="project-header">
-      <h3 class="project-title">ECOLOTUS</h3>
-      <p class="project-role">Lead Strategic Planner</p>
-    </div>
-    <div class="project-content">
-      <div>
-        <p class="project-label">Format</p>
-      </div>
-      <div class="project-flow">
-        <span class="flow-step">Business Problem</span> <span class="flow-arrow">→</span>
-        <span class="flow-step">Research</span> <span class="flow-arrow">→</span>
-        <span class="flow-step">Insight</span> <span class="flow-arrow">→</span>
-        <span class="flow-step">Strategy</span> <span class="flow-arrow">→</span>
-        <span class="flow-step">Impact</span>
-      </div>
-    </div>
-    <div class="project-content" style="margin-top: 2rem;">
-      <div>
-        <p class="project-label">Deliverables</p>
-      </div>
-      <div class="project-details">
-        <ul>
-          <li>Brand Audit</li>
-          <li>SWOT</li>
-          <li>PESTLE</li>
-          <li>Aaker Brand Equity</li>
-          <li>Kapferer Brand Identity Prism</li>
-          <li>CBBE Model</li>
-          <li>Consumer Insight</li>
-          <li>Campaign Strategy</li>
-          <li>PR Strategy</li>
-          <li>Content Pillars</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="project-item reveal">
-    <div class="project-header">
-      <h3 class="project-title">The Golden Frame Awards Summer 2025</h3>
-      <p class="project-role">Communication Strategist & Event Coordinator</p>
-    </div>
-    <div class="project-content">
-      <div>
-        <p class="project-label">Deliverables</p>
-      </div>
-      <div class="project-details">
-        <ul>
-          <li>Communication Strategy</li>
-          <li>Stakeholder Coordination</li>
-          <li>Campaign Direction</li>
-          <li>Event Communication Planning</li>
-        </ul>
-      </div>
-    </div>
-    <div class="project-content" style="margin-top: 2rem;">
-      <div>
-        <p class="project-label">Impact</p>
-      </div>
-      <div class="project-details">
-        <ul>
-          <li>53 competing teams</li>
-          <li>3,000+ participants</li>
-          <li>20,000 impressions</li>
-          <li>2,000 interactions</li>
-          <li>6 industry KOLs</li>
-          <li>90%+ participant satisfaction</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="project-item reveal">
-    <div class="project-header">
-      <h3 class="project-title">Pseudo Multitasking Research</h3>
-      <p class="project-role">Research Executive</p>
-    </div>
-    <div class="project-content">
-      <div>
-        <p class="project-label">Focus Areas</p>
-      </div>
-      <div class="project-details">
+    <p class="section-label reveal">About</p>
+    <h2 class="section-title reveal">Research Before Storytelling</h2>
+    <div class="about-grid reveal">
+      <div class="about-list">
+        <h3>Research Interests</h3>
         <ul>
           <li>Consumer Behavior</li>
-          <li>Attention Economy</li>
-          <li>Perceived Productivity</li>
-          <li>Research Methodology</li>
-          <li>Insight Development</li>
+          <li>Cultural Identity</li>
+          <li>Digital Communities</li>
+          <li>Strategic Communication</li>
+          <li>Brand Meaning</li>
         </ul>
       </div>
-    </div>
-  </div>
-
-  <div class="project-item reveal">
-    <div class="project-header">
-      <h3 class="project-title">FPT Online</h3>
-      <p class="project-role">Planning Intern</p>
-    </div>
-    <div class="project-content">
-      <div>
-        <p class="project-label">Responsibilities</p>
-      </div>
-      <div class="project-details">
+      <div class="about-list">
+        <h3>Core Strengths</h3>
         <ul>
-          <li>Market Research</li>
-          <li>Competitor Analysis</li>
-          <li>Media Planning</li>
-          <li>Strategic Proposal Development</li>
-          <li>Cross-functional Collaboration</li>
+          <li>Strategic Thinking</li>
+          <li>Consumer Insight Research</li>
+          <li>Communication Planning</li>
+          <li>Analytical Thinking</li>
+          <li>Cultural Intelligence</li>
+        </ul>
+      </div>
+      <div class="about-list">
+        <h3>Languages</h3>
+        <ul>
+          <li>Vietnamese (Native)</li>
+          <li>English (Professional Working)</li>
+          <li>Korean (Elementary)</li>
         </ul>
       </div>
     </div>
   </div>
-
 </section>
 
+<!-- RESEARCH -->
+<section id="research">
+  <div class="container">
+    <p class="section-label reveal">Research Portfolio</p>
+    <h2 class="section-title reveal">Academic Inquiries</h2>
+    <div class="research-stack">
+      <div class="research-item reveal">
+        <p class="research-role">Published Research Paper — SCBEM Research Conference 2025</p>
+        <h3 class="research-title">Measuring the Perceived Social Benefits of Cultural Institutions Among University Students in Thu Duc City</h3>
+        <p class="research-meta"><b>Role:</b> Co-author</p>
+        <p class="research-meta"><b>Link:</b> <a href="20240826112339090_FCBEM_Cultural Institutions_Full Paper.pdf" target="_blank">Full Paper PDF</a></p>
+      </div>
+      <div class="research-item reveal">
+        <p class="research-role">Research Executive</p>
+        <h3 class="research-title">Pseudo Multitasking Behavior Among Young Adults in Ho Chi Minh City: Drivers and Perceived Productivity Outcomes</h3>
+        <p class="research-meta">Status: Conference Submission in Progress</p>
+        <p class="research-meta"><b>Responsibilities:</b> Literature Review, Research Design, Survey Development, Insight Analysis, Academic Writing</p>
+        <div class="research-quote">
+          &ldquo;I know multitasking is costing me focus. But in environments where everything moves relentlessly, staying constantly responsive makes me feel like I&rsquo;m still moving forward instead of falling behind.&rdquo;
+        </div>
+      </div>
+      <div class="research-item reveal">
+        <p class="research-role">Independent Academic Researcher</p>
+        <h3 class="research-title">Digital Heritage and Community Formation: Understanding Cultural Identity in Online Mother Goddess Worship Communities</h3>
+        <p class="research-meta">Status: Research Proposal Development</p>
+        <p class="research-meta"><b>Focus Areas:</b> Digital Culture, Community Formation, Cultural Identity, Online Religious Communities</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY -->
+<section id="strategy">
+  <div class="container">
+    <p class="section-label reveal">My Strategic Thinking</p>
+    <h2 class="section-title reveal">Framework of Approach</h2>
+    <p class="section-desc reveal">
+      My planning approach combines research, consumer understanding, cultural context, and communication strategy to develop actionable solutions for brands and communities.
+    </p>
+    <div class="framework-flow reveal">
+      <div class="framework-step">Business Problem</div>
+      <div class="framework-arrow"></div>
+      <div class="framework-step">Research</div>
+      <div class="framework-arrow"></div>
+      <div class="framework-step">Insight</div>
+      <div class="framework-arrow"></div>
+      <div class="framework-step">Strategy</div>
+      <div class="framework-arrow"></div>
+      <div class="framework-step">Execution Direction</div>
+      <div class="framework-arrow"></div>
+      <div class="framework-step">Evaluation</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label reveal">Selected Works</p>
+    <h2 class="section-title reveal">Case Studies</h2>
+    <div class="projects-stack">
+
+      <div class="project-item reveal">
+        <div class="project-header">
+          <h3 class="project-title">ECOLOTUS</h3>
+          <p class="project-role">Lead Strategic Planner</p>
+        </div>
+        <div class="project-row">
+          <p class="project-label">Process</p>
+          <div class="project-flow">
+            <span class="flow-step">Business Problem</span><span class="flow-arrow">→</span>
+            <span class="flow-step">Research</span><span class="flow-arrow">→</span>
+            <span class="flow-step">Insight</span><span class="flow-arrow">→</span>
+            <span class="flow-step">Strategy</span><span class="flow-arrow">→</span>
+            <span class="flow-step">Impact</span>
+          </div>
+        </div>
+        <div class="project-row">
+          <p class="project-label">Deliverables</p>
+          <ul class="tag-list">
+            <li>Brand Audit</li><li>SWOT</li><li>PESTLE</li>
+            <li>Aaker Brand Equity</li><li>Kapferer Brand Identity Prism</li>
+            <li>CBBE Model</li><li>Consumer Insight</li>
+            <li>Campaign Strategy</li><li>PR Strategy</li><li>Content Pillars</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <div class="project-header">
+          <h3 class="project-title">The Golden Frame Awards Summer 2025</h3>
+          <p class="project-role">Communication Strategist & Event Coordinator</p>
+        </div>
+        <div class="project-row">
+          <p class="project-label">Deliverables</p>
+          <ul class="tag-list">
+            <li>Communication Strategy</li><li>Stakeholder Coordination</li>
+            <li>Campaign Direction</li><li>Event Communication Planning</li>
+          </ul>
+        </div>
+        <div class="project-row">
+          <p class="project-label">Impact</p>
+          <ul class="tag-list">
+            <li>53 competing teams</li><li>3,000+ participants</li>
+            <li>20,000 impressions</li><li>2,000 interactions</li>
+            <li>6 industry KOLs</li><li>90%+ satisfaction</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <div class="project-header">
+          <h3 class="project-title">Pseudo Multitasking Research</h3>
+          <p class="project-role">Research Executive</p>
+        </div>
+        <div class="project-row">
+          <p class="project-label">Focus Areas</p>
+          <ul class="tag-list">
+            <li>Consumer Behavior</li><li>Attention Economy</li>
+            <li>Perceived Productivity</li><li>Research Methodology</li>
+            <li>Insight Development</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <div class="project-header">
+          <h3 class="project-title">FPT Online</h3>
+          <p class="project-role">Planning Intern</p>
+        </div>
+        <div class="project-row">
+          <p class="project-label">Responsibilities</p>
+          <ul class="tag-list">
+            <li>Market Research</li><li>Competitor Analysis</li>
+            <li>Media Planning</li><li>Strategic Proposal Development</li>
+            <li>Cross-functional Collaboration</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
 <section id="experience">
-  <p class="section-label reveal">Professional Journey</p>
-  <h2 class="section-title reveal">Experience</h2>
-  
-  <div class="exp-item reveal">
-    <div>
-      <h3 class="exp-title">Planning Intern</h3>
-      <p class="exp-company">FPT Online</p>
-    </div>
-  </div>
-  <div class="exp-item reveal">
-    <div>
-      <h3 class="exp-title">Communication Strategist & Event Coordinator</h3>
-      <p class="exp-company">The Golden Frame Awards Summer 2025</p>
-    </div>
-  </div>
-  <div class="exp-item reveal">
-    <div>
-      <h3 class="exp-title">Founder & Community Development Lead</h3>
-      <p class="exp-company">GÕ Trẻ – Yêu Văn Hóa Việt</p>
-    </div>
-  </div>
-  <div class="exp-item reveal">
-    <div>
-      <h3 class="exp-title">Deputy Project Manager & Content Strategist</h3>
-      <p class="exp-company">FPT Short Film Festival</p>
-    </div>
-  </div>
-  <div class="exp-item reveal">
-    <div>
-      <h3 class="exp-title">Communications Team Member</h3>
-      <p class="exp-company">SAFE ZONE</p>
+  <div class="container">
+    <p class="section-label reveal">Professional Journey</p>
+    <h2 class="section-title reveal">Experience</h2>
+    <div class="exp-stack">
+      <div class="exp-item reveal">
+        <div>
+          <h3 class="exp-title">Planning Intern</h3>
+          <p class="exp-company">FPT Online</p>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <div>
+          <h3 class="exp-title">Communication Strategist & Event Coordinator</h3>
+          <p class="exp-company">The Golden Frame Awards Summer 2025</p>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <div>
+          <h3 class="exp-title">Founder & Community Development Lead</h3>
+          <p class="exp-company">GÕ Trẻ – Yêu Văn Hóa Việt</p>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <div>
+          <h3 class="exp-title">Deputy Project Manager & Content Strategist</h3>
+          <p class="exp-company">FPT Short Film Festival</p>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <div>
+          <h3 class="exp-title">Communications Team Member</h3>
+          <p class="exp-company">SAFE ZONE</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- SKILLS -->
 <section id="skills">
-  <p class="section-label reveal">Capabilities</p>
-  <h2 class="section-title reveal">Skills</h2>
-  <div class="skills-grid reveal">
-    <div class="skill-block">
-      <h3>Strategic Planning</h3>
-      <ul>
-        <li>Communication Planning</li>
-        <li>Consumer Insight Development</li>
-        <li>Brand Strategy</li>
-        <li>IMC Planning</li>
-      </ul>
-    </div>
-    <div class="skill-block">
-      <h3>Research</h3>
-      <ul>
-        <li>Quantitative Research</li>
-        <li>Qualitative Research</li>
-        <li>Literature Review</li>
-        <li>Survey Design</li>
-        <li>Data Analysis</li>
-      </ul>
-    </div>
-    <div class="skill-block">
-      <h3>Communication</h3>
-      <ul>
-        <li>Campaign Development</li>
-        <li>Stakeholder Communication</li>
-        <li>Content Strategy</li>
-        <li>Project Coordination</li>
-        <li>Community Engagement</li>
-      </ul>
-    </div>
-    <div class="skill-block">
-      <h3>Tools</h3>
-      <ul>
-        <li>Adobe Illustrator</li>
-        <li>Adobe Photoshop</li>
-        <li>Adobe InDesign</li>
-        <li>Notion</li>
-        <li>Microsoft Office</li>
-        <li>Google Workspace</li>
-      </ul>
+  <div class="container">
+    <p class="section-label reveal">Capabilities</p>
+    <h2 class="section-title reveal">Skills</h2>
+    <div class="skills-grid reveal">
+      <div class="skill-block">
+        <h3>Strategic Planning</h3>
+        <ul>
+          <li>Communication Planning</li>
+          <li>Consumer Insight Development</li>
+          <li>Brand Strategy</li>
+          <li>IMC Planning</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <h3>Research</h3>
+        <ul>
+          <li>Quantitative Research</li>
+          <li>Qualitative Research</li>
+          <li>Literature Review</li>
+          <li>Survey Design</li>
+          <li>Data Analysis</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <h3>Communication</h3>
+        <ul>
+          <li>Campaign Development</li>
+          <li>Stakeholder Communication</li>
+          <li>Content Strategy</li>
+          <li>Project Coordination</li>
+          <li>Community Engagement</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <h3>Tools</h3>
+        <ul>
+          <li>Adobe Illustrator</li>
+          <li>Adobe Photoshop</li>
+          <li>Adobe InDesign</li>
+          <li>Notion</li>
+          <li>Microsoft Office</li>
+          <li>Google Workspace</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ACHIEVEMENTS & EDUCATION -->
 <section id="achievements">
-  <div class="ach-grid">
-    <div class="ach-section reveal">
+  <div class="container">
+    <div class="ach-grid">
+      <div class="ach-section reveal">
         <p class="section-label">Validation</p>
         <h3>Achievements</h3>
         <ul>
@@ -777,13 +815,13 @@
           <li>2 Independent Research Projects</li>
           <li>Outstanding Scientific Research Award</li>
         </ul>
-        <h3 style="margin-top:2rem;">Leadership & Competitions</h3>
+        <h3>Leadership & Competitions</h3>
         <ul>
           <li>Reading Culture Ambassador Competition</li>
           <li>Science Research Competition</li>
         </ul>
-    </div>
-    <div class="ach-section reveal">
+      </div>
+      <div class="ach-section reveal">
         <p class="section-label">Foundation</p>
         <h3>Education</h3>
         <p><b>FPT University</b><br>Multimedia Communication (2022 – 2026)</p>
@@ -791,58 +829,40 @@
           <li>Completed degree requirements</li>
           <li>Awaiting degree conferral</li>
         </ul>
-        <p style="margin-top: 2rem;"><b>Quang Trung High School for the Gifted</b><br>Literature Specialized Program (2019 – 2022)</p>
+        <p><b>Quang Trung High School for the Gifted</b><br>Literature Specialized Program (2019 – 2022)</p>
         <ul>
           <li>Vice President, Science Research Club</li>
           <li>GPA: 8.9/10</li>
         </ul>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-
-  <p class="footer-statement">
-    My work sits at the intersection of research, culture,
-    communication, and strategy. I am particularly interested in
-    understanding human behavior, cultural dynamics, and consumer
-    motivations, then translating those insights into meaningful
-    communication solutions and brand experiences.
-  </p>
-
-  <div class="footer-contact">
-
-    <a href="mailto:tnttam41004@gmail.com">
-      tnttam41004@gmail.com
-    </a>
-
-    <span>•</span>
-
-    <a href="tel:+84968043647">
-      +84 968 043 647
-    </a>
-
-    <span>•</span>
-
-    <a href="https://linkedin.com/in/your-linkedin">
-      LinkedIn
-    </a>
-
+  <div class="footer-inner">
+    <p class="footer-statement">
+      My work sits at the intersection of research, culture, communication, and strategy. I am particularly interested in understanding human behavior, cultural dynamics, and consumer motivations, then translating those insights into meaningful communication solutions and brand experiences.
+    </p>
+    <div class="footer-contact">
+      <a href="mailto:tnttam41004@gmail.com">tnttam41004@gmail.com</a>
+      <span>•</span>
+      <a href="tel:+84968043647">+84 968 043 647</a>
+      <span>•</span>
+      <a href="https://linkedin.com/in/your-linkedin">LinkedIn</a>
+    </div>
+    <div class="footer-bottom">
+      © 2026 TRAN NGUYEN TO TAM — STRATEGIC PLANNER & RESEARCHER
+    </div>
   </div>
-
-  <div class="footer-bottom">
-    © 2026 TRAN NGUYEN TO TAM — STRATEGIC PLANNER & RESEARCHER
-  </div>
-
 </footer>
 
 <script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, 50);
+        setTimeout(() => entry.target.classList.add('visible'), 50);
         observer.unobserve(entry.target);
       }
     });
