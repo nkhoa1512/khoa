@@ -9,7 +9,7 @@
   <!-- Google Fonts & Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     @font-face {
@@ -23,8 +23,8 @@
       --bg: #FAF8F5;
       --bg-subtle: #F3EFEA;
       --bg-card: rgba(255, 255, 255, 0.78);
-      --bg-card-hover: rgba(255, 255, 255, 0.95);
-      --surface-glass: rgba(250, 248, 245, 0.85);
+      --bg-card-hover: rgba(255, 255, 255, 0.96);
+      --surface-glass: rgba(250, 248, 245, 0.86);
       
       --text: #18181B;
       --text-muted: rgba(24, 24, 27, 0.72);
@@ -68,12 +68,12 @@
     [data-theme="dark"] {
       --bg: #0D0D11;
       --bg-subtle: #15151C;
-      --bg-card: rgba(22, 22, 29, 0.72);
+      --bg-card: rgba(22, 22, 29, 0.75);
       --bg-card-hover: rgba(28, 28, 38, 0.95);
-      --surface-glass: rgba(13, 13, 17, 0.85);
+      --surface-glass: rgba(13, 13, 17, 0.88);
       
       --text: #F5F5F7;
-      --text-muted: rgba(245, 245, 247, 0.7);
+      --text-muted: rgba(245, 245, 247, 0.72);
       --text-dim: rgba(245, 245, 247, 0.42);
       
       --primary: #D88D8A;
@@ -118,7 +118,7 @@
       position: relative;
     }
 
-    /* ── SUBTLE NOISE OVERLAY ── */
+    /* ── NOISE OVERLAY ── */
     body::before {
       content: '';
       position: fixed;
@@ -134,7 +134,7 @@
       position: fixed;
       pointer-events: none;
       border-radius: 50%;
-      filter: blur(80px);
+      filter: blur(85px);
       z-index: 0;
       opacity: 0.45;
       transition: opacity var(--transition-normal);
@@ -339,7 +339,6 @@
       color: #0D0D11;
     }
 
-    /* Mobile menu trigger */
     .mobile-menu-btn {
       display: none;
       align-items: center;
@@ -366,7 +365,7 @@
       position: absolute;
       inset: 0;
       padding-top: calc(var(--nav-height) + 24px);
-      padding-bottom: 3.5rem;
+      padding-bottom: 4rem;
       overflow-y: auto;
       opacity: 0;
       visibility: hidden;
@@ -430,7 +429,7 @@
       width: 100%;
       height: 1px;
       background: linear-gradient(90deg, var(--line), var(--line-hover), var(--line));
-      margin: 2.5rem 0;
+      margin: 2.75rem 0;
     }
 
     /* ── REVEAL SYSTEM ── */
@@ -534,7 +533,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.65rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
     .tag-border {
       padding: 0.45rem 1.1rem;
@@ -561,6 +560,7 @@
       align-items: center;
       gap: 1rem;
       flex-wrap: wrap;
+      margin-bottom: 2.75rem;
     }
     .btn-primary {
       display: inline-flex;
@@ -615,13 +615,49 @@
       box-shadow: var(--shadow-md);
     }
 
+    /* Hero Highlights Snapshot Bar */
+    .hero-snapshot-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.75rem;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(12px);
+    }
+    .snapshot-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      border-right: 1px solid var(--line);
+      padding-right: 1rem;
+    }
+    .snapshot-item:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+    .snapshot-num {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+    .snapshot-label {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
     /* ── ABOUT VIEW ── */
     .summary-card {
       background: var(--bg-card);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
       padding: 2.5rem 3rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2.75rem;
       box-shadow: var(--shadow-sm);
       backdrop-filter: blur(12px);
       position: relative;
@@ -648,6 +684,47 @@
       font-weight: 400;
       position: relative;
       z-index: 1;
+    }
+
+    /* Strategic Philosophy 3 Pillars */
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2.75rem;
+    }
+    .philosophy-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(10px);
+      transition: all var(--transition-fast);
+    }
+    .philosophy-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card-hover);
+    }
+    .philosophy-num {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .philosophy-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+    .philosophy-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
     }
 
     .about-bento {
@@ -720,13 +797,13 @@
     .research-stack {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 2.25rem;
     }
     .research-card {
       background: var(--bg-card);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      padding: 2.25rem;
+      padding: 2.5rem;
       box-shadow: var(--shadow-sm);
       backdrop-filter: blur(12px);
       transition: all var(--transition-fast);
@@ -763,7 +840,7 @@
       font-size: clamp(1.4rem, 2.3vw, 1.85rem);
       font-weight: 500;
       line-height: 1.3;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
       color: var(--text);
     }
     .research-meta-grid {
@@ -787,6 +864,22 @@
     .research-meta-item a:hover {
       color: var(--secondary);
       border-style: solid;
+    }
+
+    .research-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+    }
+    .research-spec-chip {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      padding: 0.25rem 0.65rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
     }
 
     .research-quote-box {
@@ -882,63 +975,98 @@
     }
     .pdf-error.visible { display: block; }
 
-    /* ── STRATEGY VIEW ── */
-    .strategy-pipeline {
+    /* ── STRATEGY VIEW (DEEPLY ENRICHED) ── */
+    .strategy-pipeline-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 0.75rem;
-      margin: 3rem 0;
-      position: relative;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
     }
-    .strategy-step-card {
+    .strategy-card-deep {
       background: var(--bg-card);
       border: 1px solid var(--line);
       border-radius: var(--radius-md);
-      padding: 1.5rem 1rem;
-      text-align: center;
+      padding: 2rem 1.75rem;
       box-shadow: var(--shadow-sm);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       transition: all var(--transition-fast);
-      position: relative;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 130px;
     }
-    .strategy-step-card:hover {
+    .strategy-card-deep:hover {
       border-color: var(--primary);
       transform: translateY(-4px);
       box-shadow: var(--shadow-card-hover);
     }
-    .strategy-step-num {
+    .strategy-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .strategy-card-num {
       font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      font-weight: 700;
       color: var(--primary);
       background: var(--primary-soft);
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 0.75rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
       border: 1px solid var(--line);
     }
-    .strategy-step-title {
+    .strategy-card-phase {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .strategy-card-title {
       font-family: var(--serif);
-      font-size: 1.05rem;
+      font-size: 1.35rem;
       font-weight: 500;
       color: var(--text);
-      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    .strategy-card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+    .strategy-deliverable-box {
+      border-top: 1px solid var(--line);
+      padding-top: 0.85rem;
+    }
+    .strategy-deliverable-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+    .strategy-deliverable-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .strategy-del-pill {
+      font-size: 0.76rem;
+      padding: 0.2rem 0.6rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
     }
 
     /* ── PROJECTS / CASE STUDIES VIEW ── */
     .projects-grid {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 2.25rem;
     }
     .project-card {
       background: var(--bg-card);
@@ -1120,7 +1248,7 @@
       background: var(--bg-card);
       border: 1px solid var(--line);
       border-radius: var(--radius-md);
-      padding: 1.75rem;
+      padding: 1.85rem;
       box-shadow: var(--shadow-sm);
       backdrop-filter: blur(10px);
       transition: all var(--transition-fast);
@@ -1152,16 +1280,25 @@
       border: 1px solid var(--line);
     }
     .timeline-company {
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       font-weight: 600;
-      color: var(--text-muted);
+      color: var(--secondary);
+    }
+    [data-theme="dark"] .timeline-company {
+      color: var(--primary);
     }
     .timeline-title {
       font-family: var(--serif);
       font-size: 1.35rem;
       font-weight: 500;
       color: var(--text);
-      margin-bottom: 1rem;
+      margin-bottom: 0.6rem;
+    }
+    .timeline-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.85rem;
     }
     .timeline-highlights {
       display: flex;
@@ -1352,8 +1489,36 @@
       line-height: 1.85;
       color: var(--text-muted);
       max-width: 520px;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.75rem;
     }
+
+    /* Collaboration Domains */
+    .collab-areas {
+      margin-bottom: 2rem;
+    }
+    .collab-label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .collab-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    .collab-chip {
+      font-size: 0.76rem;
+      padding: 0.25rem 0.7rem;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-full);
+      color: var(--text-muted);
+    }
+
     .contact-copy {
       font-family: var(--mono);
       font-size: 0.75rem;
@@ -1495,8 +1660,11 @@
     @media (max-width: 1024px) {
       .container { padding: 0 1.75rem; }
       .about-bento { grid-template-columns: 1fr; }
+      .philosophy-grid { grid-template-columns: 1fr; }
       .skills-bento-grid { grid-template-columns: 1fr 1fr; }
-      .strategy-pipeline { grid-template-columns: repeat(3, 1fr); }
+      .strategy-pipeline-grid { grid-template-columns: 1fr 1fr; }
+      .hero-snapshot-bar { grid-template-columns: 1fr 1fr; }
+      .snapshot-item { border-right: none; }
       .prestige-grid { grid-template-columns: 1fr; }
       .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
     }
@@ -1512,7 +1680,7 @@
         padding-top: calc(var(--nav-height) + 16px);
       }
 
-      .strategy-pipeline { grid-template-columns: 1fr 1fr; }
+      .strategy-pipeline-grid { grid-template-columns: 1fr; }
       .project-detail-row { grid-template-columns: 1fr; gap: 0.5rem; }
       .summary-card { padding: 1.75rem; }
       .summary-text { font-size: 1.18rem; }
@@ -1520,7 +1688,7 @@
     }
 
     @media (max-width: 520px) {
-      .strategy-pipeline { grid-template-columns: 1fr; }
+      .hero-snapshot-bar { grid-template-columns: 1fr; }
       .hero-name { font-size: 2.75rem; }
       .hero-actions { width: 100%; flex-direction: column; align-items: stretch; }
       .btn-primary, .btn-secondary { justify-content: center; }
@@ -1693,6 +1861,26 @@
             <a href="#strategy" class="btn-secondary view-link" data-i18n="hero.cta.strategy">View Strategy Framework</a>
             <a href="#contact" class="btn-secondary view-link" data-i18n="hero.cta.contact">Get in Touch</a>
           </div>
+
+          <!-- Hero Highlights Snapshot Bar -->
+          <div class="hero-snapshot-bar reveal">
+            <div class="snapshot-item">
+              <span class="snapshot-num">SCBEM 2025</span>
+              <span class="snapshot-label" data-i18n="hero.snap1">Co-authored Published Paper</span>
+            </div>
+            <div class="snapshot-item">
+              <span class="snapshot-num">3,000+</span>
+              <span class="snapshot-label" data-i18n="hero.snap2">Participants Reached (Awards Event)</span>
+            </div>
+            <div class="snapshot-item">
+              <span class="snapshot-num">5+</span>
+              <span class="snapshot-label" data-i18n="hero.snap3">Campaigns & Planning Projects</span>
+            </div>
+            <div class="snapshot-item">
+              <span class="snapshot-num">100%</span>
+              <span class="snapshot-label" data-i18n="hero.snap4">Research-Anchored Framework</span>
+            </div>
+          </div>
         </div>
       </section>
     </div>
@@ -1709,6 +1897,30 @@
             <p class="summary-text" data-i18n="about.summary">
               &ldquo;Aspiring Strategic Planner with experience in communication planning, consumer research, content strategy, and integrated campaign development. Completed Bachelor&rsquo;s Degree requirements in Multimedia Communication at FPT University and currently awaiting degree conferral. Co-author of a published research paper presented at SCBEM Research Conference 2025. Interested in transforming consumer and market insights into strategic solutions that support brand growth and drive effective communication outcomes.&rdquo;
             </p>
+          </div>
+
+          <!-- Strategic Philosophy 3 Pillars -->
+          <div class="section-header" style="margin-bottom: 1.5rem;">
+            <p class="section-label reveal" data-i18n="about.phil.label">Working Philosophy</p>
+            <h3 class="section-title reveal" style="font-size: 1.85rem;" data-i18n="about.phil.title">How I Approach Planning</h3>
+          </div>
+
+          <div class="philosophy-grid reveal">
+            <div class="philosophy-card">
+              <span class="philosophy-num">01</span>
+              <h4 class="philosophy-title" data-i18n="about.p1.title">Evidence-Based Insight</h4>
+              <p class="philosophy-desc" data-i18n="about.p1.desc">Uncovering authentic consumer truths through empirical methodologies, quantitative validation, and psychological observation rather than guesswork.</p>
+            </div>
+            <div class="philosophy-card">
+              <span class="philosophy-num">02</span>
+              <h4 class="philosophy-title" data-i18n="about.p2.title">Cultural Resonance</h4>
+              <p class="philosophy-desc" data-i18n="about.p2.desc">Analyzing contemporary Vietnamese youth subcultures, community rituals, and social trends to ensure brand communication feels genuine and timely.</p>
+            </div>
+            <div class="philosophy-card">
+              <span class="philosophy-num">03</span>
+              <h4 class="philosophy-title" data-i18n="about.p3.title">Actionable Strategy</h4>
+              <p class="philosophy-desc" data-i18n="about.p3.desc">Translating deep insights into practical IMC touchpoints, structured content pillars, and measurable brand deliverables that drive commercial outcomes.</p>
+            </div>
           </div>
 
           <div class="divider reveal"></div>
@@ -1773,6 +1985,7 @@
           <div class="section-header">
             <p class="section-label reveal" data-i18n="research.label">Research Portfolio</p>
             <h2 class="section-title reveal" data-i18n="research.title">Academic Inquiries</h2>
+            <p class="section-desc reveal" data-i18n="research.desc">Rigorous academic inquiries and behavioral research examining cultural identity, digital habits, and public institution perception.</p>
           </div>
 
           <div class="research-stack">
@@ -1791,6 +2004,12 @@
                 <div class="research-meta-item">
                   <b data-i18n="research.linkLabel">Link:</b> <a id="paper-link" href="assets/scbem-full-paper.pdf" target="_blank" data-i18n="research.linkVal">Full Paper PDF</a>
                 </div>
+              </div>
+
+              <div class="research-chips-row">
+                <span class="research-spec-chip" data-i18n="research.p1.c1">Field: Cultural Institutions & Sociology</span>
+                <span class="research-spec-chip" data-i18n="research.p1.c2">Sample: University Students in Thu Duc City</span>
+                <span class="research-spec-chip" data-i18n="research.p1.c3">Method: Quantitative Survey & Statistical Analysis</span>
               </div>
 
               <!-- PDF Viewer Card -->
@@ -1834,6 +2053,12 @@
                 </div>
               </div>
 
+              <div class="research-chips-row">
+                <span class="research-spec-chip" data-i18n="research.p2.c1">Domain: Attention Economy & Digital Well-being</span>
+                <span class="research-spec-chip" data-i18n="research.p2.c2">Target: Young Adults in HCMC</span>
+                <span class="research-spec-chip" data-i18n="research.p2.c3">Key Output: Cognitive Fragmentation Insight</span>
+              </div>
+
               <div class="research-quote-box" data-i18n="research.quote2">
                 &ldquo;I know multitasking is costing me focus. But in environments where everything moves relentlessly, staying constantly responsive makes me feel like I&rsquo;m still moving forward instead of falling behind.&rdquo;
               </div>
@@ -1855,13 +2080,19 @@
                   <b data-i18n="research.focusLabel3">Focus Areas:</b> <span data-i18n="research.focusVal3">Digital Culture, Community Formation, Cultural Identity, Online Religious Communities</span>
                 </div>
               </div>
+
+              <div class="research-chips-row">
+                <span class="research-spec-chip" data-i18n="research.p3.c1">Theory: Digital Ethnography & Cultural Continuity</span>
+                <span class="research-spec-chip" data-i18n="research.p3.c2">Subject: Mother Goddess (Đạo Mẫu) Online Groups</span>
+                <span class="research-spec-chip" data-i18n="research.p3.c3">Scope: Youth Religious Participation</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
     </div>
 
-    <!-- 04. STRATEGY VIEW -->
+    <!-- 04. STRATEGY VIEW (DEEPLY ENRICHED) -->
     <div class="page-view" data-view="strategy">
       <section id="strategy">
         <div class="container">
@@ -1873,31 +2104,120 @@
             </p>
           </div>
 
-          <!-- Strategy Interactive Pipeline -->
-          <div class="strategy-pipeline reveal">
-            <div class="strategy-step-card">
-              <span class="strategy-step-num">01</span>
-              <h3 class="strategy-step-title" data-i18n="strategy.s1">Business Problem</h3>
+          <!-- Deep 6-Step Strategy Grid -->
+          <div class="strategy-pipeline-grid reveal">
+            <!-- Step 1 -->
+            <div class="strategy-card-deep">
+              <div class="strategy-card-top">
+                <span class="strategy-card-num">01</span>
+                <span class="strategy-card-phase" data-i18n="strategy.step1.phase">Diagnostic</span>
+              </div>
+              <h3 class="strategy-card-title" data-i18n="strategy.s1">Business Problem</h3>
+              <p class="strategy-card-desc" data-i18n="strategy.step1.desc">Deconstruct the commercial challenge, identify growth bottlenecks, examine competitor positioning, and define clear, measurable marketing objectives.</p>
+              <div class="strategy-deliverable-box">
+                <span class="strategy-deliverable-label" data-i18n="strategy.delivLabel">Key Tools & Outputs:</span>
+                <div class="strategy-deliverable-tags">
+                  <span class="strategy-del-pill">Brand Audit</span>
+                  <span class="strategy-del-pill">SWOT</span>
+                  <span class="strategy-del-pill">PESTLE</span>
+                  <span class="strategy-del-pill">Market Friction</span>
+                </div>
+              </div>
             </div>
-            <div class="strategy-step-card">
-              <span class="strategy-step-num">02</span>
-              <h3 class="strategy-step-title" data-i18n="strategy.s2">Research</h3>
+
+            <!-- Step 2 -->
+            <div class="strategy-card-deep">
+              <div class="strategy-card-top">
+                <span class="strategy-card-num">02</span>
+                <span class="strategy-card-phase" data-i18n="strategy.step2.phase">Investigation</span>
+              </div>
+              <h3 class="strategy-card-title" data-i18n="strategy.s2">Research</h3>
+              <p class="strategy-card-desc" data-i18n="strategy.step2.desc">Deploy quantitative surveys, qualitative interviews, desk research, and social listening to capture authentic behavioral patterns and cultural shifts.</p>
+              <div class="strategy-deliverable-box">
+                <span class="strategy-deliverable-label" data-i18n="strategy.delivLabel">Key Tools & Outputs:</span>
+                <div class="strategy-deliverable-tags">
+                  <span class="strategy-del-pill">Quant Survey</span>
+                  <span class="strategy-del-pill">Qual In-depth</span>
+                  <span class="strategy-del-pill">Literature Review</span>
+                  <span class="strategy-del-pill">Data Synthesis</span>
+                </div>
+              </div>
             </div>
-            <div class="strategy-step-card">
-              <span class="strategy-step-num">03</span>
-              <h3 class="strategy-step-title" data-i18n="strategy.s3">Insight</h3>
+
+            <!-- Step 3 -->
+            <div class="strategy-card-deep">
+              <div class="strategy-card-top">
+                <span class="strategy-card-num">03</span>
+                <span class="strategy-card-phase" data-i18n="strategy.step3.phase">Synthesis</span>
+              </div>
+              <h3 class="strategy-card-title" data-i18n="strategy.s3">Insight</h3>
+              <p class="strategy-card-desc" data-i18n="strategy.step3.desc">Extract human tensions and unarticulated needs. Find the sweet spot between what the consumer desires and what the brand can authentically deliver.</p>
+              <div class="strategy-deliverable-box">
+                <span class="strategy-deliverable-label" data-i18n="strategy.delivLabel">Key Tools & Outputs:</span>
+                <div class="strategy-deliverable-tags">
+                  <span class="strategy-del-pill">Consumer Tension</span>
+                  <span class="strategy-del-pill">Human Truth</span>
+                  <span class="strategy-del-pill">Cultural Drivers</span>
+                  <span class="strategy-del-pill">Insight Statement</span>
+                </div>
+              </div>
             </div>
-            <div class="strategy-step-card">
-              <span class="strategy-step-num">04</span>
-              <h3 class="strategy-step-title" data-i18n="strategy.s4">Strategy</h3>
+
+            <!-- Step 4 -->
+            <div class="strategy-card-deep">
+              <div class="strategy-card-top">
+                <span class="strategy-card-num">04</span>
+                <span class="strategy-card-phase" data-i18n="strategy.step4.phase">Formulation</span>
+              </div>
+              <h3 class="strategy-card-title" data-i18n="strategy.s4">Strategy</h3>
+              <p class="strategy-card-desc" data-i18n="strategy.step4.desc">Establish the brand positioning, core creative proposition, and strategic communication message that anchors the entire integrated campaign.</p>
+              <div class="strategy-deliverable-box">
+                <span class="strategy-deliverable-label" data-i18n="strategy.delivLabel">Key Tools & Outputs:</span>
+                <div class="strategy-deliverable-tags">
+                  <span class="strategy-del-pill">Kapferer Prism</span>
+                  <span class="strategy-del-pill">CBBE Model</span>
+                  <span class="strategy-del-pill">Brand Proposition</span>
+                  <span class="strategy-del-pill">IMC Architecture</span>
+                </div>
+              </div>
             </div>
-            <div class="strategy-step-card">
-              <span class="strategy-step-num">05</span>
-              <h3 class="strategy-step-title" data-i18n="strategy.s5">Execution Direction</h3>
+
+            <!-- Step 5 -->
+            <div class="strategy-card-deep">
+              <div class="strategy-card-top">
+                <span class="strategy-card-num">05</span>
+                <span class="strategy-card-phase" data-i18n="strategy.step5.phase">Execution</span>
+              </div>
+              <h3 class="strategy-card-title" data-i18n="strategy.s5">Execution Direction</h3>
+              <p class="strategy-card-desc" data-i18n="strategy.step5.desc">Map out multi-channel touchpoints, promotional phases, content pillars, PR angles, and community engagement tactics for seamless rollout.</p>
+              <div class="strategy-deliverable-box">
+                <span class="strategy-deliverable-label" data-i18n="strategy.delivLabel">Key Tools & Outputs:</span>
+                <div class="strategy-deliverable-tags">
+                  <span class="strategy-del-pill">Content Pillars</span>
+                  <span class="strategy-del-pill">PR Angles</span>
+                  <span class="strategy-del-pill">Media Mix</span>
+                  <span class="strategy-del-pill">Touchpoint Flow</span>
+                </div>
+              </div>
             </div>
-            <div class="strategy-step-card">
-              <span class="strategy-step-num">06</span>
-              <h3 class="strategy-step-title" data-i18n="strategy.s6">Evaluation</h3>
+
+            <!-- Step 6 -->
+            <div class="strategy-card-deep">
+              <div class="strategy-card-top">
+                <span class="strategy-card-num">06</span>
+                <span class="strategy-card-phase" data-i18n="strategy.step6.phase">Optimization</span>
+              </div>
+              <h3 class="strategy-card-title" data-i18n="strategy.s6">Evaluation</h3>
+              <p class="strategy-card-desc" data-i18n="strategy.step6.desc">Track campaign KPIs, measure perception shifts, calculate engagement quality, and synthesize key learnings for future brand growth cycles.</p>
+              <div class="strategy-deliverable-box">
+                <span class="strategy-deliverable-label" data-i18n="strategy.delivLabel">Key Tools & Outputs:</span>
+                <div class="strategy-deliverable-tags">
+                  <span class="strategy-del-pill">KPI Benchmark</span>
+                  <span class="strategy-del-pill">Engagement Rate</span>
+                  <span class="strategy-del-pill">Sentiment Check</span>
+                  <span class="strategy-del-pill">Post-Campaign Report</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1911,13 +2231,17 @@
           <div class="section-header">
             <p class="section-label reveal" data-i18n="projects.label">Selected Works</p>
             <h2 class="section-title reveal" data-i18n="projects.title">Case Studies</h2>
+            <p class="section-desc reveal" data-i18n="projects.desc">Strategic brand plans, large-scale communication campaigns, behavioral research, and media planning proposals.</p>
           </div>
 
           <div class="projects-grid">
             <!-- Project 1: ECOLOTUS -->
             <div class="project-card reveal">
               <div class="project-header-bar">
-                <h3 class="project-title" data-i18n="projects.p1.title">ECOLOTUS</h3>
+                <div>
+                  <h3 class="project-title" data-i18n="projects.p1.title">ECOLOTUS</h3>
+                  <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.3rem;" data-i18n="projects.p1.subtitle">Comprehensive Brand Identity & Integrated Communication Strategy</p>
+                </div>
                 <span class="project-role-badge" data-i18n="projects.p1.role">Lead Strategic Planner</span>
               </div>
               <div class="project-detail-row">
@@ -1943,7 +2267,10 @@
             <!-- Project 2: The Golden Frame Awards Summer 2025 -->
             <div class="project-card reveal">
               <div class="project-header-bar">
-                <h3 class="project-title" data-i18n="projects.p2.title">The Golden Frame Awards Summer 2025</h3>
+                <div>
+                  <h3 class="project-title" data-i18n="projects.p2.title">The Golden Frame Awards Summer 2025</h3>
+                  <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.3rem;" data-i18n="projects.p2.subtitle">Large-scale Youth Filmmaking & Media Competition</p>
+                </div>
                 <span class="project-role-badge" data-i18n="projects.p2.role">Communication Strategist & Event Coordinator</span>
               </div>
               <div class="project-detail-row">
@@ -1989,7 +2316,10 @@
             <!-- Project 3: Pseudo Multitasking Research -->
             <div class="project-card reveal">
               <div class="project-header-bar">
-                <h3 class="project-title" data-i18n="projects.p3.title">Pseudo Multitasking Research</h3>
+                <div>
+                  <h3 class="project-title" data-i18n="projects.p3.title">Pseudo Multitasking Research</h3>
+                  <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.3rem;" data-i18n="projects.p3.subtitle">Behavioral Study on Attention Fragmentation & Perceived Productivity</p>
+                </div>
                 <span class="project-role-badge" data-i18n="projects.p3.role">Research Executive</span>
               </div>
               <div class="project-detail-row">
@@ -2007,7 +2337,10 @@
             <!-- Project 4: FPT Online -->
             <div class="project-card reveal">
               <div class="project-header-bar">
-                <h3 class="project-title" data-i18n="projects.p4.title">FPT Online</h3>
+                <div>
+                  <h3 class="project-title" data-i18n="projects.p4.title">FPT Online</h3>
+                  <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.3rem;" data-i18n="projects.p4.subtitle">Digital Media & Strategic Planning Internship</p>
+                </div>
                 <span class="project-role-badge" data-i18n="projects.p4.role">Planning Intern</span>
               </div>
               <div class="project-detail-row">
@@ -2048,6 +2381,7 @@
                   <span class="timeline-company" data-i18n="exp.e3.company">GÕ Trẻ – Yêu Văn Hóa Việt</span>
                 </div>
                 <h3 class="timeline-title" data-i18n="exp.e3.title">Founder & Community Development Lead</h3>
+                <p class="timeline-desc" data-i18n="exp.e3.desc">Founding and leading a youth cultural community initiative, designing creative engagement programs, and formulating content strategies connecting youth with Vietnamese cultural values.</p>
                 <ul class="timeline-highlights">
                   <li data-i18n="exp.e3.h1">Community Building</li>
                   <li data-i18n="exp.e3.h2">Cultural Engagement</li>
@@ -2068,6 +2402,7 @@
                   <span class="timeline-company" data-i18n="exp.e2.company">The Golden Frame Awards Summer 2025</span>
                 </div>
                 <h3 class="timeline-title" data-i18n="exp.e2.title">Communication Strategist & Event Coordinator</h3>
+                <p class="timeline-desc" data-i18n="exp.e2.desc">Developed the overarching communication plan, coordinated cross-functional teams and media partners, and engaged 3,000+ participants and 53 filmmaking teams.</p>
                 <ul class="timeline-highlights">
                   <li data-i18n="exp.e2.h1">Communication Strategy</li>
                   <li data-i18n="exp.e2.h2">Stakeholder Coordination</li>
@@ -2088,6 +2423,7 @@
                   <span class="timeline-company" data-i18n="exp.e1.company">FPT Online</span>
                 </div>
                 <h3 class="timeline-title" data-i18n="exp.e1.title">Planning Intern</h3>
+                <p class="timeline-desc" data-i18n="exp.e1.desc">Conducted competitor research and industry benchmarking, assisted in building strategic media planning proposals, and supported integrated digital pitches.</p>
                 <ul class="timeline-highlights">
                   <li data-i18n="exp.e1.h1">Market Research</li>
                   <li data-i18n="exp.e1.h2">Competitor Analysis</li>
@@ -2108,6 +2444,7 @@
                   <span class="timeline-company" data-i18n="exp.e4.company">FPT Short Film Festival</span>
                 </div>
                 <h3 class="timeline-title" data-i18n="exp.e4.title">Deputy Project Manager & Content Strategist</h3>
+                <p class="timeline-desc" data-i18n="exp.e4.desc">Managed festival project milestones, led content strategy across digital channels, and orchestrated cross-team communication for participants and judges.</p>
                 <ul class="timeline-highlights">
                   <li data-i18n="exp.e4.h1">Project Management</li>
                   <li data-i18n="exp.e4.h2">Content Strategy</li>
@@ -2128,6 +2465,7 @@
                   <span class="timeline-company" data-i18n="exp.e5.company">SAFE ZONE</span>
                 </div>
                 <h3 class="timeline-title" data-i18n="exp.e5.title">Communications Team Member</h3>
+                <p class="timeline-desc" data-i18n="exp.e5.desc">Contributed to social awareness campaigns, created multimedia communication assets, and supported community advocacy initiatives.</p>
                 <ul class="timeline-highlights">
                   <li data-i18n="exp.e5.h1">Campaign Support</li>
                   <li data-i18n="exp.e5.h2">Internal Communication</li>
@@ -2148,6 +2486,7 @@
           <div class="section-header">
             <p class="section-label reveal" data-i18n="skills.label">Capabilities</p>
             <h2 class="section-title reveal" data-i18n="skills.title">Skills</h2>
+            <p class="section-desc reveal" data-i18n="skills.desc">A balanced blend of strategic frameworks, empirical research methodologies, communication execution, and industry tools.</p>
           </div>
 
           <div class="skills-bento-grid reveal">
@@ -2292,6 +2631,17 @@
             <p class="contact-lead" data-i18n="contact.lead">
               Open to collaborations in strategy, research, and brand communication. Whether it&rsquo;s a project, internship, or a thoughtful conversation — I&rsquo;d love to hear from you.
             </p>
+
+            <div class="collab-areas">
+              <span class="collab-label" data-i18n="contact.collabLabel">Open for Opportunities in:</span>
+              <div class="collab-chips">
+                <span class="collab-chip" data-i18n="contact.c1">Strategic Planning</span>
+                <span class="collab-chip" data-i18n="contact.c2">Consumer Insight Research</span>
+                <span class="collab-chip" data-i18n="contact.c3">Brand Communication</span>
+                <span class="collab-chip" data-i18n="contact.c4">Cultural Projects</span>
+              </div>
+            </div>
+
             <p class="contact-copy" data-i18n="contact.copy">&copy; 2026 Tran Nguyen To Tam</p>
           </div>
 
@@ -2363,8 +2713,20 @@
         'hero.cta.research': 'Explore Research →',
         'hero.cta.strategy': 'View Strategy Framework',
         'hero.cta.contact': 'Get in Touch',
+        'hero.snap1': 'Co-authored Published Paper',
+        'hero.snap2': 'Participants Reached (Awards Event)',
+        'hero.snap3': 'Campaigns & Planning Projects',
+        'hero.snap4': 'Research-Anchored Framework',
         'about.summaryLabel': 'Professional Summary',
         'about.summary': '\u201cAspiring Strategic Planner with experience in communication planning, consumer research, content strategy, and integrated campaign development. Completed Bachelor\u2019s Degree requirements in Multimedia Communication at FPT University and currently awaiting degree conferral. Co-author of a published research paper presented at SCBEM Research Conference 2025. Interested in transforming consumer and market insights into strategic solutions that support brand growth and drive effective communication outcomes.\u201d',
+        'about.phil.label': 'Working Philosophy',
+        'about.phil.title': 'How I Approach Planning',
+        'about.p1.title': 'Evidence-Based Insight',
+        'about.p1.desc': 'Uncovering authentic consumer truths through empirical methodologies, quantitative validation, and psychological observation rather than guesswork.',
+        'about.p2.title': 'Cultural Resonance',
+        'about.p2.desc': 'Analyzing contemporary Vietnamese youth subcultures, community rituals, and social trends to ensure brand communication feels genuine and timely.',
+        'about.p3.title': 'Actionable Strategy',
+        'about.p3.desc': 'Translating deep insights into practical IMC touchpoints, structured content pillars, and measurable brand deliverables that drive commercial outcomes.',
         'about.label': 'About',
         'about.title': 'Research Before Storytelling',
         'about.ri.title': 'Research Interests',
@@ -2385,12 +2747,16 @@
         'about.lang.3': 'Korean (Elementary)',
         'research.label': 'Research Portfolio',
         'research.title': 'Academic Inquiries',
+        'research.desc': 'Rigorous academic inquiries and behavioral research examining cultural identity, digital habits, and public institution perception.',
         'research.role1': 'Published Research Paper — SCBEM Research Conference 2025',
         'research.paperTitle1': 'Measuring the Perceived Social Benefits of Cultural Institutions Among University Students in Thu Duc City',
         'research.roleLabel': 'Role:',
         'research.roleVal1': 'Co-author',
         'research.linkLabel': 'Link:',
         'research.linkVal': 'Full Paper PDF',
+        'research.p1.c1': 'Field: Cultural Institutions & Sociology',
+        'research.p1.c2': 'Sample: University Students in Thu Duc City',
+        'research.p1.c3': 'Method: Quantitative Survey & Statistical Analysis',
         'research.quickView': 'Quick View: View the research paper directly on the website.',
         'research.openTab': 'Open in new tab ↗',
         'research.role2': 'Research Executive',
@@ -2398,29 +2764,51 @@
         'research.statusLabel2': 'Status: Conference Submission in Progress',
         'research.respLabel2': 'Responsibilities:',
         'research.respVal2': 'Literature Review, Research Design, Survey Development, Insight Analysis, Academic Writing',
+        'research.p2.c1': 'Domain: Attention Economy & Digital Well-being',
+        'research.p2.c2': 'Target: Young Adults in HCMC',
+        'research.p2.c3': 'Key Output: Cognitive Fragmentation Insight',
         'research.quote2': '\u201cI know multitasking is costing me focus. But in environments where everything moves relentlessly, staying constantly responsive makes me feel like I\u2019m still moving forward instead of falling behind.\u201d',
         'research.role3': 'Independent Academic Researcher',
         'research.paperTitle3': 'Digital Heritage and Community Formation: Understanding Cultural Identity in Online Mother Goddess Worship Communities',
         'research.statusLabel3': 'Status: Research Proposal Development',
         'research.focusLabel3': 'Focus Areas:',
         'research.focusVal3': 'Digital Culture, Community Formation, Cultural Identity, Online Religious Communities',
+        'research.p3.c1': 'Theory: Digital Ethnography & Cultural Continuity',
+        'research.p3.c2': 'Subject: Mother Goddess (Đạo Mẫu) Online Groups',
+        'research.p3.c3': 'Scope: Youth Religious Participation',
         'strategy.label': 'My Strategic Thinking',
         'strategy.title': 'Framework of Approach',
         'strategy.desc': 'My planning approach combines research, consumer understanding, cultural context, and communication strategy to develop actionable solutions for brands and communities.',
+        'strategy.delivLabel': 'Key Tools & Outputs:',
+        'strategy.step1.phase': 'Diagnostic',
         'strategy.s1': 'Business Problem',
+        'strategy.step1.desc': 'Deconstruct the commercial challenge, identify growth bottlenecks, examine competitor positioning, and define clear, measurable marketing objectives.',
+        'strategy.step2.phase': 'Investigation',
         'strategy.s2': 'Research',
+        'strategy.step2.desc': 'Deploy quantitative surveys, qualitative interviews, desk research, and social listening to capture authentic behavioral patterns and cultural shifts.',
+        'strategy.step3.phase': 'Synthesis',
         'strategy.s3': 'Insight',
+        'strategy.step3.desc': 'Extract human tensions and unarticulated needs. Find the sweet spot between what the consumer desires and what the brand can authentically deliver.',
+        'strategy.step4.phase': 'Formulation',
         'strategy.s4': 'Strategy',
+        'strategy.step4.desc': 'Establish the brand positioning, core creative proposition, and strategic communication message that anchors the entire integrated campaign.',
+        'strategy.step5.phase': 'Execution',
         'strategy.s5': 'Execution Direction',
+        'strategy.step5.desc': 'Map out multi-channel touchpoints, promotional phases, content pillars, PR angles, and community engagement tactics for seamless rollout.',
+        'strategy.step6.phase': 'Optimization',
         'strategy.s6': 'Evaluation',
+        'strategy.step6.desc': 'Track campaign KPIs, measure perception shifts, calculate engagement quality, and synthesize key learnings for future brand growth cycles.',
         'projects.label': 'Selected Works',
         'projects.title': 'Case Studies',
+        'projects.desc': 'Strategic brand plans, large-scale communication campaigns, behavioral research, and media planning proposals.',
         'projects.p1.title': 'ECOLOTUS',
+        'projects.p1.subtitle': 'Comprehensive Brand Identity & Integrated Communication Strategy',
         'projects.p1.role': 'Lead Strategic Planner',
         'projects.p1.process': 'Process',
         'projects.p1.impactPill': 'Impact',
         'projects.p1.deliverables': 'Deliverables',
         'projects.p2.title': 'The Golden Frame Awards Summer 2025',
+        'projects.p2.subtitle': 'Large-scale Youth Filmmaking & Media Competition',
         'projects.p2.role': 'Communication Strategist & Event Coordinator',
         'projects.p2.deliverables': 'Deliverables',
         'projects.p2.impact': 'Impact',
@@ -2431,9 +2819,11 @@
         'projects.p2.m5': 'Industry KOLs',
         'projects.p2.m6': 'Satisfaction',
         'projects.p3.title': 'Pseudo Multitasking Research',
+        'projects.p3.subtitle': 'Behavioral Study on Attention Fragmentation & Perceived Productivity',
         'projects.p3.role': 'Research Executive',
         'projects.p3.focus': 'Focus Areas',
         'projects.p4.title': 'FPT Online',
+        'projects.p4.subtitle': 'Digital Media & Strategic Planning Internship',
         'projects.p4.role': 'Planning Intern',
         'projects.p4.resp': 'Responsibilities',
         'exp.label': 'Professional Journey',
@@ -2442,6 +2832,7 @@
         'exp.e3.period': '2025 – Present',
         'exp.e3.company': 'GÕ Trẻ – Yêu Văn Hóa Việt',
         'exp.e3.title': 'Founder & Community Development Lead',
+        'exp.e3.desc': 'Founding and leading a youth cultural community initiative, designing creative engagement programs, and formulating content strategies connecting youth with Vietnamese cultural values.',
         'exp.e3.h1': 'Community Building',
         'exp.e3.h2': 'Cultural Engagement',
         'exp.e3.h3': 'Content Strategy',
@@ -2449,6 +2840,7 @@
         'exp.e2.period': '05/2025 - 09/2025',
         'exp.e2.company': 'The Golden Frame Awards Summer 2025',
         'exp.e2.title': 'Communication Strategist & Event Coordinator',
+        'exp.e2.desc': 'Developed the overarching communication plan, coordinated cross-functional teams and media partners, and engaged 3,000+ participants and 53 filmmaking teams.',
         'exp.e2.h1': 'Communication Strategy',
         'exp.e2.h2': 'Stakeholder Coordination',
         'exp.e2.h3': '3,000+ Participants',
@@ -2456,6 +2848,7 @@
         'exp.e1.period': '12/2024 - 04/2025',
         'exp.e1.company': 'FPT Online',
         'exp.e1.title': 'Planning Intern',
+        'exp.e1.desc': 'Conducted competitor research and industry benchmarking, assisted in building strategic media planning proposals, and supported integrated digital pitches.',
         'exp.e1.h1': 'Market Research',
         'exp.e1.h2': 'Competitor Analysis',
         'exp.e1.h3': 'Media Planning',
@@ -2463,6 +2856,7 @@
         'exp.e4.period': '2024',
         'exp.e4.company': 'FPT Short Film Festival',
         'exp.e4.title': 'Deputy Project Manager & Content Strategist',
+        'exp.e4.desc': 'Managed festival project milestones, led content strategy across digital channels, and orchestrated cross-team communication for participants and judges.',
         'exp.e4.h1': 'Project Management',
         'exp.e4.h2': 'Content Strategy',
         'exp.e4.h3': 'Cross-team Coordination',
@@ -2470,12 +2864,14 @@
         'exp.e5.period': '2023 – 2024',
         'exp.e5.company': 'SAFE ZONE',
         'exp.e5.title': 'Communications Team Member',
+        'exp.e5.desc': 'Contributed to social awareness campaigns, created multimedia communication assets, and supported community advocacy initiatives.',
         'exp.e5.h1': 'Campaign Support',
         'exp.e5.h2': 'Internal Communication',
         'exp.e5.h3': 'Content Production',
         'exp.e5.h4': 'Team Collaboration',
         'skills.label': 'Capabilities',
         'skills.title': 'Skills',
+        'skills.desc': 'A balanced blend of strategic frameworks, empirical research methodologies, communication execution, and industry tools.',
         'skills.cat1': 'Strategic Planning',
         'skills.s1': 'Communication Planning',
         'skills.s2': 'Consumer Insight Development',
@@ -2514,6 +2910,11 @@
         'contact.label': 'Get in Touch',
         'contact.headline': 'Let\u2019s create<br><em>something meaningful.</em>',
         'contact.lead': 'Open to collaborations in strategy, research, and brand communication. Whether it\u2019s a project, internship, or a thoughtful conversation \u2014 I\u2019d love to hear from you.',
+        'contact.collabLabel': 'Open for Opportunities in:',
+        'contact.c1': 'Strategic Planning',
+        'contact.c2': 'Consumer Insight Research',
+        'contact.c3': 'Brand Communication',
+        'contact.c4': 'Cultural Projects',
         'contact.copy': '\u00a9 2026 Tran Nguyen To Tam',
         'contact.email': 'Email',
         'contact.phone': 'Phone',
@@ -2542,8 +2943,20 @@
         'hero.cta.research': 'Khám phá Nghiên cứu →',
         'hero.cta.strategy': 'Xem Khung Chiến Lược',
         'hero.cta.contact': 'Liên hệ trực tiếp',
+        'hero.snap1': 'Đồng tác giả bài báo đã công bố',
+        'hero.snap2': 'Người tiếp cận (Sự kiện Trao giải)',
+        'hero.snap3': 'Dự án & Chiến dịch chiến lược',
+        'hero.snap4': 'Mô hình chuẩn phương pháp luận',
         'about.summaryLabel': 'T\u00f3m t\u1eaft chuy\u00ean m\u00f4n',
         'about.summary': '\u201cNh\u00e0 ho\u1ea1ch \u0111\u1ecbnh chi\u1ebfn l\u01b0\u1ee3c tr\u1ebb v\u1edbi kinh nghi\u1ec7m trong ho\u1ea1ch \u0111\u1ecbnh truy\u1ec1n th\u00f4ng, nghi\u00ean c\u1ee9u ng\u01b0\u1eddi ti\u00eau d\u00f9ng, chi\u1ebfn l\u01b0\u1ee3c n\u1ed9i dung v\u00e0 ph\u00e1t tri\u1ec3n chi\u1ebfn d\u1ecbch t\u00edch h\u1ee3p. \u0110\u00e3 ho\u00e0n th\u00e0nh ch\u01b0\u01a1ng tr\u00ecnh C\u1eed nh\u00e2n Truy\u1ec1n th\u00f4ng \u0110a ph\u01b0\u01a1ng ti\u1ec7n t\u1ea1i \u0110\u1ea1i h\u1ecdc FPT v\u00e0 \u0111ang ch\u1edd nh\u1eadn b\u1eb1ng. \u0110\u1ed3ng t\u00e1c gi\u1ea3 b\u00e0i nghi\u00ean c\u1ee9u \u0111\u00e3 c\u00f4ng b\u1ed1 t\u1ea1i H\u1ed9i th\u1ea3o Nghi\u00ean c\u1ee9u SCBEM 2025. Quan t\u00e2m bi\u1ebfn insight ng\u01b0\u1eddi ti\u00eau d\u00f9ng v\u00e0 th\u1ecb tr\u01b0\u1eddng th\u00e0nh gi\u1ea3i ph\u00e1p chi\u1ebfn l\u01b0\u1ee3c h\u1ed7 tr\u1ee3 t\u0103ng tr\u01b0\u1edfng th\u01b0\u01a1ng hi\u1ec7u v\u00e0 k\u1ebft qu\u1ea3 truy\u1ec1n th\u00f4ng hi\u1ec7u qu\u1ea3.\u201d',
+        'about.phil.label': 'Triết lý làm việc',
+        'about.phil.title': 'Cách tôi tiếp cận hoạch định',
+        'about.p1.title': 'Insight dựa trên bằng chứng',
+        'about.p1.desc': 'Tìm kiếm sự thật ngầm hiểu thông qua phương pháp luận thực nghiệm, kiểm chứng định lượng và quan sát tâm lý thay vì phỏng đoán cảm tính.',
+        'about.p2.title': 'Đồng cảm văn hóa',
+        'about.p2.desc': 'Phân tích văn hóa giới trẻ Việt Nam, các tiểu văn hóa số và xu hướng cộng đồng nhằm giúp thông điệp thương hiệu luôn chân thực và chạm cảm xúc.',
+        'about.p3.title': 'Chiến lược mang tính thực thi',
+        'about.p3.desc': 'Chuyển hóa insight thành các điểm chạm IMC thực tế, cấu trúc content pillar rõ ràng và sản phẩm bàn giao đo lường được cho doanh nghiệp.',
         'about.label': 'V\u1ec1 t\u00f4i',
         'about.title': 'Nghi\u00ean c\u1ee9u tr\u01b0\u1edbc khi k\u1ec3 chuy\u1ec7n',
         'about.ri.title': 'H\u01b0\u1edbng nghi\u00ean c\u1ee9u',
@@ -2564,12 +2977,16 @@
         'about.lang.3': 'Ti\u1ebfng H\u00e0n (S\u01a1 c\u1ea5p)',
         'research.label': 'Danh m\u1ee5c nghi\u00ean c\u1ee9u',
         'research.title': 'C\u00e1c \u0111\u1ec1 t\u00e0i h\u1ecdc thu\u1eadt',
+        'research.desc': 'Các đề tài nghiên cứu học thuật và hành vi nghiêm túc về bản sắc văn hóa, thói quen số và nhận thức về thiết chế văn hóa công cộng.',
         'research.role1': 'B\u00e0i nghi\u00ean c\u1ee9u \u0111\u00e3 c\u00f4ng b\u1ed1 — H\u1ed9i th\u1ea3o Nghi\u00ean c\u1ee9u SCBEM 2025',
         'research.paperTitle1': 'Measuring the Perceived Social Benefits of Cultural Institutions Among University Students in Thu Duc City',
         'research.roleLabel': 'Vai tr\u00f2:',
         'research.roleVal1': '\u0110\u1ed3ng t\u00e1c gi\u1ea3',
         'research.linkLabel': 'Li\u00ean k\u1ebft:',
         'research.linkVal': 'File PDF To\u00e0n V\u0103n',
+        'research.p1.c1': 'Lĩnh vực: Thiết chế văn hóa & Xã hội học',
+        'research.p1.c2': 'Đối tượng: Sinh viên đại học tại TP. Thủ Đức',
+        'research.p1.c3': 'Phương pháp: Khảo sát định lượng & Phân tích thống kê',
         'research.quickView': 'Xem nhanh: Xem b\u00e0i nghi\u00ean c\u1ee9u tr\u1ef1c ti\u1ebfp tr\u00ean website.',
         'research.openTab': 'M\u1edf trong tab m\u1edbi ↗',
         'research.role2': 'Research Executive',
@@ -2577,29 +2994,51 @@
         'research.statusLabel2': 'Tr\u1ea1ng th\u00e1i: \u0110ang g\u1eedi tham gia h\u1ed9i th\u1ea3o',
         'research.respLabel2': 'Tr\u00e1ch nhi\u1ec7m:',
         'research.respVal2': 'T\u1ed5ng quan t\u00e0i li\u1ec7u, Thi\u1ebft k\u1ebf nghi\u00ean c\u1ee9u, X\u00e2y d\u1ef1ng kh\u1ea3o s\u00e1t, Ph\u00e2n t\u00edch insight, Vi\u1ebft h\u1ecdc thu\u1eadt',
+        'research.p2.c1': 'Chủ đề: Kinh tế chú ý & Sức khỏe số',
+        'research.p2.c2': 'Đối tượng: Người trẻ tại TP.HCM',
+        'research.p2.c3': 'Kết quả: Insight về sự phân mảnh nhận thức',
         'research.quote2': '\u201cT\u00f4i bi\u1ebft multitasking khi\u1ebfn t\u00f4i gi\u1ea3m t\u1eadp trung. Nh\u01b0ng trong m\u00f4i tr\u01b0\u1eddng li\u00ean t\u1ee5c chuy\u1ec3n \u0111\u1ed9ng, vi\u1ec7c lu\u00f4n ph\u1ea3n h\u1ed3i l\u00e0m t\u00f4i c\u1ea3m th\u1ea5y m\u00ecnh v\u1eabn \u0111ang ti\u1ebfn l\u00ean thay v\u00ec b\u1ecb b\u1ecf l\u1ea1i ph\u00eda sau.\u201d',
         'research.role3': 'Nh\u00e0 nghi\u00ean c\u1ee9u \u0111\u1ed9c l\u1eadp',
         'research.paperTitle3': 'Digital Heritage and Community Formation: Understanding Cultural Identity in Online Mother Goddess Worship Communities',
         'research.statusLabel3': 'Tr\u1ea1ng th\u00e1i: \u0110ang ph\u00e1t tri\u1ec3n proposal nghi\u00ean c\u1ee9u',
         'research.focusLabel3': 'L\u0129nh v\u1ef1c t\u1eadp trung:',
         'research.focusVal3': 'V\u0103n h\u00f3a s\u1ed1, H\u00ecnh th\u00e0nh c\u1ed9ng \u0111\u1ed3ng, B\u1ea3n s\u1eafc v\u0103n h\u00f3a, C\u1ed9ng \u0111\u1ed3ng t\u00f4n gi\u00e1o tr\u1ef1c tuy\u1ebfn',
+        'research.p3.c1': 'Lý thuyết: Dân tộc học số & Bản sắc văn hóa',
+        'research.p3.c2': 'Khảo sát: Cộng đồng tín ngưỡng Đạo Mẫu online',
+        'research.p3.c3': 'Phạm vi: Sự tiếp nhận của thế hệ trẻ',
         'strategy.label': 'T\u01b0 duy chi\u1ebfn l\u01b0\u1ee3c',
         'strategy.title': 'Khung ti\u1ebfn c\u1eadn',
         'strategy.desc': 'Ph\u01b0\u01a1ng ph\u00e1p ho\u1ea1ch \u0111\u1ecbnh c\u1ee7a t\u00f4i k\u1ebft h\u1ee3p nghi\u00ean c\u1ee9u, hi\u1ec3u bi\u1ebft ng\u01b0\u1eddi ti\u00eau d\u00f9ng, b\u1ed1i c\u1ea3nh v\u0103n h\u00f3a v\u00e0 chi\u1ebfn l\u01b0\u1ee3c truy\u1ec1n th\u00f4ng \u0111\u1ec3 t\u1ea1o ra gi\u1ea3i ph\u00e1p kh\u1ea3 thi cho th\u01b0\u01a1ng hi\u1ec7u v\u00e0 c\u1ed9ng \u0111\u1ed3ng.',
+        'strategy.delivLabel': 'Công cụ & Sản phẩm bàn giao:',
+        'strategy.step1.phase': 'Chẩn đoán',
         'strategy.s1': 'V\u1ea5n \u0111\u1ec1 kinh doanh',
+        'strategy.step1.desc': 'Bóc tách rào cản tăng trưởng thương mại, phân tích vị thế đối thủ và xác định mục tiêu marketing rõ ràng, đo lường được.',
+        'strategy.step2.phase': 'Điều tra',
         'strategy.s2': 'Nghi\u00ean c\u1ee9u',
+        'strategy.step2.desc': 'Thực hiện khảo sát định lượng, phỏng vấn sâu định tính, desk research và social listening để nắm bắt hành vi thực tế và chuyển biến văn hóa.',
+        'strategy.step3.phase': 'Tổng hợp',
         'strategy.s3': 'Insight',
+        'strategy.step3.desc': 'Khai phá các mâu thuẫn tâm lý và nhu cầu chưa được nói ra. Tìm điểm giao thoa giữa mong muốn của khách hàng và năng lực cốt lõi của thương hiệu.',
+        'strategy.step4.phase': 'Định hình',
         'strategy.s4': 'Chi\u1ebfn l\u01b0\u1ee3c',
+        'strategy.step4.desc': 'Thiết lập định vị thương hiệu, đề xuất sáng tạo chủ đạo (Core Proposition) và thông điệp truyền thông chiến lược dẫn dắt toàn bộ chiến dịch.',
+        'strategy.step5.phase': 'Triển khai',
         'strategy.s5': 'H\u01b0\u1edbng tri\u1ec3n khai',
+        'strategy.step5.desc': 'Quy hoạch các điểm chạm đa kênh, lộ trình từng giai đoạn, các trụ cột nội dung (Content Pillars), góc tiếp cận PR và tương tác cộng đồng.',
+        'strategy.step6.phase': 'Tối ưu hóa',
         'strategy.s6': '\u0110\u00e1nh gi\u00e1',
+        'strategy.step6.desc': 'Theo dõi các chỉ số KPI, đo lường sự thay đổi trong nhận thức thương hiệu, đánh giá chất lượng tương tác và đúc kết kinh nghiệm cho chu kỳ tiếp theo.',
         'projects.label': 'T\u00e1c ph\u1ea9m ti\u00eau bi\u1ec3u',
         'projects.title': 'Case Study',
+        'projects.desc': 'Kế hoạch chiến lược thương hiệu, chiến dịch truyền thông quy mô lớn, nghiên cứu hành vi và proposal media chuyên nghiệp.',
         'projects.p1.title': 'ECOLOTUS',
+        'projects.p1.subtitle': 'Chiến lược nhận diện & truyền thông tích hợp toàn diện',
         'projects.p1.role': 'Lead Strategic Planner',
         'projects.p1.process': 'Quy tr\u00ecnh',
         'projects.p1.impactPill': 'T\u00e1c \u0111\u1ed9ng',
         'projects.p1.deliverables': 'S\u1ea3n ph\u1ea9m b\u00e0n giao',
         'projects.p2.title': 'The Golden Frame Awards Summer 2025',
+        'projects.p2.subtitle': 'Cuộc thi làm phim & truyền thông quy mô lớn dành cho giới trẻ',
         'projects.p2.role': 'Communication Strategist & Event Coordinator',
         'projects.p2.deliverables': 'S\u1ea3n ph\u1ea9m b\u00e0n giao',
         'projects.p2.impact': 'T\u00e1c \u0111\u1ed9ng',
@@ -2610,9 +3049,11 @@
         'projects.p2.m5': 'KOLs trong ng\u00e0nh',
         'projects.p2.m6': 'M\u1ee9c \u0111\u1ed9 h\u00e0i l\u00f2ng',
         'projects.p3.title': 'Nghi\u00ean c\u1ee9u Pseudo Multitasking',
+        'projects.p3.subtitle': 'Nghiên cứu hành vi về sự phân mảnh chú ý và năng suất cảm nhận',
         'projects.p3.role': 'Research Executive',
         'projects.p3.focus': 'L\u0129nh v\u1ef1c tr\u1ecdng t\u00e2m',
         'projects.p4.title': 'FPT Online',
+        'projects.p4.subtitle': 'Thực tập Hoạch định Chiến lược & Truyền thông Kỹ thuật số',
         'projects.p4.role': 'Th\u1ef1c t\u1eadp Planning',
         'projects.p4.resp': 'Tr\u00e1ch nhi\u1ec7m',
         'exp.label': 'H\u00e0nh tr\u00ecnh ngh\u1ec1 nghi\u1ec7p',
@@ -2621,6 +3062,7 @@
         'exp.e3.period': '2025 – Nay',
         'exp.e3.company': 'GÕ Trẻ – Yêu Văn Hóa Việt',
         'exp.e3.title': 'Founder & Community Development Lead',
+        'exp.e3.desc': 'Sáng lập và dẫn dắt dự án cộng đồng văn hóa trẻ, thiết kế các chương trình tương tác sáng tạo và hoạch định chiến lược nội dung gắn kết giới trẻ với giá trị văn hóa Việt.',
         'exp.e3.h1': 'X\u00e2y d\u1ef1ng c\u1ed9ng \u0111\u1ed3ng',
         'exp.e3.h2': 'K\u1ebft n\u1ed1i v\u0103n h\u00f3a',
         'exp.e3.h3': 'Chi\u1ebfn l\u01b0\u1ee3c n\u1ed9i dung',
@@ -2628,6 +3070,7 @@
         'exp.e2.period': '05/2025 - 09/2025',
         'exp.e2.company': 'The Golden Frame Awards Summer 2025',
         'exp.e2.title': 'Communication Strategist & Event Coordinator',
+        'exp.e2.desc': 'Xây dựng kế hoạch truyền thông tổng thể, điều phối liên phòng ban và đối tác truyền thông, tiếp cận hơn 3.000 người tham gia và 53 đội thi làm phim.',
         'exp.e2.h1': 'Chi\u1ebfn l\u01b0\u1ee3c truy\u1ec1n th\u00f4ng',
         'exp.e2.h2': 'Ph\u1ed1i h\u1ee3p stakeholders',
         'exp.e2.h3': '3.000+ ng\u01b0\u1eddi tham gia',
@@ -2635,6 +3078,7 @@
         'exp.e1.period': '12/2024 - 04/2025',
         'exp.e1.company': 'FPT Online',
         'exp.e1.title': 'Th\u1ef1c t\u1eadp Planning',
+        'exp.e1.desc': 'Nghiên cứu đối thủ và khảo sát ngành, hỗ trợ lập các proposal kế hoạch media chiến lược và tham gia chuẩn bị hồ sơ pitch tích hợp.',
         'exp.e1.h1': 'Nghi\u00ean c\u1ee9u th\u1ecb tr\u01b0\u1eddng',
         'exp.e1.h2': 'Ph\u00e2n t\u00edch \u0111\u1ed1i th\u1ee7',
         'exp.e1.h3': 'Ho\u1ea1ch \u0111\u1ecbnh media',
@@ -2642,6 +3086,7 @@
         'exp.e4.period': '2024',
         'exp.e4.company': 'FPT Short Film Festival',
         'exp.e4.title': 'Ph\u00f3 qu\u1ea3n l\u00fd d\u1ef1 \u00e1n & Content Strategist',
+        'exp.e4.desc': 'Quản lý tiến độ dự án liên hoan phim, chỉ đạo chiến lược nội dung trên các kênh số và điều phối liên lạc giữa thí sinh và hội đồng giám khảo.',
         'exp.e4.h1': 'Qu\u1ea3n l\u00fd d\u1ef1 \u00e1n',
         'exp.e4.h2': 'Chi\u1ebfn l\u01b0\u1ee3c n\u1ed9i dung',
         'exp.e4.h3': 'Ph\u1ed1i h\u1ee3p li\u00ean team',
@@ -2649,12 +3094,14 @@
         'exp.e5.period': '2023 – 2024',
         'exp.e5.company': 'SAFE ZONE',
         'exp.e5.title': 'Th\u00e0nh vi\u00ean team Truy\u1ec1n th\u00f4ng',
+        'exp.e5.desc': 'Tham gia hỗ trợ các chiến dịch nâng cao nhận thức xã hội, sản xuất ấn phẩm truyền thông đa phương tiện và điều phối nội dung cộng đồng.',
         'exp.e5.h1': 'H\u1ed7 tr\u1ee3 chi\u1ebfn d\u1ecbch',
         'exp.e5.h2': 'Truy\u1ec1n th\u00f4ng n\u1ed9i b\u1ed9',
         'exp.e5.h3': 'S\u1ea3n xu\u1ea5t n\u1ed9i dung',
         'exp.e5.h4': 'L\u00e0m vi\u1ec7c nh\u00f3m',
         'skills.label': 'N\u0103ng l\u1ef1c',
         'skills.title': 'K\u1ef9 n\u0103ng',
+        'skills.desc': 'Sự kết hợp cân bằng giữa các framework chiến lược, phương pháp nghiên cứu thực nghiệm, thực thi truyền thông và công cụ ngành.',
         'skills.cat1': 'Ho\u1ea1ch \u0111\u1ecbnh chi\u1ebfn l\u01b0\u1ee3c',
         'skills.s1': 'Ho\u1ea1ch \u0111\u1ecbnh truy\u1ec1n th\u00f4ng',
         'skills.s2': 'Ph\u00e1t tri\u1ec3n Consumer Insight',
@@ -2693,6 +3140,11 @@
         'contact.label': 'Li\u00ean h\u1ec7',
         'contact.headline': 'C\u00f9ng t\u1ea1o n\u00ean<br><em>\u0111i\u1ec1u c\u00f3 \u00fd ngh\u0129a.</em>',
         'contact.lead': 'S\u1eb5n s\u00e0ng h\u1ee3p t\u00e1c v\u1ec1 chi\u1ebfn l\u01b0\u1ee3c, nghi\u00ean c\u1ee9u v\u00e0 truy\u1ec1n th\u00f4ng th\u01b0\u01a1ng hi\u1ec7u. D\u00f9 l\u00e0 d\u1ef1 \u00e1n, th\u1ef1c t\u1eadp hay m\u1ed9t cu\u1ed9c tr\u00f2 chuy\u1ec7n \u2014 t\u00f4i r\u1ea5t mong \u0111\u01b0\u1ee3c l\u1eafng nghe b\u1ea1n.',
+        'contact.collabLabel': 'Sẵn sàng hợp tác trong các lĩnh vực:',
+        'contact.c1': 'Hoạch định chiến lược',
+        'contact.c2': 'Nghiên cứu Insight người tiêu dùng',
+        'contact.c3': 'Truyền thông thương hiệu',
+        'contact.c4': 'Dự án văn hóa & cộng đồng',
         'contact.copy': '\u00a9 2026 Tran Nguyen To Tam',
         'contact.email': 'Email',
         'contact.phone': 'S\u0111T',
@@ -2776,7 +3228,7 @@
           if (!entry.isIntersecting) return;
           const item = entry.target;
           const index = revealItems.indexOf(item);
-          item.style.transitionDelay = `${Math.min(index * 70, 420)}ms`;
+          item.style.transitionDelay = `${Math.min(index * 65, 390)}ms`;
           item.classList.add('visible');
           observer.unobserve(item);
         });
