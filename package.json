@@ -1,0 +1,13 @@
+{
+  "name": "portfolio-cv",
+  "version": "1.0.0",
+  "description": "Portfolio of Tran Nguyen To Tam — Strategic Planner & Researcher",
+  "main": "index.html",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": ["portfolio", "cv", "strategic-planner"],
+  "author": "Tran Nguyen To Tam",
+  "license": "ISC"
+}
